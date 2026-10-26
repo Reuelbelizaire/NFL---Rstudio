@@ -1,0 +1,13 @@
+---
+title: "NFL stats"
+author: "Reuel"
+date: "2026-10-26"
+output: html_document
+---
+
+
+```{r}
+install.packages("nflverse")
+print('wow')
+
+```
