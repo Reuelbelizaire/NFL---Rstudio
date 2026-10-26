@@ -7,13 +7,13 @@ output: html_document
 
 
 ```{r}
+#references the package https://nflreadr.nflverse.com/reference/
 #install necessary packages
 
 install.packages("nflverse")
-install.packages("")
 ```
 ```{r}
-#load_injuries()
-#dictionary_injuries
-#https://nflreadr.nflverse.com/reference/
+#Reuel is messing with functions
+#load_injuries() || dictionary_injuries
+
 ```
