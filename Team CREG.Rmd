@@ -7,7 +7,13 @@ output: html_document
 
 
 ```{r}
-install.packages("nflverse")
-print('wow')
+#install necessary packages
 
+install.packages("nflverse")
+install.packages("")
+```
+```{r}
+#load_injuries()
+#dictionary_injuries
+#https://nflreadr.nflverse.com/reference/
 ```
