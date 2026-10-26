@@ -6,6 +6,10 @@ output: html_document
 ---
 
 Data Dict: https://nflreadr.nflverse.com/articles/dictionary_schedules.html?utm_source=chatgpt.com
+
+Articles(s): https://pmc.ncbi.nlm.nih.gov/articles/PMC7763131/?utm_source=chatgpt.com
+
+
 ```{r}
 install.packages("nflverse")
 print('wow')
