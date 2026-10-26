@@ -5,7 +5,7 @@ date: "2026-10-26"
 output: html_document
 ---
 
-
+Data Dict: https://nflreadr.nflverse.com/articles/dictionary_schedules.html?utm_source=chatgpt.com
 ```{r}
 install.packages("nflverse")
 print('wow')
