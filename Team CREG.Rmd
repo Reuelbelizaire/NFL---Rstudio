@@ -1,6 +1,6 @@
 ---
 title: "NFL stats"
-author: "Reuel"
+author: "CERG"
 date: "2026-10-26"
 output: html_document
 ---
@@ -12,7 +12,10 @@ Articles(s): https://pmc.ncbi.nlm.nih.gov/articles/PMC7763131/?utm_source=chatgp
 
 ```{r}
 install.packages("nflverse")
-print('wow')
-print('sza')
 
+
+#necessary functions for our project
+load_schedules()
+load_pbp()
+load_officials()
 ```
