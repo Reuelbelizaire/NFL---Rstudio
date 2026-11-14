@@ -1,0 +1,844 @@
+game_id,season,week,division,home_team,away_team,play_id,penalized_side,penalty_team,penalty_type,penalty_category,penalty_yards,play_type,down,ydstogo,covid_2020
+2018_01_CHI_GB,2018,1,NFC North,GB,CHI,2911,Home,GB,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2018_01_CHI_GB,2018,1,NFC North,GB,CHI,3622,Away,CHI,Ineligible Downfield Pass,Other,5,no_play,1,10,0
+2018_01_CHI_GB,2018,1,NFC North,GB,CHI,3748,Home,GB,Roughing the Passer,Discretionary (judgment),15,no_play,4,9,0
+2018_01_CHI_GB,2018,1,NFC North,GB,CHI,3938,Home,GB,Delay of Game,Procedural (pre-snap),5,no_play,2,10,0
+2018_01_CHI_GB,2018,1,NFC North,GB,CHI,4020,Home,GB,Delay of Game,Procedural (pre-snap),5,no_play,4,8,0
+2018_01_NYJ_DET,2018,1,NFC North,DET,NYJ,3908,Away,NYJ,Delay of Game,Procedural (pre-snap),5,no_play,1,2,0
+2018_01_SF_MIN,2018,1,NFC North,MIN,SF,3298,Home,MIN,Roughing the Passer,Discretionary (judgment),15,no_play,3,15,0
+2018_01_SF_MIN,2018,1,NFC North,MIN,SF,3817,Away,SF,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,4,1,0
+2018_02_DET_SF,2018,2,NFC North,SF,DET,3635,Away,DET,Disqualification,Other,15,run,2,10,0
+2018_02_DET_SF,2018,2,NFC North,SF,DET,3711,Home,SF,Face Mask,Discretionary (judgment),5,no_play,1,10,0
+2018_02_DET_SF,2018,2,NFC North,SF,DET,3871,Away,DET,Illegal Block Above the Waist,Discretionary (judgment),10,punt,4,11,0
+2018_02_DET_SF,2018,2,NFC North,SF,DET,4045,Home,SF,Defensive Pass Interference,Discretionary (judgment),11,no_play,2,10,0
+2018_02_DET_SF,2018,2,NFC North,SF,DET,4453,Away,DET,Defensive Holding,Discretionary (judgment),5,no_play,3,2,0
+2018_02_MIN_GB,2018,2,NFC North,GB,MIN,2929,Away,MIN,Defensive Offside,Other,5,no_play,1,10,0
+2018_02_MIN_GB,2018,2,NFC North,GB,MIN,3204,Home,GB,Offensive Holding,Discretionary (judgment),10,run,1,10,0
+2018_02_MIN_GB,2018,2,NFC North,GB,MIN,3260,Away,MIN,Defensive Holding,Discretionary (judgment),5,no_play,2,10,0
+2018_02_MIN_GB,2018,2,NFC North,GB,MIN,3355,Home,GB,False Start,Procedural (pre-snap),5,no_play,3,3,0
+2018_02_MIN_GB,2018,2,NFC North,GB,MIN,3603,Home,GB,Delay of Game,Procedural (pre-snap),5,no_play,3,10,0
+2018_02_MIN_GB,2018,2,NFC North,GB,MIN,3693,Home,GB,Roughing the Passer,Discretionary (judgment),15,no_play,1,10,0
+2018_02_SEA_CHI,2018,2,NFC North,CHI,SEA,3281,Home,CHI,Illegal Contact,Discretionary (judgment),5,no_play,3,7,0
+2018_02_SEA_CHI,2018,2,NFC North,CHI,SEA,3355,Home,CHI,Leverage,Other,15,extra_point,NA,0,0
+2018_02_SEA_CHI,2018,2,NFC North,CHI,SEA,3445,Home,CHI,False Start,Procedural (pre-snap),5,no_play,2,10,0
+2018_03_BUF_MIN,2018,3,NFC North,MIN,BUF,3418,Away,BUF,False Start,Procedural (pre-snap),5,no_play,2,8,0
+2018_03_BUF_MIN,2018,3,NFC North,MIN,BUF,3762,Away,BUF,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,2,4,0
+2018_03_BUF_MIN,2018,3,NFC North,MIN,BUF,3794,Away,BUF,Roughing the Passer,Discretionary (judgment),4,pass,1,10,0
+2018_03_CHI_ARI,2018,3,NFC North,ARI,CHI,3307,Home,ARI,Unnecessary Roughness,Discretionary (judgment),15,pass,2,12,0
+2018_03_CHI_ARI,2018,3,NFC North,ARI,CHI,3600,Away,CHI,Illegal Use of Hands,Discretionary (judgment),5,no_play,1,10,0
+2018_03_CHI_ARI,2018,3,NFC North,ARI,CHI,3971,Away,CHI,Defensive Offside,Other,5,no_play,2,1,0
+2018_03_GB_WAS,2018,3,NFC North,WAS,GB,3134,Away,GB,Offensive Holding,Discretionary (judgment),8,no_play,1,10,0
+2018_03_GB_WAS,2018,3,NFC North,WAS,GB,3212,Away,GB,Offensive Holding,Discretionary (judgment),10,pass,3,14,0
+2018_03_GB_WAS,2018,3,NFC North,WAS,GB,3324,Home,WAS,Offensive Holding,Discretionary (judgment),10,no_play,2,6,0
+2018_03_GB_WAS,2018,3,NFC North,WAS,GB,3402,Away,GB,Offensive Holding,Discretionary (judgment),10,punt,4,10,0
+2018_03_GB_WAS,2018,3,NFC North,WAS,GB,3925,Home,WAS,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2018_03_GB_WAS,2018,3,NFC North,WAS,GB,4129,Away,GB,Offensive Holding,Discretionary (judgment),10,no_play,3,5,0
+2018_03_NE_DET,2018,3,NFC North,DET,NE,2877,Away,NE,Intentional Grounding,Other,10,pass,1,10,0
+2018_03_NE_DET,2018,3,NFC North,DET,NE,2959,Home,DET,Illegal Block Above the Waist,Discretionary (judgment),10,punt,4,11,0
+2018_03_NE_DET,2018,3,NFC North,DET,NE,3145,Home,DET,Illegal Blindside Block,Other,15,pass,2,8,0
+2018_03_NE_DET,2018,3,NFC North,DET,NE,3308,Home,DET,Offensive Holding,Discretionary (judgment),10,no_play,3,8,0
+2018_03_NE_DET,2018,3,NFC North,DET,NE,3644,Away,NE,Illegal Block Above the Waist,Discretionary (judgment),8,kickoff,NA,0,0
+2018_04_BUF_GB,2018,4,NFC North,GB,BUF,3348,Home,GB,Unnecessary Roughness,Discretionary (judgment),15,pass,1,10,0
+2018_04_BUF_GB,2018,4,NFC North,GB,BUF,3699,Home,GB,False Start,Procedural (pre-snap),5,no_play,2,10,0
+2018_04_BUF_GB,2018,4,NFC North,GB,BUF,3839,Home,GB,Face Mask,Discretionary (judgment),15,no_play,1,10,0
+2018_04_DET_DAL,2018,4,NFC North,DAL,DET,2900,Home,DAL,Unnecessary Roughness,Discretionary (judgment),10,kickoff,NA,0,0
+2018_04_DET_DAL,2018,4,NFC North,DAL,DET,3072,Away,DET,Defensive Offside,Other,5,no_play,3,7,0
+2018_04_MIN_LA,2018,4,NFC North,LA,MIN,3422,Home,LA,Illegal Block Above the Waist,Discretionary (judgment),10,punt,4,18,0
+2018_04_TB_CHI,2018,4,NFC North,CHI,TB,3980,Away,TB,Offensive Too Many Men on Field,Other,5,no_play,3,2,0
+2018_05_GB_DET,2018,5,NFC North,DET,GB,3804,Home,DET,False Start,Procedural (pre-snap),5,no_play,2,10,0
+2018_05_GB_DET,2018,5,NFC North,DET,GB,3831,Home,DET,Offensive Pass Interference,Discretionary (judgment),10,no_play,2,15,0
+2018_05_GB_DET,2018,5,NFC North,DET,GB,3913,Away,GB,Illegal Block Above the Waist,Discretionary (judgment),10,punt,4,21,0
+2018_05_GB_DET,2018,5,NFC North,DET,GB,4130,Away,GB,Illegal Shift,Procedural (pre-snap),5,no_play,3,10,0
+2018_05_GB_DET,2018,5,NFC North,DET,GB,4383,Home,DET,False Start,Procedural (pre-snap),5,no_play,3,5,0
+2018_05_GB_DET,2018,5,NFC North,DET,GB,4444,Home,DET,False Start,Procedural (pre-snap),5,no_play,4,11,0
+2018_05_GB_DET,2018,5,NFC North,DET,GB,4644,Away,GB,Offside on Free Kick,Other,5,kickoff,NA,0,0
+2018_05_MIN_PHI,2018,5,NFC North,PHI,MIN,3139,Home,PHI,Illegal Formation,Procedural (pre-snap),5,no_play,1,10,0
+2018_05_MIN_PHI,2018,5,NFC North,PHI,MIN,3193,Away,MIN,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,2,15,0
+2018_05_MIN_PHI,2018,5,NFC North,PHI,MIN,3216,Home,PHI,Intentional Grounding,Other,10,pass,2,10,0
+2018_05_MIN_PHI,2018,5,NFC North,PHI,MIN,3288,Home,PHI,Delay of Game,Procedural (pre-snap),5,no_play,4,20,0
+2018_05_MIN_PHI,2018,5,NFC North,PHI,MIN,3797,Away,MIN,Unnecessary Roughness,Discretionary (judgment),8,no_play,2,10,0
+2018_06_ARI_MIN,2018,6,NFC North,MIN,ARI,3047,Home,MIN,Defensive Offside,Other,4,no_play,2,5,0
+2018_06_ARI_MIN,2018,6,NFC North,MIN,ARI,3433,Home,MIN,Defensive Pass Interference,Discretionary (judgment),2,no_play,1,3,0
+2018_06_ARI_MIN,2018,6,NFC North,MIN,ARI,3513,Home,MIN,Encroachment,Other,5,no_play,NA,0,0
+2018_06_ARI_MIN,2018,6,NFC North,MIN,ARI,3642,Away,ARI,Offensive Holding,Discretionary (judgment),10,punt,4,4,0
+2018_06_ARI_MIN,2018,6,NFC North,MIN,ARI,3726,Home,MIN,Defensive Pass Interference,Discretionary (judgment),14,no_play,1,10,0
+2018_06_ARI_MIN,2018,6,NFC North,MIN,ARI,3759,Away,ARI,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2018_06_CHI_MIA,2018,6,NFC North,MIA,CHI,2786,Away,CHI,Illegal Formation,Procedural (pre-snap),5,no_play,1,10,0
+2018_06_CHI_MIA,2018,6,NFC North,MIA,CHI,2920,Away,CHI,Offensive Pass Interference,Discretionary (judgment),10,no_play,1,3,0
+2018_06_CHI_MIA,2018,6,NFC North,MIA,CHI,3204,Home,MIA,Defensive Pass Interference,Discretionary (judgment),6,no_play,3,2,0
+2018_06_CHI_MIA,2018,6,NFC North,MIA,CHI,3519,Away,CHI,Leverage,Other,15,extra_point,NA,0,0
+2018_06_SF_GB,2018,6,NFC North,GB,SF,3622,Home,GB,Unnecessary Roughness,Discretionary (judgment),15,kickoff,NA,0,0
+2018_06_SF_GB,2018,6,NFC North,GB,SF,3775,Home,GB,Delay of Game,Procedural (pre-snap),5,no_play,2,10,0
+2018_06_SF_GB,2018,6,NFC North,GB,SF,3820,Away,SF,Illegal Contact,Discretionary (judgment),5,no_play,3,15,0
+2018_07_DET_MIA,2018,7,NFC North,MIA,DET,2848,Away,DET,Defensive Pass Interference,Discretionary (judgment),3,no_play,3,11,0
+2018_07_DET_MIA,2018,7,NFC North,MIA,DET,3159,Home,MIA,Defensive Pass Interference,Discretionary (judgment),15,no_play,3,7,0
+2018_07_DET_MIA,2018,7,NFC North,MIA,DET,3372,Away,DET,Defensive Holding,Discretionary (judgment),5,no_play,1,10,0
+2018_07_MIN_NYJ,2018,7,NFC North,NYJ,MIN,3247,Away,MIN,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2018_07_MIN_NYJ,2018,7,NFC North,NYJ,MIN,4077,Away,MIN,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2018_07_MIN_NYJ,2018,7,NFC North,NYJ,MIN,4299,Away,MIN,Roughing the Passer,Discretionary (judgment),15,no_play,3,3,0
+2018_07_MIN_NYJ,2018,7,NFC North,NYJ,MIN,4500,Home,NYJ,Unsportsmanlike Conduct,Discretionary (judgment),15,pass,2,15,0
+2018_07_NE_CHI,2018,7,NFC North,CHI,NE,4280,Away,NE,Illegal Use of Hands,Discretionary (judgment),5,no_play,1,10,0
+2018_08_GB_LA,2018,8,NFC North,LA,GB,3598,Away,GB,Defensive Holding,Discretionary (judgment),5,run,1,10,0
+2018_08_GB_LA,2018,8,NFC North,LA,GB,3937,Home,LA,Offensive Holding,Discretionary (judgment),10,no_play,2,10,0
+2018_08_NO_MIN,2018,8,NFC North,MIN,NO,2854,Home,MIN,Illegal Use of Hands,Discretionary (judgment),5,run,2,6,0
+2018_08_NO_MIN,2018,8,NFC North,MIN,NO,2954,Away,NO,Offensive Holding,Discretionary (judgment),10,run,1,10,0
+2018_08_NO_MIN,2018,8,NFC North,MIN,NO,3307,Away,NO,Defensive Pass Interference,Discretionary (judgment),10,no_play,2,7,0
+2018_08_NYJ_CHI,2018,8,NFC North,CHI,NYJ,3062,Home,CHI,Unnecessary Roughness,Discretionary (judgment),15,pass,3,13,0
+2018_08_NYJ_CHI,2018,8,NFC North,CHI,NYJ,3991,Away,NYJ,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2018_08_SEA_DET,2018,8,NFC North,DET,SEA,2606,Home,DET,Illegal Use of Hands,Discretionary (judgment),5,no_play,3,5,0
+2018_08_SEA_DET,2018,8,NFC North,DET,SEA,2777,Home,DET,Offensive Holding,Discretionary (judgment),10,kickoff,NA,0,0
+2018_08_SEA_DET,2018,8,NFC North,DET,SEA,2960,Away,SEA,Roughing the Passer,Discretionary (judgment),15,no_play,2,3,0
+2018_08_SEA_DET,2018,8,NFC North,DET,SEA,3448,Away,SEA,Defensive Pass Interference,Discretionary (judgment),56,no_play,1,10,0
+2018_09_CHI_BUF,2018,9,NFC North,BUF,CHI,3879,Away,CHI,Unsportsmanlike Conduct,Discretionary (judgment),15,pass,3,16,0
+2018_09_CHI_BUF,2018,9,NFC North,BUF,CHI,3969,Home,BUF,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2018_09_CHI_BUF,2018,9,NFC North,BUF,CHI,4006,Home,BUF,Intentional Grounding,Other,10,pass,1,20,0
+2018_09_CHI_BUF,2018,9,NFC North,BUF,CHI,4029,Away,CHI,Face Mask,Discretionary (judgment),15,no_play,2,30,0
+2018_09_CHI_BUF,2018,9,NFC North,BUF,CHI,4210,Away,CHI,Defensive Pass Interference,Discretionary (judgment),2,no_play,3,3,0
+2018_09_CHI_BUF,2018,9,NFC North,BUF,CHI,4319,Away,CHI,Defensive Too Many Men on Field,Other,1,no_play,NA,0,0
+2018_09_CHI_BUF,2018,9,NFC North,BUF,CHI,4464,Home,BUF,Defensive Pass Interference,Discretionary (judgment),43,no_play,3,5,0
+2018_09_CHI_BUF,2018,9,NFC North,BUF,CHI,4648,Home,BUF,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2018_09_CHI_BUF,2018,9,NFC North,BUF,CHI,4704,Away,CHI,Defensive Pass Interference,Discretionary (judgment),16,no_play,2,4,0
+2018_09_DET_MIN,2018,9,NFC North,MIN,DET,2649,Home,MIN,False Start,Procedural (pre-snap),5,no_play,3,4,0
+2018_09_DET_MIN,2018,9,NFC North,MIN,DET,2752,Away,DET,Face Mask,Discretionary (judgment),15,no_play,3,5,0
+2018_09_DET_MIN,2018,9,NFC North,MIN,DET,3002,Away,DET,Unnecessary Roughness,Discretionary (judgment),15,extra_point,NA,0,0
+2018_09_DET_MIN,2018,9,NFC North,MIN,DET,3032,Away,DET,Offensive Holding,Discretionary (judgment),10,kickoff,NA,0,0
+2018_09_GB_NE,2018,9,NFC North,NE,GB,4005,Home,NE,Defensive Too Many Men on Field,Other,5,no_play,3,4,0
+2018_10_DET_CHI,2018,10,NFC North,CHI,DET,3423,Away,DET,Offensive Holding,Discretionary (judgment),10,punt,4,12,0
+2018_10_DET_CHI,2018,10,NFC North,CHI,DET,3537,Home,CHI,Roughing the Passer,Discretionary (judgment),6,pass,1,10,0
+2018_10_DET_CHI,2018,10,NFC North,CHI,DET,3973,Home,CHI,Unsportsmanlike Conduct,Discretionary (judgment),15,pass,3,5,0
+2018_11_CAR_DET,2018,11,NFC North,DET,CAR,2840,Home,DET,Delay of Game,Procedural (pre-snap),5,no_play,4,9,0
+2018_11_GB_SEA,2018,11,NFC North,SEA,GB,3241,Home,SEA,False Start,Procedural (pre-snap),5,no_play,3,21,0
+2018_11_MIN_CHI,2018,11,NFC North,CHI,MIN,3020,Away,MIN,Unnecessary Roughness,Discretionary (judgment),15,run,1,10,0
+2018_11_MIN_CHI,2018,11,NFC North,CHI,MIN,3792,Home,CHI,Defensive Pass Interference,Discretionary (judgment),10,no_play,3,10,0
+2018_11_MIN_CHI,2018,11,NFC North,CHI,MIN,3898,Home,CHI,Roughing the Passer,Discretionary (judgment),1,no_play,NA,0,0
+2018_11_MIN_CHI,2018,11,NFC North,CHI,MIN,4046,Away,MIN,Unnecessary Roughness,Discretionary (judgment),15,run,1,10,0
+2018_12_CHI_DET,2018,12,NFC North,DET,CHI,3159,Home,DET,Face Mask,Discretionary (judgment),14,pass,2,3,0
+2018_12_CHI_DET,2018,12,NFC North,DET,CHI,3818,Away,CHI,Illegal Use of Hands,Discretionary (judgment),5,no_play,2,6,0
+2018_12_GB_MIN,2018,12,NFC North,MIN,GB,3796,Away,GB,Offside on Free Kick,Other,5,kickoff,NA,0,0
+2018_13_ARI_GB,2018,13,NFC North,GB,ARI,3119,Home,GB,Offensive Holding,Discretionary (judgment),10,no_play,3,11,0
+2018_13_ARI_GB,2018,13,NFC North,GB,ARI,3177,Home,GB,Illegal Formation,Procedural (pre-snap),5,no_play,4,21,0
+2018_13_ARI_GB,2018,13,NFC North,GB,ARI,3260,Home,GB,Defensive Holding,Discretionary (judgment),5,no_play,2,7,0
+2018_13_ARI_GB,2018,13,NFC North,GB,ARI,3315,Away,ARI,Offensive Holding,Discretionary (judgment),10,no_play,2,10,0
+2018_13_ARI_GB,2018,13,NFC North,GB,ARI,3789,Away,ARI,Delay of Game,Procedural (pre-snap),5,no_play,3,18,0
+2018_13_CHI_NYG,2018,13,NFC North,NYG,CHI,3199,Home,NYG,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2018_13_CHI_NYG,2018,13,NFC North,NYG,CHI,3314,Away,CHI,Illegal Block Above the Waist,Discretionary (judgment),10,punt,4,18,0
+2018_13_CHI_NYG,2018,13,NFC North,NYG,CHI,3449,Away,CHI,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2018_13_CHI_NYG,2018,13,NFC North,NYG,CHI,3577,Home,NYG,Offensive Holding,Discretionary (judgment),8,kickoff,NA,0,0
+2018_13_CHI_NYG,2018,13,NFC North,NYG,CHI,4033,Home,NYG,Offensive Holding,Discretionary (judgment),10,no_play,2,7,0
+2018_13_CHI_NYG,2018,13,NFC North,NYG,CHI,4246,Home,NYG,Roughing the Passer,Discretionary (judgment),8,pass,2,2,0
+2018_13_CHI_NYG,2018,13,NFC North,NYG,CHI,4515,Home,NYG,Defensive Offside,Other,5,no_play,2,10,0
+2018_13_CHI_NYG,2018,13,NFC North,NYG,CHI,4584,Away,CHI,False Start,Procedural (pre-snap),5,no_play,3,1,0
+2018_13_CHI_NYG,2018,13,NFC North,NYG,CHI,4701,Home,NYG,Defensive Pass Interference,Discretionary (judgment),8,no_play,2,9,0
+2018_13_LA_DET,2018,13,NFC North,DET,LA,3335,Away,LA,Delay of Game,Procedural (pre-snap),5,no_play,1,10,0
+2018_13_LA_DET,2018,13,NFC North,DET,LA,3945,Away,LA,Defensive Pass Interference,Discretionary (judgment),48,no_play,3,8,0
+2018_13_LA_DET,2018,13,NFC North,DET,LA,4488,Away,LA,Roughing the Passer,Discretionary (judgment),15,no_play,3,10,0
+2018_13_LA_DET,2018,13,NFC North,DET,LA,4523,Away,LA,Defensive Pass Interference,Discretionary (judgment),12,no_play,1,10,0
+2018_13_LA_DET,2018,13,NFC North,DET,LA,4557,Home,DET,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2018_13_MIN_NE,2018,13,NFC North,NE,MIN,3149,Away,MIN,Defensive Pass Interference,Discretionary (judgment),20,no_play,1,10,0
+2018_13_MIN_NE,2018,13,NFC North,NE,MIN,3566,Away,MIN,Offensive Holding,Discretionary (judgment),10,no_play,2,10,0
+2018_13_MIN_NE,2018,13,NFC North,NE,MIN,3814,Away,MIN,Illegal Use of Hands,Discretionary (judgment),5,no_play,1,10,0
+2018_13_MIN_NE,2018,13,NFC North,NE,MIN,3954,Home,NE,Offensive Holding,Discretionary (judgment),10,run,2,5,0
+2018_13_MIN_NE,2018,13,NFC North,NE,MIN,4056,Home,NE,Offensive Holding,Discretionary (judgment),10,run,1,10,0
+2018_14_ATL_GB,2018,14,NFC North,GB,ATL,3550,Home,GB,Offensive Pass Interference,Discretionary (judgment),10,no_play,3,6,0
+2018_14_ATL_GB,2018,14,NFC North,GB,ATL,3586,Home,GB,False Start,Procedural (pre-snap),5,no_play,3,16,0
+2018_14_ATL_GB,2018,14,NFC North,GB,ATL,3808,Away,ATL,False Start,Procedural (pre-snap),5,no_play,3,1,0
+2018_14_ATL_GB,2018,14,NFC North,GB,ATL,3955,Away,ATL,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,1,10,0
+2018_14_ATL_GB,2018,14,NFC North,GB,ATL,4151,Home,GB,False Start,Procedural (pre-snap),5,no_play,2,12,0
+2018_14_DET_ARI,2018,14,NFC North,ARI,DET,3071,Home,ARI,Illegal Contact,Discretionary (judgment),5,no_play,3,11,0
+2018_14_DET_ARI,2018,14,NFC North,ARI,DET,3181,Home,ARI,Offensive Holding,Discretionary (judgment),10,punt,4,13,0
+2018_14_DET_ARI,2018,14,NFC North,ARI,DET,3349,Away,DET,Roughing the Passer,Discretionary (judgment),8,no_play,1,10,0
+2018_14_DET_ARI,2018,14,NFC North,ARI,DET,3371,Home,ARI,Offensive Holding,Discretionary (judgment),10,no_play,1,8,0
+2018_14_DET_ARI,2018,14,NFC North,ARI,DET,3612,Home,ARI,Defensive Pass Interference,Discretionary (judgment),25,no_play,1,10,0
+2018_14_DET_ARI,2018,14,NFC North,ARI,DET,3667,Home,ARI,Face Mask,Discretionary (judgment),8,run,2,8,0
+2018_14_DET_ARI,2018,14,NFC North,ARI,DET,3853,Away,DET,Illegal Use of Hands,Discretionary (judgment),5,no_play,1,10,0
+2018_14_DET_ARI,2018,14,NFC North,ARI,DET,4115,Away,DET,Offensive Holding,Discretionary (judgment),10,run,2,9,0
+2018_14_LA_CHI,2018,14,NFC North,CHI,LA,3794,Away,LA,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2018_14_LA_CHI,2018,14,NFC North,CHI,LA,3937,Home,CHI,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2018_14_LA_CHI,2018,14,NFC North,CHI,LA,4048,Home,CHI,False Start,Procedural (pre-snap),5,no_play,4,6,0
+2018_14_MIN_SEA,2018,14,NFC North,SEA,MIN,2688,Away,MIN,Defensive Pass Interference,Discretionary (judgment),31,no_play,3,8,0
+2018_14_MIN_SEA,2018,14,NFC North,SEA,MIN,3138,Away,MIN,Offensive Holding,Discretionary (judgment),10,run,1,10,0
+2018_15_DET_BUF,2018,15,NFC North,BUF,DET,3208,Away,DET,Offensive Holding,Discretionary (judgment),10,punt,4,10,0
+2018_15_DET_BUF,2018,15,NFC North,BUF,DET,3378,Away,DET,Defensive Pass Interference,Discretionary (judgment),23,no_play,2,9,0
+2018_15_DET_BUF,2018,15,NFC North,BUF,DET,3415,Home,BUF,Ineligible Downfield Pass,Other,5,no_play,1,10,0
+2018_15_DET_BUF,2018,15,NFC North,BUF,DET,4095,Away,DET,Defensive Offside,Other,5,no_play,3,7,0
+2018_15_GB_CHI,2018,15,NFC North,CHI,GB,3205,Away,GB,Offensive Holding,Discretionary (judgment),10,punt,4,12,0
+2018_15_GB_CHI,2018,15,NFC North,CHI,GB,3351,Away,GB,Defensive Pass Interference,Discretionary (judgment),8,no_play,1,10,0
+2018_15_GB_CHI,2018,15,NFC North,CHI,GB,3409,Away,GB,Defensive Holding,Discretionary (judgment),5,no_play,2,5,0
+2018_15_GB_CHI,2018,15,NFC North,CHI,GB,4070,Home,CHI,False Start,Procedural (pre-snap),4,no_play,2,10,0
+2018_15_GB_CHI,2018,15,NFC North,CHI,GB,4233,Away,GB,Offensive Holding,Discretionary (judgment),10,no_play,2,10,0
+2018_15_GB_CHI,2018,15,NFC North,CHI,GB,4526,Away,GB,Offside on Free Kick,Other,5,kickoff,NA,0,0
+2018_15_MIA_MIN,2018,15,NFC North,MIN,MIA,3350,Away,MIA,Leverage,Other,15,extra_point,NA,0,0
+2018_15_MIA_MIN,2018,15,NFC North,MIN,MIA,3499,Home,MIN,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2018_15_MIA_MIN,2018,15,NFC North,MIN,MIA,3709,Away,MIA,Offensive Holding,Discretionary (judgment),10,pass,3,16,0
+2018_15_MIA_MIN,2018,15,NFC North,MIN,MIA,3745,Away,MIA,False Start,Procedural (pre-snap),5,no_play,3,22,0
+2018_16_CHI_SF,2018,16,NFC North,SF,CHI,3294,Home,SF,False Start,Procedural (pre-snap),5,no_play,3,8,0
+2018_16_GB_NYJ,2018,16,NFC North,NYJ,GB,3548,Home,NYJ,Chop Block,Other,15,no_play,1,10,0
+2018_16_GB_NYJ,2018,16,NFC North,NYJ,GB,3712,Home,NYJ,Unnecessary Roughness,Discretionary (judgment),15,pass,1,10,0
+2018_16_GB_NYJ,2018,16,NFC North,NYJ,GB,3916,Home,NYJ,Defensive Pass Interference,Discretionary (judgment),26,no_play,3,4,0
+2018_16_GB_NYJ,2018,16,NFC North,NYJ,GB,3950,Home,NYJ,Defensive Pass Interference,Discretionary (judgment),2,no_play,1,3,0
+2018_16_GB_NYJ,2018,16,NFC North,NYJ,GB,4140,Away,GB,Face Mask,Discretionary (judgment),15,no_play,1,10,0
+2018_16_GB_NYJ,2018,16,NFC North,NYJ,GB,4173,Home,NYJ,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2018_16_GB_NYJ,2018,16,NFC North,NYJ,GB,4646,Home,NYJ,Defensive Holding,Discretionary (judgment),1,no_play,NA,0,0
+2018_16_MIN_DET,2018,16,NFC North,DET,MIN,3326,Away,MIN,Illegal Block Above the Waist,Discretionary (judgment),10,pass,3,2,0
+2018_16_MIN_DET,2018,16,NFC North,DET,MIN,3364,Home,DET,Unsportsmanlike Conduct,Discretionary (judgment),4,run,1,10,0
+2018_16_MIN_DET,2018,16,NFC North,DET,MIN,3780,Home,DET,Offensive Holding,Discretionary (judgment),10,punt,4,9,0
+2018_16_MIN_DET,2018,16,NFC North,DET,MIN,4020,Home,DET,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2018_16_MIN_DET,2018,16,NFC North,DET,MIN,4068,Home,DET,Offensive Pass Interference,Discretionary (judgment),10,no_play,2,5,0
+2018_16_MIN_DET,2018,16,NFC North,DET,MIN,4398,Away,MIN,Illegal Contact,Discretionary (judgment),5,no_play,3,6,0
+2018_17_CHI_MIN,2018,17,NFC North,MIN,CHI,3054,Home,MIN,Defensive Holding,Discretionary (judgment),5,no_play,3,10,0
+2018_17_CHI_MIN,2018,17,NFC North,MIN,CHI,3209,Away,CHI,Illegal Motion,Other,5,no_play,3,2,0
+2018_17_CHI_MIN,2018,17,NFC North,MIN,CHI,3855,Away,CHI,Defensive Offside,Other,5,no_play,1,10,0
+2018_17_CHI_MIN,2018,17,NFC North,MIN,CHI,3943,Away,CHI,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,1,10,0
+2018_17_DET_GB,2018,17,NFC North,GB,DET,3146,Home,GB,Illegal Block Above the Waist,Discretionary (judgment),10,punt,4,6,0
+2018_17_DET_GB,2018,17,NFC North,GB,DET,3183,Away,DET,Unnecessary Roughness,Discretionary (judgment),15,run,1,10,0
+2018_17_DET_GB,2018,17,NFC North,GB,DET,3449,Home,GB,Roughing the Passer,Discretionary (judgment),15,pass,1,10,0
+2019_01_ATL_MIN,2019,1,NFC North,MIN,ATL,3490,Home,MIN,Delay of Game,Procedural (pre-snap),5,no_play,4,2,0
+2019_01_ATL_MIN,2019,1,NFC North,MIN,ATL,3513,Home,MIN,Kick Catch Interference,Other,15,punt,4,7,0
+2019_01_ATL_MIN,2019,1,NFC North,MIN,ATL,3555,Away,ATL,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2019_01_ATL_MIN,2019,1,NFC North,MIN,ATL,3672,Home,MIN,Defensive Pass Interference,Discretionary (judgment),9,no_play,3,3,0
+2019_01_ATL_MIN,2019,1,NFC North,MIN,ATL,3751,Home,MIN,Illegal Use of Hands,Discretionary (judgment),5,no_play,3,3,0
+2019_01_ATL_MIN,2019,1,NFC North,MIN,ATL,3997,Away,ATL,Illegal Touch Kick,Other,5,kickoff,NA,0,0
+2019_01_DET_ARI,2019,1,NFC North,ARI,DET,3367,Away,DET,False Start,Procedural (pre-snap),5,no_play,2,9,0
+2019_01_DET_ARI,2019,1,NFC North,ARI,DET,3512,Home,ARI,False Start,Procedural (pre-snap),5,no_play,2,10,0
+2019_01_DET_ARI,2019,1,NFC North,ARI,DET,3559,Home,ARI,Illegal Formation,Procedural (pre-snap),5,no_play,3,9,0
+2019_01_DET_ARI,2019,1,NFC North,ARI,DET,3976,Home,ARI,Illegal Motion,Other,5,no_play,1,10,0
+2019_01_DET_ARI,2019,1,NFC North,ARI,DET,4032,Away,DET,Illegal Contact,Discretionary (judgment),5,no_play,2,11,0
+2019_01_DET_ARI,2019,1,NFC North,ARI,DET,4776,Away,DET,Face Mask,Discretionary (judgment),5,no_play,1,9,0
+2019_01_GB_CHI,2019,1,NFC North,CHI,GB,3349,Away,GB,Unnecessary Roughness,Discretionary (judgment),15,pass,2,10,0
+2019_01_GB_CHI,2019,1,NFC North,CHI,GB,3413,Home,CHI,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2019_01_GB_CHI,2019,1,NFC North,CHI,GB,3486,Home,CHI,Illegal Use of Hands,Discretionary (judgment),10,no_play,1,20,0
+2019_01_GB_CHI,2019,1,NFC North,CHI,GB,3521,Home,CHI,Offensive Pass Interference,Discretionary (judgment),10,no_play,1,30,0
+2019_01_GB_CHI,2019,1,NFC North,CHI,GB,3624,Away,GB,Illegal Blindside Block,Other,5,punt,4,31,0
+2019_01_GB_CHI,2019,1,NFC North,CHI,GB,3746,Away,GB,Delay of Game,Procedural (pre-snap),5,no_play,2,8,0
+2019_01_GB_CHI,2019,1,NFC North,CHI,GB,3836,Home,CHI,Illegal Contact,Discretionary (judgment),5,no_play,3,4,0
+2019_01_GB_CHI,2019,1,NFC North,CHI,GB,4468,Home,CHI,Offensive Holding,Discretionary (judgment),10,punt,4,3,0
+2019_02_CHI_DEN,2019,2,NFC North,DEN,CHI,2921,Home,DEN,Offensive Holding,Discretionary (judgment),10,no_play,2,4,0
+2019_02_CHI_DEN,2019,2,NFC North,DEN,CHI,2963,Away,CHI,Roughing the Passer,Discretionary (judgment),15,no_play,2,14,0
+2019_02_CHI_DEN,2019,2,NFC North,DEN,CHI,3448,Home,DEN,Offensive Holding,Discretionary (judgment),10,run,1,10,0
+2019_02_CHI_DEN,2019,2,NFC North,DEN,CHI,4122,Home,DEN,Delay of Game,Procedural (pre-snap),5,no_play,NA,0,0
+2019_02_CHI_DEN,2019,2,NFC North,DEN,CHI,4142,Away,CHI,Defensive Offside,Other,1,no_play,NA,0,0
+2019_02_CHI_DEN,2019,2,NFC North,DEN,CHI,4198,Home,DEN,Roughing the Passer,Discretionary (judgment),15,pass,1,10,0
+2019_02_CHI_DEN,2019,2,NFC North,DEN,CHI,4299,Away,CHI,Offensive Too Many Men on Field,Other,5,no_play,4,10,0
+2019_02_LAC_DET,2019,2,NFC North,DET,LAC,3765,Away,LAC,Delay of Game,Procedural (pre-snap),5,no_play,3,14,0
+2019_02_MIN_GB,2019,2,NFC North,GB,MIN,3281,Away,MIN,Offensive Holding,Discretionary (judgment),10,punt,4,6,0
+2019_02_MIN_GB,2019,2,NFC North,GB,MIN,3377,Away,MIN,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2019_02_MIN_GB,2019,2,NFC North,GB,MIN,3530,Home,GB,Offensive Pass Interference,Discretionary (judgment),10,no_play,2,10,0
+2019_02_MIN_GB,2019,2,NFC North,GB,MIN,4275,Home,GB,Delay of Game,Procedural (pre-snap),5,no_play,4,4,0
+2019_03_CHI_WAS,2019,3,NFC North,WAS,CHI,4216,Away,CHI,Defensive Pass Interference,Discretionary (judgment),4,no_play,1,10,0
+2019_03_CHI_WAS,2019,3,NFC North,WAS,CHI,4369,Home,WAS,False Start,Procedural (pre-snap),5,no_play,2,10,0
+2019_03_DEN_GB,2019,3,NFC North,GB,DEN,3293,Home,GB,Delay of Game,Procedural (pre-snap),5,no_play,1,10,0
+2019_03_DET_PHI,2019,3,NFC North,PHI,DET,3002,Away,DET,Illegal Formation,Procedural (pre-snap),5,no_play,NA,0,0
+2019_03_DET_PHI,2019,3,NFC North,PHI,DET,3367,Away,DET,Roughing the Passer,Discretionary (judgment),12,no_play,3,7,0
+2019_03_DET_PHI,2019,3,NFC North,PHI,DET,3421,Away,DET,Unnecessary Roughness,Discretionary (judgment),5,no_play,2,9,0
+2019_03_DET_PHI,2019,3,NFC North,PHI,DET,3966,Home,PHI,Illegal Block Above the Waist,Discretionary (judgment),10,field_goal,4,10,0
+2019_03_DET_PHI,2019,3,NFC North,PHI,DET,4074,Home,PHI,Offensive Pass Interference,Discretionary (judgment),10,no_play,4,5,0
+2019_03_OAK_MIN,2019,3,NFC North,MIN,LV,3046,Away,LV,Offensive Holding,Discretionary (judgment),10,no_play,2,4,0
+2019_04_KC_DET,2019,4,NFC North,DET,KC,3599,Home,DET,Neutral Zone Infraction,Procedural (pre-snap),1,no_play,2,2,0
+2019_04_KC_DET,2019,4,NFC North,DET,KC,3825,Away,KC,Illegal Block Above the Waist,Discretionary (judgment),10,punt,4,21,0
+2019_04_KC_DET,2019,4,NFC North,DET,KC,4490,Home,DET,Defensive Holding,Discretionary (judgment),5,run,1,10,0
+2019_04_MIN_CHI,2019,4,NFC North,CHI,MIN,3302,Away,MIN,Offensive Holding,Discretionary (judgment),10,run,1,10,0
+2019_04_MIN_CHI,2019,4,NFC North,CHI,MIN,3742,Away,MIN,Offensive Holding,Discretionary (judgment),10,pass,1,10,0
+2019_04_PHI_GB,2019,4,NFC North,GB,PHI,3444,Away,PHI,Unnecessary Roughness,Discretionary (judgment),15,pass,1,10,0
+2019_04_PHI_GB,2019,4,NFC North,GB,PHI,3573,Away,PHI,Defensive Pass Interference,Discretionary (judgment),4,no_play,2,5,0
+2019_04_PHI_GB,2019,4,NFC North,GB,PHI,3790,Home,GB,Face Mask,Discretionary (judgment),15,run,1,10,0
+2019_04_PHI_GB,2019,4,NFC North,GB,PHI,4117,Away,PHI,Defensive Pass Interference,Discretionary (judgment),6,no_play,3,8,0
+2019_05_GB_DAL,2019,5,NFC North,DAL,GB,3617,Home,DAL,False Start,Procedural (pre-snap),5,no_play,1,5,0
+2019_05_GB_DAL,2019,5,NFC North,DAL,GB,3650,Away,GB,Illegal Use of Hands,Discretionary (judgment),3,no_play,1,10,0
+2019_05_GB_DAL,2019,5,NFC North,DAL,GB,3813,Home,DAL,Defensive Holding,Discretionary (judgment),5,no_play,3,5,0
+2019_05_GB_DAL,2019,5,NFC North,DAL,GB,3891,Away,GB,Delay of Game,Procedural (pre-snap),5,no_play,3,22,0
+2019_05_GB_DAL,2019,5,NFC North,DAL,GB,4100,Away,GB,Unnecessary Roughness,Discretionary (judgment),15,pass,1,10,0
+2019_05_GB_DAL,2019,5,NFC North,DAL,GB,4483,Away,GB,Roughing the Passer,Discretionary (judgment),15,run,1,10,0
+2019_05_GB_DAL,2019,5,NFC North,DAL,GB,4675,Home,DAL,False Start,Procedural (pre-snap),5,no_play,4,5,0
+2019_05_MIN_NYG,2019,5,NFC North,NYG,MIN,3478,Home,NYG,Offensive Holding,Discretionary (judgment),10,no_play,3,4,0
+2019_05_MIN_NYG,2019,5,NFC North,NYG,MIN,3542,Home,NYG,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2019_05_MIN_NYG,2019,5,NFC North,NYG,MIN,3806,Away,MIN,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2019_06_DET_GB,2019,6,NFC North,GB,DET,3398,Away,DET,Illegal Use of Hands,Discretionary (judgment),5,no_play,3,10,0
+2019_06_DET_GB,2019,6,NFC North,GB,DET,3496,Home,GB,False Start,Procedural (pre-snap),5,no_play,NA,0,0
+2019_06_DET_GB,2019,6,NFC North,GB,DET,4016,Away,DET,Illegal Use of Hands,Discretionary (judgment),5,no_play,3,4,0
+2019_06_PHI_MIN,2019,6,NFC North,MIN,PHI,3226,Away,PHI,Delay of Game,Procedural (pre-snap),5,no_play,3,4,0
+2019_06_PHI_MIN,2019,6,NFC North,MIN,PHI,3429,Away,PHI,Defensive Holding,Discretionary (judgment),3,no_play,2,6,0
+2019_07_MIN_DET,2019,7,NFC North,DET,MIN,3711,Home,DET,Offensive Pass Interference,Discretionary (judgment),10,no_play,2,8,0
+2019_07_MIN_DET,2019,7,NFC North,DET,MIN,3765,Away,MIN,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,3,23,0
+2019_07_MIN_DET,2019,7,NFC North,DET,MIN,4657,Home,DET,Unnecessary Roughness,Discretionary (judgment),15,qb_kneel,3,11,0
+2019_07_NO_CHI,2019,7,NFC North,CHI,NO,3610,Away,NO,Offensive Holding,Discretionary (judgment),10,no_play,1,5,0
+2019_07_NO_CHI,2019,7,NFC North,CHI,NO,3862,Home,CHI,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2019_07_NO_CHI,2019,7,NFC North,CHI,NO,4898,Home,CHI,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,3,4,0
+2019_07_OAK_GB,2019,7,NFC North,GB,LV,3348,Away,LV,Offensive Holding,Discretionary (judgment),10,punt,4,5,0
+2019_08_GB_KC,2019,8,NFC North,KC,GB,3343,Away,GB,Illegal Use of Hands,Discretionary (judgment),5,no_play,3,8,0
+2019_08_LAC_CHI,2019,8,NFC North,CHI,LAC,3154,Away,LAC,Offensive Holding,Discretionary (judgment),10,no_play,2,7,0
+2019_08_LAC_CHI,2019,8,NFC North,CHI,LAC,3417,Home,CHI,Face Mask,Discretionary (judgment),12,pass,2,10,0
+2019_08_LAC_CHI,2019,8,NFC North,CHI,LAC,3508,Home,CHI,Illegal Block Above the Waist,Discretionary (judgment),10,kickoff,NA,0,0
+2019_08_LAC_CHI,2019,8,NFC North,CHI,LAC,3669,Home,CHI,Offensive Holding,Discretionary (judgment),10,run,1,10,0
+2019_08_LAC_CHI,2019,8,NFC North,CHI,LAC,3749,Away,LAC,Defensive Pass Interference,Discretionary (judgment),7,no_play,3,2,0
+2019_08_NYG_DET,2019,8,NFC North,DET,NYG,3385,Away,NYG,Illegal Block Above the Waist,Discretionary (judgment),9,kickoff,NA,0,0
+2019_08_NYG_DET,2019,8,NFC North,DET,NYG,4134,Home,DET,Defensive Pass Interference,Discretionary (judgment),25,no_play,1,10,0
+2019_08_WAS_MIN,2019,8,NFC North,MIN,WAS,2674,Away,WAS,Lowering the Head to Initiate Contact,Discretionary (judgment),15,pass,3,4,0
+2019_08_WAS_MIN,2019,8,NFC North,MIN,WAS,2709,Home,MIN,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2019_08_WAS_MIN,2019,8,NFC North,MIN,WAS,3094,Home,MIN,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2019_08_WAS_MIN,2019,8,NFC North,MIN,WAS,3126,Home,MIN,Illegal Formation,Procedural (pre-snap),5,no_play,1,20,0
+2019_09_CHI_PHI,2019,9,NFC North,PHI,CHI,3711,Home,PHI,False Start,Procedural (pre-snap),5,no_play,3,7,0
+2019_09_DET_OAK,2019,9,NFC North,LV,DET,3364,Home,LV,Defensive Offside,Other,5,no_play,3,8,0
+2019_09_DET_OAK,2019,9,NFC North,LV,DET,3508,Home,LV,Fair Catch Interference,Other,15,punt,4,3,0
+2019_09_DET_OAK,2019,9,NFC North,LV,DET,4009,Home,LV,Defensive Holding,Discretionary (judgment),5,no_play,1,10,0
+2019_09_DET_OAK,2019,9,NFC North,LV,DET,4113,Home,LV,Defensive Pass Interference,Discretionary (judgment),26,no_play,1,10,0
+2019_09_GB_LAC,2019,9,NFC North,LAC,GB,2873,Away,GB,Defensive Offside,Other,0,no_play,4,1,0
+2019_09_GB_LAC,2019,9,NFC North,LAC,GB,3203,Away,GB,Offside on Free Kick,Other,5,no_play,NA,0,0
+2019_09_MIN_KC,2019,9,NFC North,KC,MIN,3727,Home,KC,Offensive Holding,Discretionary (judgment),10,no_play,3,1,0
+2019_09_MIN_KC,2019,9,NFC North,KC,MIN,3776,Home,KC,False Start,Procedural (pre-snap),5,no_play,3,11,0
+2019_10_CAR_GB,2019,10,NFC North,GB,CAR,3602,Home,GB,Delay of Game,Procedural (pre-snap),5,no_play,2,9,0
+2019_10_CAR_GB,2019,10,NFC North,GB,CAR,3671,Home,GB,Delay of Game,Procedural (pre-snap),5,no_play,4,3,0
+2019_10_CAR_GB,2019,10,NFC North,GB,CAR,4163,Home,GB,Neutral Zone Infraction,Procedural (pre-snap),3,no_play,3,4,0
+2019_10_CAR_GB,2019,10,NFC North,GB,CAR,4208,Home,GB,Defensive Offside,Other,2,no_play,4,1,0
+2019_10_DET_CHI,2019,10,NFC North,CHI,DET,3681,Home,CHI,Illegal Block Above the Waist,Discretionary (judgment),10,punt,4,11,0
+2019_10_DET_CHI,2019,10,NFC North,CHI,DET,4024,Home,CHI,Offensive Holding,Discretionary (judgment),10,no_play,2,9,0
+2019_10_DET_CHI,2019,10,NFC North,CHI,DET,4152,Home,CHI,Defensive Holding,Discretionary (judgment),5,no_play,2,8,0
+2019_10_DET_CHI,2019,10,NFC North,CHI,DET,4270,Away,DET,Offensive Pass Interference,Discretionary (judgment),10,no_play,4,1,0
+2019_10_MIN_DAL,2019,10,NFC North,DAL,MIN,3371,Away,MIN,Defensive Holding,Discretionary (judgment),5,no_play,3,5,0
+2019_10_MIN_DAL,2019,10,NFC North,DAL,MIN,3590,Home,DAL,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,3,7,0
+2019_10_MIN_DAL,2019,10,NFC North,DAL,MIN,3679,Away,MIN,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2019_11_CHI_LA,2019,11,NFC North,LA,CHI,3044,Home,LA,Defensive Holding,Discretionary (judgment),5,no_play,3,4,0
+2019_11_CHI_LA,2019,11,NFC North,LA,CHI,3178,Home,LA,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2019_11_CHI_LA,2019,11,NFC North,LA,CHI,3452,Home,LA,Illegal Formation,Procedural (pre-snap),5,no_play,1,10,0
+2019_11_CHI_LA,2019,11,NFC North,LA,CHI,3643,Away,CHI,Offensive Holding,Discretionary (judgment),10,kickoff,NA,0,0
+2019_11_DAL_DET,2019,11,NFC North,DET,DAL,3240,Away,DAL,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,4,2,0
+2019_11_DAL_DET,2019,11,NFC North,DET,DAL,3606,Home,DET,Illegal Contact,Discretionary (judgment),5,no_play,1,10,0
+2019_11_DAL_DET,2019,11,NFC North,DET,DAL,4161,Away,DAL,Face Mask,Discretionary (judgment),15,pass,2,5,0
+2019_11_DAL_DET,2019,11,NFC North,DET,DAL,4196,Home,DET,Ineligible Downfield Pass,Other,5,no_play,1,10,0
+2019_11_DAL_DET,2019,11,NFC North,DET,DAL,4292,Home,DET,Delay of Game,Procedural (pre-snap),5,no_play,4,26,0
+2019_11_DEN_MIN,2019,11,NFC North,MIN,DEN,3902,Away,DEN,Offensive Holding,Discretionary (judgment),10,run,2,8,0
+2019_11_DEN_MIN,2019,11,NFC North,MIN,DEN,3974,Away,DEN,False Start,Procedural (pre-snap),5,no_play,3,1,0
+2019_12_DET_WAS,2019,12,NFC North,WAS,DET,2983,Away,DET,Offensive Holding,Discretionary (judgment),10,no_play,2,5,0
+2019_12_DET_WAS,2019,12,NFC North,WAS,DET,3315,Away,DET,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2019_12_DET_WAS,2019,12,NFC North,WAS,DET,3466,Home,WAS,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2019_12_DET_WAS,2019,12,NFC North,WAS,DET,3570,Away,DET,Illegal Block Above the Waist,Discretionary (judgment),10,punt,4,17,0
+2019_12_DET_WAS,2019,12,NFC North,WAS,DET,3683,Home,WAS,Illegal Block Above the Waist,Discretionary (judgment),10,punt,4,7,0
+2019_12_GB_SF,2019,12,NFC North,SF,GB,3134,Home,SF,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,1,10,0
+2019_12_GB_SF,2019,12,NFC North,SF,GB,3251,Home,SF,Defensive Pass Interference,Discretionary (judgment),7,no_play,4,10,0
+2019_12_GB_SF,2019,12,NFC North,SF,GB,3305,Away,GB,Offensive Holding,Discretionary (judgment),10,no_play,2,8,0
+2019_12_GB_SF,2019,12,NFC North,SF,GB,3858,Home,SF,Defensive Pass Interference,Discretionary (judgment),11,no_play,4,4,0
+2019_12_NYG_CHI,2019,12,NFC North,CHI,NYG,3944,Away,NYG,Ineligible Downfield Pass,Other,5,no_play,1,10,0
+2019_13_CHI_DET,2019,13,NFC North,DET,CHI,3277,Home,DET,Illegal Block Above the Waist,Discretionary (judgment),10,no_play,1,10,0
+2019_13_CHI_DET,2019,13,NFC North,DET,CHI,3365,Away,CHI,Defensive Offside,Other,4,no_play,3,5,0
+2019_13_CHI_DET,2019,13,NFC North,DET,CHI,3574,Home,DET,Illegal Block Above the Waist,Discretionary (judgment),10,run,2,6,0
+2019_13_CHI_DET,2019,13,NFC North,DET,CHI,3685,Away,CHI,Ineligible Downfield Pass,Other,5,no_play,1,10,0
+2019_13_CHI_DET,2019,13,NFC North,DET,CHI,3883,Away,CHI,Delay of Game,Procedural (pre-snap),5,no_play,1,2,0
+2019_13_CHI_DET,2019,13,NFC North,DET,CHI,3978,Home,DET,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,NA,0,0
+2019_13_CHI_DET,2019,13,NFC North,DET,CHI,4005,Home,DET,Roughing the Kicker,Discretionary (judgment),15,extra_point,NA,0,0
+2019_13_CHI_DET,2019,13,NFC North,DET,CHI,4188,Home,DET,Offensive Holding,Discretionary (judgment),10,no_play,2,1,0
+2019_13_CHI_DET,2019,13,NFC North,DET,CHI,4307,Away,CHI,Defensive Offside,Other,5,no_play,2,10,0
+2019_13_CHI_DET,2019,13,NFC North,DET,CHI,4340,Away,CHI,Unnecessary Roughness,Discretionary (judgment),15,pass,2,5,0
+2019_13_GB_NYG,2019,13,NFC North,NYG,GB,2836,Away,GB,Offensive Holding,Discretionary (judgment),10,no_play,2,4,0
+2019_13_GB_NYG,2019,13,NFC North,NYG,GB,3116,Away,GB,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2019_13_GB_NYG,2019,13,NFC North,NYG,GB,3324,Home,NYG,Defensive Pass Interference,Discretionary (judgment),15,no_play,3,9,0
+2019_13_GB_NYG,2019,13,NFC North,NYG,GB,3609,Away,GB,False Start,Procedural (pre-snap),5,no_play,3,2,0
+2019_13_MIN_SEA,2019,13,NFC North,SEA,MIN,3489,Home,SEA,Defensive Pass Interference,Discretionary (judgment),30,no_play,3,10,0
+2019_14_DAL_CHI,2019,14,NFC North,CHI,DAL,3279,Away,DAL,Defensive Pass Interference,Discretionary (judgment),10,no_play,2,5,0
+2019_14_DAL_CHI,2019,14,NFC North,CHI,DAL,3432,Away,DAL,Intentional Grounding,Other,12,pass,2,10,0
+2019_14_DAL_CHI,2019,14,NFC North,CHI,DAL,3832,Home,CHI,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2019_14_DAL_CHI,2019,14,NFC North,CHI,DAL,4096,Away,DAL,Illegal Blindside Block,Other,15,pass,2,10,0
+2019_15_CHI_GB,2019,15,NFC North,GB,CHI,3205,Away,CHI,False Start,Procedural (pre-snap),5,no_play,2,10,0
+2019_15_CHI_GB,2019,15,NFC North,GB,CHI,3250,Home,GB,Defensive Holding,Discretionary (judgment),5,run,3,15,0
+2019_15_CHI_GB,2019,15,NFC North,GB,CHI,3481,Home,GB,Offensive Holding,Discretionary (judgment),10,no_play,2,10,0
+2019_15_CHI_GB,2019,15,NFC North,GB,CHI,4177,Home,GB,Delay of Game,Procedural (pre-snap),5,no_play,4,6,0
+2019_15_MIN_LAC,2019,15,NFC North,LAC,MIN,2854,Home,LAC,False Start,Procedural (pre-snap),5,no_play,4,9,0
+2019_15_MIN_LAC,2019,15,NFC North,LAC,MIN,2986,Away,MIN,Offensive Holding,Discretionary (judgment),11,no_play,2,6,0
+2019_15_MIN_LAC,2019,15,NFC North,LAC,MIN,3482,Away,MIN,Offensive Holding,Discretionary (judgment),10,run,1,10,0
+2019_15_MIN_LAC,2019,15,NFC North,LAC,MIN,3629,Away,MIN,Offensive Holding,Discretionary (judgment),10,run,1,15,0
+2019_15_TB_DET,2019,15,NFC North,DET,TB,3420,Away,TB,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2019_15_TB_DET,2019,15,NFC North,DET,TB,3622,Away,TB,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2019_15_TB_DET,2019,15,NFC North,DET,TB,3915,Away,TB,Defensive Offside,Other,5,no_play,1,10,0
+2019_16_DET_DEN,2019,16,NFC North,DEN,DET,2939,Away,DET,Unnecessary Roughness,Discretionary (judgment),15,punt,4,9,0
+2019_16_DET_DEN,2019,16,NFC North,DEN,DET,3194,Home,DEN,Illegal Use of Hands,Discretionary (judgment),5,no_play,1,10,0
+2019_16_DET_DEN,2019,16,NFC North,DEN,DET,3308,Home,DEN,Illegal Block Above the Waist,Discretionary (judgment),10,punt,4,16,0
+2019_16_DET_DEN,2019,16,NFC North,DEN,DET,3444,Away,DET,Illegal Block Above the Waist,Discretionary (judgment),10,punt,4,1,0
+2019_16_GB_MIN,2019,16,NFC North,MIN,GB,3571,Home,MIN,Offensive Holding,Discretionary (judgment),10,no_play,2,14,0
+2019_16_GB_MIN,2019,16,NFC North,MIN,GB,3779,Away,GB,Offensive Holding,Discretionary (judgment),10,punt,4,2,0
+2019_16_GB_MIN,2019,16,NFC North,MIN,GB,3930,Home,MIN,Illegal Blindside Block,Other,15,pass,4,15,0
+2019_16_KC_CHI,2019,16,NFC North,CHI,KC,3258,Home,CHI,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2019_16_KC_CHI,2019,16,NFC North,CHI,KC,3374,Away,KC,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,2,10,0
+2019_16_KC_CHI,2019,16,NFC North,CHI,KC,3397,Away,KC,Defensive Pass Interference,Discretionary (judgment),11,no_play,2,5,0
+2019_16_KC_CHI,2019,16,NFC North,CHI,KC,3430,Away,KC,Defensive Holding,Discretionary (judgment),5,no_play,1,10,0
+2019_16_KC_CHI,2019,16,NFC North,CHI,KC,4023,Away,KC,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,2,10,0
+2019_17_CHI_MIN,2019,17,NFC North,MIN,CHI,2773,Away,CHI,Unnecessary Roughness,Discretionary (judgment),14,no_play,3,2,0
+2019_17_CHI_MIN,2019,17,NFC North,MIN,CHI,2856,Home,MIN,Unnecessary Roughness,Discretionary (judgment),15,pass,2,10,0
+2019_17_GB_DET,2019,17,NFC North,DET,GB,3443,Away,GB,Defensive Pass Interference,Discretionary (judgment),30,no_play,1,10,0
+2019_17_GB_DET,2019,17,NFC North,DET,GB,3519,Away,GB,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,3,7,0
+2019_17_GB_DET,2019,17,NFC North,DET,GB,3787,Home,DET,Unnecessary Roughness,Discretionary (judgment),15,pass,2,17,0
+2019_17_GB_DET,2019,17,NFC North,DET,GB,4279,Away,GB,Offensive Pass Interference,Discretionary (judgment),10,no_play,2,10,0
+2019_17_GB_DET,2019,17,NFC North,DET,GB,4478,Home,DET,Unnecessary Roughness,Discretionary (judgment),15,run,1,10,0
+2020_01_CHI_DET,2020,1,NFC North,DET,CHI,3456,Home,DET,Delay of Game,Procedural (pre-snap),5,no_play,4,12,1
+2020_01_CHI_DET,2020,1,NFC North,DET,CHI,3497,Home,DET,Face Mask,Discretionary (judgment),15,run,1,10,1
+2020_01_CHI_DET,2020,1,NFC North,DET,CHI,3550,Away,CHI,Delay of Game,Procedural (pre-snap),5,no_play,2,8,1
+2020_01_CHI_DET,2020,1,NFC North,DET,CHI,4177,Home,DET,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,2,5,1
+2020_01_GB_MIN,2020,1,NFC North,MIN,GB,3483,Away,GB,Offensive Holding,Discretionary (judgment),10,no_play,1,10,1
+2020_01_GB_MIN,2020,1,NFC North,MIN,GB,3892,Away,GB,Defensive Holding,Discretionary (judgment),5,pass,NA,0,1
+2020_02_DET_GB,2020,2,NFC North,GB,DET,3453,Home,GB,Illegal Shift,Procedural (pre-snap),5,no_play,2,6,1
+2020_02_DET_GB,2020,2,NFC North,GB,DET,3675,Away,DET,Intentional Grounding,Other,10,pass,1,10,1
+2020_02_MIN_IND,2020,2,NFC North,IND,MIN,3100,Home,IND,Illegal Block Above the Waist,Discretionary (judgment),10,no_play,1,10,1
+2020_02_MIN_IND,2020,2,NFC North,IND,MIN,3476,Home,IND,Illegal Contact,Discretionary (judgment),5,no_play,2,4,1
+2020_02_MIN_IND,2020,2,NFC North,IND,MIN,3602,Home,IND,Unnecessary Roughness,Discretionary (judgment),9,pass,2,2,1
+2020_02_NYG_CHI,2020,2,NFC North,CHI,NYG,3146,Home,CHI,Defensive Pass Interference,Discretionary (judgment),8,no_play,3,8,1
+2020_02_NYG_CHI,2020,2,NFC North,CHI,NYG,3486,Home,CHI,Chop Block,Other,15,no_play,1,10,1
+2020_02_NYG_CHI,2020,2,NFC North,CHI,NYG,4122,Away,NYG,Offensive Pass Interference,Discretionary (judgment),0,no_play,3,6,1
+2020_03_CHI_ATL,2020,3,NFC North,ATL,CHI,3378,Home,ATL,Face Mask,Discretionary (judgment),15,pass,2,10,1
+2020_03_CHI_ATL,2020,3,NFC North,ATL,CHI,3468,Away,CHI,Illegal Shift,Procedural (pre-snap),5,no_play,3,3,1
+2020_03_CHI_ATL,2020,3,NFC North,ATL,CHI,3971,Home,ATL,Unnecessary Roughness,Discretionary (judgment),10,no_play,1,10,1
+2020_03_CHI_ATL,2020,3,NFC North,ATL,CHI,4219,Home,ATL,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,1,10,1
+2020_03_CHI_ATL,2020,3,NFC North,ATL,CHI,4391,Home,ATL,False Start,Procedural (pre-snap),5,no_play,3,10,1
+2020_03_CHI_ATL,2020,3,NFC North,ATL,CHI,4452,Home,ATL,Unnecessary Roughness,Discretionary (judgment),15,punt,4,15,1
+2020_03_CHI_ATL,2020,3,NFC North,ATL,CHI,4775,Home,ATL,Unsportsmanlike Conduct,Discretionary (judgment),15,pass,2,4,1
+2020_03_DET_ARI,2020,3,NFC North,ARI,DET,3404,Away,DET,Delay of Game,Procedural (pre-snap),5,no_play,4,6,1
+2020_03_DET_ARI,2020,3,NFC North,ARI,DET,3652,Home,ARI,Defensive Too Many Men on Field,Other,5,no_play,2,2,1
+2020_03_DET_ARI,2020,3,NFC North,ARI,DET,4017,Away,DET,Offensive Holding,Discretionary (judgment),10,no_play,2,5,1
+2020_03_DET_ARI,2020,3,NFC North,ARI,DET,4069,Home,ARI,Defensive Pass Interference,Discretionary (judgment),13,no_play,2,15,1
+2020_03_GB_NO,2020,3,NFC North,NO,GB,3595,Home,NO,Defensive Pass Interference,Discretionary (judgment),14,no_play,3,3,1
+2020_03_GB_NO,2020,3,NFC North,NO,GB,3660,Home,NO,Defensive Pass Interference,Discretionary (judgment),0,no_play,2,1,1
+2020_03_TEN_MIN,2020,3,NFC North,MIN,TEN,3682,Home,MIN,Illegal Block Above the Waist,Discretionary (judgment),10,no_play,1,10,1
+2020_03_TEN_MIN,2020,3,NFC North,MIN,TEN,3790,Home,MIN,False Start,Procedural (pre-snap),5,no_play,4,7,1
+2020_03_TEN_MIN,2020,3,NFC North,MIN,TEN,4098,Away,TEN,Roughing the Passer,Discretionary (judgment),15,no_play,1,10,1
+2020_04_ATL_GB,2020,4,NFC North,GB,ATL,3166,Away,ATL,Defensive Holding,Discretionary (judgment),4,no_play,3,2,1
+2020_04_IND_CHI,2020,4,NFC North,CHI,IND,3567,Away,IND,Defensive Pass Interference,Discretionary (judgment),32,no_play,4,2,1
+2020_04_IND_CHI,2020,4,NFC North,CHI,IND,3622,Away,IND,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,2,10,1
+2020_04_IND_CHI,2020,4,NFC North,CHI,IND,3774,Home,CHI,Face Mask,Discretionary (judgment),15,run,1,10,1
+2020_04_IND_CHI,2020,4,NFC North,CHI,IND,4121,Home,CHI,Illegal Block Above the Waist,Discretionary (judgment),10,kickoff,NA,0,1
+2020_04_MIN_HOU,2020,4,NFC North,HOU,MIN,3201,Away,MIN,Defensive Holding,Discretionary (judgment),5,no_play,2,4,1
+2020_04_MIN_HOU,2020,4,NFC North,HOU,MIN,3236,Home,HOU,Offensive Holding,Discretionary (judgment),10,no_play,1,10,1
+2020_04_MIN_HOU,2020,4,NFC North,HOU,MIN,3716,Away,MIN,Defensive Pass Interference,Discretionary (judgment),11,no_play,3,4,1
+2020_04_NO_DET,2020,4,NFC North,DET,NO,3475,Home,DET,False Start,Procedural (pre-snap),5,no_play,2,7,1
+2020_04_NO_DET,2020,4,NFC North,DET,NO,3589,Away,NO,Illegal Contact,Discretionary (judgment),5,no_play,1,10,1
+2020_04_NO_DET,2020,4,NFC North,DET,NO,3745,Home,DET,Illegal Formation,Procedural (pre-snap),5,kickoff,NA,0,1
+2020_05_MIN_SEA,2020,5,NFC North,SEA,MIN,3221,Home,SEA,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,3,3,1
+2020_05_MIN_SEA,2020,5,NFC North,SEA,MIN,3433,Away,MIN,Defensive Offside,Other,5,no_play,2,10,1
+2020_05_MIN_SEA,2020,5,NFC North,SEA,MIN,3631,Away,MIN,Offensive Holding,Discretionary (judgment),10,no_play,2,6,1
+2020_05_TB_CHI,2020,5,NFC North,CHI,TB,3371,Away,TB,Defensive Pass Interference,Discretionary (judgment),19,no_play,3,2,1
+2020_05_TB_CHI,2020,5,NFC North,CHI,TB,3499,Home,CHI,False Start,Procedural (pre-snap),5,no_play,3,24,1
+2020_05_TB_CHI,2020,5,NFC North,CHI,TB,3655,Home,CHI,Defensive Pass Interference,Discretionary (judgment),10,no_play,2,6,1
+2020_05_TB_CHI,2020,5,NFC North,CHI,TB,3945,Away,TB,Roughing the Passer,Discretionary (judgment),15,no_play,3,19,1
+2020_05_TB_CHI,2020,5,NFC North,CHI,TB,4604,Away,TB,Defensive Too Many Men on Field,Other,5,no_play,1,10,1
+2020_06_ATL_MIN,2020,6,NFC North,MIN,ATL,3210,Away,ATL,False Start,Procedural (pre-snap),5,no_play,4,3,1
+2020_06_ATL_MIN,2020,6,NFC North,MIN,ATL,3578,Away,ATL,Illegal Use of Hands,Discretionary (judgment),5,no_play,1,10,1
+2020_06_CHI_CAR,2020,6,NFC North,CAR,CHI,3153,Away,CHI,Defensive Pass Interference,Discretionary (judgment),33,no_play,1,10,1
+2020_06_CHI_CAR,2020,6,NFC North,CAR,CHI,3354,Home,CAR,Roughing the Passer,Discretionary (judgment),13,pass,3,9,1
+2020_06_DET_JAX,2020,6,NFC North,JAX,DET,3058,Home,JAX,Roughing the Passer,Discretionary (judgment),13,no_play,3,7,1
+2020_06_DET_JAX,2020,6,NFC North,JAX,DET,3839,Away,DET,False Start,Procedural (pre-snap),5,no_play,4,1,1
+2020_06_GB_TB,2020,6,NFC North,TB,GB,3694,Away,GB,Defensive Holding,Discretionary (judgment),5,run,3,3,1
+2020_07_DET_ATL,2020,7,NFC North,ATL,DET,3063,Home,ATL,Offensive Holding,Discretionary (judgment),10,no_play,1,10,1
+2020_07_DET_ATL,2020,7,NFC North,ATL,DET,3126,Home,ATL,False Start,Procedural (pre-snap),5,no_play,1,10,1
+2020_07_DET_ATL,2020,7,NFC North,ATL,DET,3407,Home,ATL,Defensive Too Many Men on Field,Other,6,no_play,3,1,1
+2020_07_DET_ATL,2020,7,NFC North,ATL,DET,4326,Away,DET,Unsportsmanlike Conduct,Discretionary (judgment),15,pass,2,10,1
+2020_07_GB_HOU,2020,7,NFC North,HOU,GB,3082,Away,GB,Illegal Use of Hands,Discretionary (judgment),10,punt,4,4,1
+2020_07_GB_HOU,2020,7,NFC North,HOU,GB,3440,Home,HOU,Offensive Holding,Discretionary (judgment),10,no_play,3,5,1
+2020_08_IND_DET,2020,8,NFC North,DET,IND,2934,Home,DET,Defensive Pass Interference,Discretionary (judgment),41,no_play,3,14,1
+2020_08_IND_DET,2020,8,NFC North,DET,IND,3200,Away,IND,Illegal Contact,Discretionary (judgment),4,no_play,1,8,1
+2020_08_IND_DET,2020,8,NFC North,DET,IND,3448,Away,IND,False Start,Procedural (pre-snap),5,no_play,2,4,1
+2020_08_MIN_GB,2020,8,NFC North,GB,MIN,2777,Away,MIN,Offensive Pass Interference,Discretionary (judgment),10,no_play,3,4,1
+2020_08_MIN_GB,2020,8,NFC North,GB,MIN,3226,Away,MIN,Defensive Too Many Men on Field,Other,5,no_play,3,3,1
+2020_08_MIN_GB,2020,8,NFC North,GB,MIN,3382,Home,GB,Offensive Holding,Discretionary (judgment),10,no_play,1,10,1
+2020_08_NO_CHI,2020,8,NFC North,CHI,NO,3156,Home,CHI,False Start,Procedural (pre-snap),5,no_play,3,6,1
+2020_08_NO_CHI,2020,8,NFC North,CHI,NO,3665,Away,NO,Defensive Pass Interference,Discretionary (judgment),13,no_play,3,12,1
+2020_09_CHI_TEN,2020,9,NFC North,TEN,CHI,3441,Home,TEN,Face Mask,Discretionary (judgment),7,pass,4,5,1
+2020_09_CHI_TEN,2020,9,NFC North,TEN,CHI,3817,Home,TEN,Delay of Game,Procedural (pre-snap),5,no_play,4,3,1
+2020_09_CHI_TEN,2020,9,NFC North,TEN,CHI,3898,Home,TEN,Roughing the Passer,Discretionary (judgment),15,pass,1,10,1
+2020_09_CHI_TEN,2020,9,NFC North,TEN,CHI,3984,Home,TEN,Unnecessary Roughness,Discretionary (judgment),15,no_play,3,8,1
+2020_09_DET_MIN,2020,9,NFC North,MIN,DET,3219,Away,DET,Unnecessary Roughness,Discretionary (judgment),15,extra_point,NA,0,1
+2020_09_DET_MIN,2020,9,NFC North,MIN,DET,3359,Home,MIN,Offensive Holding,Discretionary (judgment),10,no_play,2,5,1
+2020_09_DET_MIN,2020,9,NFC North,MIN,DET,3433,Home,MIN,Delay of Game,Procedural (pre-snap),5,no_play,4,2,1
+2020_09_DET_MIN,2020,9,NFC North,MIN,DET,3456,Home,MIN,Offensive Holding,Discretionary (judgment),2,punt,4,7,1
+2020_09_DET_MIN,2020,9,NFC North,MIN,DET,3640,Home,MIN,Offensive Holding,Discretionary (judgment),10,no_play,1,10,1
+2020_09_GB_SF,2020,9,NFC North,SF,GB,3323,Away,GB,Illegal Formation,Procedural (pre-snap),5,no_play,1,10,1
+2020_09_GB_SF,2020,9,NFC North,SF,GB,3831,Away,GB,Lowering the Head to Initiate Contact,Discretionary (judgment),15,no_play,1,10,1
+2020_10_JAX_GB,2020,10,NFC North,GB,JAX,3058,Away,JAX,Offensive Holding,Discretionary (judgment),10,no_play,1,10,1
+2020_10_JAX_GB,2020,10,NFC North,GB,JAX,3389,Away,JAX,Illegal Block Above the Waist,Discretionary (judgment),7,kickoff,NA,0,1
+2020_10_JAX_GB,2020,10,NFC North,GB,JAX,3531,Home,GB,Defensive Pass Interference,Discretionary (judgment),5,no_play,2,6,1
+2020_10_MIN_CHI,2020,10,NFC North,CHI,MIN,3029,Away,MIN,Offensive Holding,Discretionary (judgment),10,no_play,1,10,1
+2020_10_MIN_CHI,2020,10,NFC North,CHI,MIN,3425,Away,MIN,Offensive Holding,Discretionary (judgment),10,no_play,2,10,1
+2020_10_MIN_CHI,2020,10,NFC North,CHI,MIN,3838,Away,MIN,Delay of Game,Procedural (pre-snap),5,no_play,4,5,1
+2020_10_WAS_DET,2020,10,NFC North,DET,WAS,3269,Home,DET,Offensive Holding,Discretionary (judgment),10,no_play,1,10,1
+2020_10_WAS_DET,2020,10,NFC North,DET,WAS,3520,Home,DET,Defensive Holding,Discretionary (judgment),5,no_play,2,9,1
+2020_10_WAS_DET,2020,10,NFC North,DET,WAS,3905,Away,WAS,Offensive Holding,Discretionary (judgment),10,kickoff,NA,0,1
+2020_10_WAS_DET,2020,10,NFC North,DET,WAS,3986,Away,WAS,Illegal Use of Hands,Discretionary (judgment),8,no_play,3,5,1
+2020_10_WAS_DET,2020,10,NFC North,DET,WAS,4135,Home,DET,Defensive Pass Interference,Discretionary (judgment),5,no_play,4,5,1
+2020_10_WAS_DET,2020,10,NFC North,DET,WAS,4212,Home,DET,Defensive Holding,Discretionary (judgment),5,no_play,3,10,1
+2020_10_WAS_DET,2020,10,NFC North,DET,WAS,4403,Away,WAS,Delay of Game,Procedural (pre-snap),5,no_play,2,10,1
+2020_10_WAS_DET,2020,10,NFC North,DET,WAS,4552,Away,WAS,Roughing the Passer,Discretionary (judgment),15,no_play,1,10,1
+2020_11_DAL_MIN,2020,11,NFC North,MIN,DAL,2852,Away,DAL,Roughing the Kicker,Discretionary (judgment),15,extra_point,NA,0,1
+2020_11_DAL_MIN,2020,11,NFC North,MIN,DAL,3167,Away,DAL,Defensive Offside,Other,5,no_play,NA,0,1
+2020_11_DAL_MIN,2020,11,NFC North,MIN,DAL,3587,Away,DAL,False Start,Procedural (pre-snap),5,no_play,3,7,1
+2020_11_DET_CAR,2020,11,NFC North,CAR,DET,3031,Home,CAR,Delay of Game,Procedural (pre-snap),5,no_play,1,9,1
+2020_11_DET_CAR,2020,11,NFC North,CAR,DET,3373,Home,CAR,Offensive Holding,Discretionary (judgment),10,run,3,7,1
+2020_11_DET_CAR,2020,11,NFC North,CAR,DET,3447,Away,DET,Running Into the Kicker,Other,5,no_play,4,12,1
+2020_11_DET_CAR,2020,11,NFC North,CAR,DET,3747,Away,DET,Encroachment,Other,4,no_play,4,5,1
+2020_11_DET_CAR,2020,11,NFC North,CAR,DET,3770,Away,DET,Encroachment,Other,6,no_play,4,1,1
+2020_11_GB_IND,2020,11,NFC North,IND,GB,3275,Home,IND,Offensive Holding,Discretionary (judgment),10,no_play,3,2,1
+2020_11_GB_IND,2020,11,NFC North,IND,GB,3312,Away,GB,Defensive Offside,Other,5,no_play,3,12,1
+2020_11_GB_IND,2020,11,NFC North,IND,GB,3538,Away,GB,Offensive Holding,Discretionary (judgment),10,no_play,1,10,1
+2020_11_GB_IND,2020,11,NFC North,IND,GB,3693,Away,GB,Defensive Offside,Other,5,no_play,1,10,1
+2020_11_GB_IND,2020,11,NFC North,IND,GB,3725,Away,GB,Defensive Too Many Men on Field,Other,5,no_play,1,5,1
+2020_11_GB_IND,2020,11,NFC North,IND,GB,3748,Home,IND,Offensive Holding,Discretionary (judgment),10,no_play,1,10,1
+2020_11_GB_IND,2020,11,NFC North,IND,GB,3933,Home,IND,Offensive Holding,Discretionary (judgment),10,no_play,1,10,1
+2020_11_GB_IND,2020,11,NFC North,IND,GB,3987,Home,IND,Offensive Holding,Discretionary (judgment),10,no_play,2,20,1
+2020_12_CAR_MIN,2020,12,NFC North,MIN,CAR,3116,Away,CAR,Ineligible Downfield Pass,Other,5,no_play,1,10,1
+2020_12_CAR_MIN,2020,12,NFC North,MIN,CAR,4293,Away,CAR,Defensive Offside,Other,5,extra_point,NA,0,1
+2020_12_CAR_MIN,2020,12,NFC North,MIN,CAR,4320,Away,CAR,Defensive Offside,Other,5,extra_point,NA,0,1
+2020_12_CHI_GB,2020,12,NFC North,GB,CHI,3090,Away,CHI,False Start,Procedural (pre-snap),5,no_play,2,6,1
+2020_12_HOU_DET,2020,12,NFC North,DET,HOU,3228,Away,HOU,False Start,Procedural (pre-snap),5,no_play,1,10,1
+2020_12_HOU_DET,2020,12,NFC North,DET,HOU,3370,Home,DET,Offensive Pass Interference,Discretionary (judgment),10,no_play,3,1,1
+2020_12_HOU_DET,2020,12,NFC North,DET,HOU,3912,Away,HOU,Delay of Game,Procedural (pre-snap),4,no_play,4,1,1
+2020_12_HOU_DET,2020,12,NFC North,DET,HOU,3935,Home,DET,Running Into the Kicker,Other,4,no_play,4,5,1
+2020_13_DET_CHI,2020,13,NFC North,CHI,DET,3548,Home,CHI,Offensive Holding,Discretionary (judgment),10,no_play,2,1,1
+2020_13_DET_CHI,2020,13,NFC North,CHI,DET,4276,Away,DET,Horse Collar Tackle,Discretionary (judgment),15,pass,1,10,1
+2020_13_JAX_MIN,2020,13,NFC North,MIN,JAX,4069,Away,JAX,False Start,Procedural (pre-snap),5,no_play,3,1,1
+2020_13_PHI_GB,2020,13,NFC North,GB,PHI,2893,Away,PHI,Offensive Pass Interference,Discretionary (judgment),10,no_play,4,8,1
+2020_13_PHI_GB,2020,13,NFC North,GB,PHI,3025,Home,GB,Delay of Game,Procedural (pre-snap),5,no_play,2,7,1
+2020_13_PHI_GB,2020,13,NFC North,GB,PHI,3464,Home,GB,Offside on Free Kick,Other,5,kickoff,NA,0,1
+2020_14_GB_DET,2020,14,NFC North,DET,GB,3267,Away,GB,Illegal Use of Hands,Discretionary (judgment),5,no_play,1,10,1
+2020_14_GB_DET,2020,14,NFC North,DET,GB,3355,Away,GB,Defensive Holding,Discretionary (judgment),5,no_play,3,7,1
+2020_14_GB_DET,2020,14,NFC North,DET,GB,3388,Away,GB,Defensive Too Many Men on Field,Other,5,no_play,1,10,1
+2020_14_GB_DET,2020,14,NFC North,DET,GB,3495,Away,GB,Defensive Holding,Discretionary (judgment),5,no_play,1,10,1
+2020_14_GB_DET,2020,14,NFC North,DET,GB,3581,Away,GB,Defensive Holding,Discretionary (judgment),3,run,3,4,1
+2020_14_GB_DET,2020,14,NFC North,DET,GB,3837,Away,GB,False Start,Procedural (pre-snap),5,no_play,4,9,1
+2020_14_GB_DET,2020,14,NFC North,DET,GB,4037,Home,DET,Offensive Holding,Discretionary (judgment),10,no_play,3,4,1
+2020_14_HOU_CHI,2020,14,NFC North,CHI,HOU,3661,Home,CHI,Offensive Holding,Discretionary (judgment),10,punt,4,14,1
+2020_14_HOU_CHI,2020,14,NFC North,CHI,HOU,3960,Home,CHI,Delay of Game,Procedural (pre-snap),5,no_play,4,22,1
+2020_15_CAR_GB,2020,15,NFC North,GB,CAR,3224,Away,CAR,Offensive Holding,Discretionary (judgment),10,no_play,3,7,1
+2020_15_CAR_GB,2020,15,NFC North,GB,CAR,3893,Away,CAR,Offensive Holding,Discretionary (judgment),10,punt,4,18,1
+2020_15_CAR_GB,2020,15,NFC North,GB,CAR,3929,Away,CAR,Intentional Grounding,Other,10,pass,1,10,1
+2020_15_CAR_GB,2020,15,NFC North,GB,CAR,4013,Home,GB,Defensive Offside,Other,5,no_play,4,9,1
+2020_15_CHI_MIN,2020,15,NFC North,MIN,CHI,3192,Away,CHI,Defensive Pass Interference,Discretionary (judgment),12,no_play,3,5,1
+2020_15_DET_TEN,2020,15,NFC North,TEN,DET,3192,Home,TEN,False Start,Procedural (pre-snap),5,no_play,1,10,1
+2020_16_CHI_JAX,2020,16,NFC North,JAX,CHI,3197,Home,JAX,Defensive Offside,Other,5,extra_point,NA,0,1
+2020_16_CHI_JAX,2020,16,NFC North,JAX,CHI,3768,Away,CHI,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,2,1,1
+2020_16_CHI_JAX,2020,16,NFC North,JAX,CHI,3825,Home,JAX,Intentional Grounding,Other,21,pass,2,6,1
+2020_16_MIN_NO,2020,16,NFC North,NO,MIN,3861,Away,MIN,False Start,Procedural (pre-snap),5,no_play,1,10,1
+2020_16_MIN_NO,2020,16,NFC North,NO,MIN,4125,Home,NO,Unnecessary Roughness,Discretionary (judgment),1,pass,4,1,1
+2020_16_TB_DET,2020,16,NFC North,DET,TB,3286,Away,TB,Defensive Offside,Other,5,no_play,2,4,1
+2020_16_TB_DET,2020,16,NFC North,DET,TB,3319,Away,TB,Roughing the Passer,Discretionary (judgment),15,pass,1,10,1
+2020_16_TB_DET,2020,16,NFC North,DET,TB,3508,Home,DET,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,2,8,1
+2020_16_TB_DET,2020,16,NFC North,DET,TB,3553,Home,DET,Defensive Offside,Other,5,no_play,3,3,1
+2020_16_TB_DET,2020,16,NFC North,DET,TB,3583,Home,DET,Defensive Pass Interference,Discretionary (judgment),35,no_play,1,10,1
+2020_16_TB_DET,2020,16,NFC North,DET,TB,3731,Home,DET,False Start,Procedural (pre-snap),5,no_play,1,10,1
+2020_16_TB_DET,2020,16,NFC North,DET,TB,3799,Home,DET,Illegal Blindside Block,Other,15,no_play,1,10,1
+2020_16_TB_DET,2020,16,NFC North,DET,TB,4039,Away,TB,Unnecessary Roughness,Discretionary (judgment),15,pass,1,10,1
+2020_17_MIN_DET,2020,17,NFC North,DET,MIN,3243,Away,MIN,Offensive Holding,Discretionary (judgment),10,no_play,1,10,1
+2020_17_MIN_DET,2020,17,NFC North,DET,MIN,3403,Home,DET,Roughing the Passer,Discretionary (judgment),0,no_play,4,1,1
+2020_17_MIN_DET,2020,17,NFC North,DET,MIN,3511,Home,DET,Offensive Holding,Discretionary (judgment),10,no_play,1,10,1
+2020_17_MIN_DET,2020,17,NFC North,DET,MIN,3986,Away,MIN,Offensive Holding,Discretionary (judgment),10,no_play,1,10,1
+2021_01_CHI_LA,2021,1,NFC North,LA,CHI,2969,Away,CHI,Taunting,Discretionary (judgment),15,run,1,10,0
+2021_01_CHI_LA,2021,1,NFC North,LA,CHI,3054,Home,LA,Offensive Holding,Discretionary (judgment),10,no_play,3,3,0
+2021_01_CHI_LA,2021,1,NFC North,LA,CHI,3111,Home,LA,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2021_01_MIN_CIN,2021,1,NFC North,CIN,MIN,3261,Home,CIN,Illegal Use of Hands,Discretionary (judgment),5,no_play,3,5,0
+2021_01_MIN_CIN,2021,1,NFC North,CIN,MIN,3682,Away,MIN,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2021_01_SF_DET,2021,1,NFC North,DET,SF,3060,Home,DET,Illegal Touch Pass,Other,0,pass,2,7,0
+2021_01_SF_DET,2021,1,NFC North,DET,SF,3404,Home,DET,Offensive Holding,Discretionary (judgment),10,no_play,2,5,0
+2021_01_SF_DET,2021,1,NFC North,DET,SF,3444,Away,SF,Defensive Offside,Other,5,no_play,2,15,0
+2021_01_SF_DET,2021,1,NFC North,DET,SF,3741,Away,SF,Defensive Pass Interference,Discretionary (judgment),13,no_play,3,5,0
+2021_01_SF_DET,2021,1,NFC North,DET,SF,3973,Away,SF,Defensive Pass Interference,Discretionary (judgment),16,no_play,1,10,0
+2021_01_SF_DET,2021,1,NFC North,DET,SF,4302,Away,SF,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2021_02_CIN_CHI,2021,2,NFC North,CHI,CIN,3198,Home,CHI,Offensive Pass Interference,Discretionary (judgment),10,no_play,3,9,0
+2021_02_DET_GB,2021,2,NFC North,GB,DET,2842,Away,DET,Defensive Pass Interference,Discretionary (judgment),4,no_play,3,5,0
+2021_02_DET_GB,2021,2,NFC North,GB,DET,3007,Away,DET,Delay of Game,Procedural (pre-snap),5,no_play,1,10,0
+2021_02_MIN_ARI,2021,2,NFC North,ARI,MIN,3360,Away,MIN,False Start,Procedural (pre-snap),1,no_play,1,10,0
+2021_02_MIN_ARI,2021,2,NFC North,ARI,MIN,3484,Home,ARI,Ineligible Downfield Pass,Other,5,no_play,1,10,0
+2021_02_MIN_ARI,2021,2,NFC North,ARI,MIN,3790,Away,MIN,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2021_03_BAL_DET,2021,3,NFC North,DET,BAL,3112,Away,BAL,Defensive Pass Interference,Discretionary (judgment),28,no_play,2,13,0
+2021_03_BAL_DET,2021,3,NFC North,DET,BAL,3452,Away,BAL,Defensive Offside,Other,5,extra_point,NA,0,0
+2021_03_CHI_CLE,2021,3,NFC North,CLE,CHI,3130,Home,CLE,Defensive Holding,Discretionary (judgment),5,no_play,2,10,0
+2021_03_GB_SF,2021,3,NFC North,SF,GB,3220,Away,GB,Defensive Pass Interference,Discretionary (judgment),35,no_play,3,14,0
+2021_03_GB_SF,2021,3,NFC North,SF,GB,3454,Away,GB,Defensive Holding,Discretionary (judgment),2,no_play,2,3,0
+2021_03_GB_SF,2021,3,NFC North,SF,GB,3681,Away,GB,Roughing the Passer,Discretionary (judgment),15,pass,2,7,0
+2021_03_GB_SF,2021,3,NFC North,SF,GB,3741,Away,GB,Tripping,Other,10,no_play,2,11,0
+2021_03_SEA_MIN,2021,3,NFC North,MIN,SEA,3435,Home,MIN,Roughing the Passer,Discretionary (judgment),15,no_play,1,10,0
+2021_03_SEA_MIN,2021,3,NFC North,MIN,SEA,3741,Home,MIN,Delay of Game,Procedural (pre-snap),5,no_play,4,7,0
+2021_04_CLE_MIN,2021,4,NFC North,MIN,CLE,3058,Home,MIN,Offensive Pass Interference,Discretionary (judgment),10,no_play,3,4,0
+2021_04_CLE_MIN,2021,4,NFC North,MIN,CLE,3205,Home,MIN,Offensive Holding,Discretionary (judgment),10,punt,4,8,0
+2021_04_CLE_MIN,2021,4,NFC North,MIN,CLE,4066,Away,CLE,Defensive Pass Interference,Discretionary (judgment),18,no_play,4,7,0
+2021_04_DET_CHI,2021,4,NFC North,CHI,DET,3688,Home,CHI,Defensive Offside,Other,5,no_play,3,1,0
+2021_04_DET_CHI,2021,4,NFC North,CHI,DET,4116,Away,DET,Defensive Pass Interference,Discretionary (judgment),6,no_play,3,5,0
+2021_04_DET_CHI,2021,4,NFC North,CHI,DET,4316,Away,DET,Defensive Offside,Other,5,no_play,4,3,0
+2021_04_PIT_GB,2021,4,NFC North,GB,PIT,2930,Away,PIT,False Start,Procedural (pre-snap),5,no_play,4,4,0
+2021_04_PIT_GB,2021,4,NFC North,GB,PIT,3559,Home,GB,Defensive Pass Interference,Discretionary (judgment),5,no_play,3,6,0
+2021_05_CHI_LV,2021,5,NFC North,LV,CHI,3089,Away,CHI,Unnecessary Roughness,Discretionary (judgment),14,run,2,6,0
+2021_05_CHI_LV,2021,5,NFC North,LV,CHI,3212,Away,CHI,Unnecessary Roughness,Discretionary (judgment),2,no_play,2,3,0
+2021_05_CHI_LV,2021,5,NFC North,LV,CHI,3298,Home,LV,Defensive Pass Interference,Discretionary (judgment),14,no_play,1,10,0
+2021_05_CHI_LV,2021,5,NFC North,LV,CHI,3352,Away,CHI,Offensive Pass Interference,Discretionary (judgment),10,no_play,2,3,0
+2021_05_CHI_LV,2021,5,NFC North,LV,CHI,3662,Home,LV,False Start,Procedural (pre-snap),5,no_play,3,12,0
+2021_05_CHI_LV,2021,5,NFC North,LV,CHI,3957,Home,LV,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2021_05_DET_MIN,2021,5,NFC North,MIN,DET,2746,Home,MIN,Defensive Pass Interference,Discretionary (judgment),14,no_play,1,10,0
+2021_05_DET_MIN,2021,5,NFC North,MIN,DET,2870,Away,DET,Delay of Game,Procedural (pre-snap),5,no_play,4,4,0
+2021_05_DET_MIN,2021,5,NFC North,MIN,DET,2997,Home,MIN,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2021_05_DET_MIN,2021,5,NFC North,MIN,DET,3194,Home,MIN,Roughing the Passer,Discretionary (judgment),15,pass,1,10,0
+2021_05_DET_MIN,2021,5,NFC North,MIN,DET,3275,Away,DET,Offensive Holding,Discretionary (judgment),10,no_play,3,3,0
+2021_05_GB_CIN,2021,5,NFC North,CIN,GB,2609,Home,CIN,Tripping,Other,11,no_play,3,1,0
+2021_06_CIN_DET,2021,6,NFC North,DET,CIN,3507,Home,DET,Defensive Pass Interference,Discretionary (judgment),21,no_play,3,4,0
+2021_06_CIN_DET,2021,6,NFC North,DET,CIN,3582,Home,DET,Defensive Pass Interference,Discretionary (judgment),11,no_play,3,11,0
+2021_06_CIN_DET,2021,6,NFC North,DET,CIN,4169,Away,CIN,Delay of Game,Procedural (pre-snap),6,no_play,1,10,0
+2021_06_GB_CHI,2021,6,NFC North,CHI,GB,3156,Home,CHI,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2021_06_GB_CHI,2021,6,NFC North,CHI,GB,3547,Away,GB,Unnecessary Roughness,Discretionary (judgment),15,kickoff,NA,0,0
+2021_06_GB_CHI,2021,6,NFC North,CHI,GB,3628,Home,CHI,Ineligible Downfield Pass,Other,5,no_play,1,10,0
+2021_06_MIN_CAR,2021,6,NFC North,CAR,MIN,3586,Away,MIN,Offensive Holding,Discretionary (judgment),8,no_play,1,10,0
+2021_06_MIN_CAR,2021,6,NFC North,CAR,MIN,3924,Away,MIN,Face Mask,Discretionary (judgment),15,no_play,2,10,0
+2021_06_MIN_CAR,2021,6,NFC North,CAR,MIN,4366,Away,MIN,Delay of Game,Procedural (pre-snap),5,no_play,4,11,0
+2021_07_DET_LA,2021,7,NFC North,LA,DET,3622,Away,DET,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2021_07_WAS_GB,2021,7,NFC North,GB,WAS,2861,Away,WAS,Defensive Pass Interference,Discretionary (judgment),25,no_play,1,10,0
+2021_07_WAS_GB,2021,7,NFC North,GB,WAS,2954,Home,GB,Illegal Use of Hands,Discretionary (judgment),10,no_play,3,10,0
+2021_07_WAS_GB,2021,7,NFC North,GB,WAS,3584,Away,WAS,Illegal Touch Kick,Other,5,kickoff,NA,0,0
+2021_08_DAL_MIN,2021,8,NFC North,MIN,DAL,3115,Away,DAL,Offensive Holding,Discretionary (judgment),9,punt,4,4,0
+2021_08_DAL_MIN,2021,8,NFC North,MIN,DAL,3221,Away,DAL,Offensive Holding,Discretionary (judgment),10,no_play,2,10,0
+2021_08_DAL_MIN,2021,8,NFC North,MIN,DAL,3363,Home,MIN,Intentional Grounding,Other,13,pass,1,10,0
+2021_08_DAL_MIN,2021,8,NFC North,MIN,DAL,3591,Away,DAL,Roughing the Passer,Discretionary (judgment),15,no_play,2,2,0
+2021_08_DAL_MIN,2021,8,NFC North,MIN,DAL,3674,Away,DAL,Unnecessary Roughness,Discretionary (judgment),14,run,1,10,0
+2021_08_DAL_MIN,2021,8,NFC North,MIN,DAL,3727,Away,DAL,Unnecessary Roughness,Discretionary (judgment),4,run,2,9,0
+2021_08_DAL_MIN,2021,8,NFC North,MIN,DAL,4003,Home,MIN,Illegal Use of Hands,Discretionary (judgment),5,no_play,2,10,0
+2021_08_DAL_MIN,2021,8,NFC North,MIN,DAL,4076,Away,DAL,Offensive Holding,Discretionary (judgment),10,no_play,2,3,0
+2021_08_DAL_MIN,2021,8,NFC North,MIN,DAL,4196,Home,MIN,Defensive Delay of Game,Procedural (pre-snap),5,no_play,3,16,0
+2021_08_DAL_MIN,2021,8,NFC North,MIN,DAL,4339,Home,MIN,False Start,Procedural (pre-snap),5,no_play,2,10,0
+2021_08_GB_ARI,2021,8,NFC North,ARI,GB,2953,Away,GB,Defensive Pass Interference,Discretionary (judgment),11,no_play,1,10,0
+2021_08_GB_ARI,2021,8,NFC North,ARI,GB,3505,Home,ARI,Lowering the Head to Initiate Contact,Discretionary (judgment),2,pass,1,10,0
+2021_08_GB_ARI,2021,8,NFC North,ARI,GB,3545,Home,ARI,Defensive Pass Interference,Discretionary (judgment),2,no_play,1,3,0
+2021_08_GB_ARI,2021,8,NFC North,ARI,GB,3647,Away,GB,Delay of Game,Procedural (pre-snap),4,no_play,3,1,0
+2021_08_PHI_DET,2021,8,NFC North,DET,PHI,3020,Home,DET,Leverage,Other,14,no_play,4,7,0
+2021_08_SF_CHI,2021,8,NFC North,CHI,SF,3224,Home,CHI,Offensive Holding,Discretionary (judgment),10,run,1,10,0
+2021_08_SF_CHI,2021,8,NFC North,CHI,SF,3597,Away,SF,Roughing the Passer,Discretionary (judgment),15,no_play,2,10,0
+2021_09_CHI_PIT,2021,9,NFC North,PIT,CHI,2999,Away,CHI,Defensive Pass Interference,Discretionary (judgment),30,no_play,1,10,0
+2021_09_CHI_PIT,2021,9,NFC North,PIT,CHI,3176,Away,CHI,Defensive Offside,Other,5,no_play,2,7,0
+2021_09_CHI_PIT,2021,9,NFC North,PIT,CHI,3626,Away,CHI,Taunting,Discretionary (judgment),15,pass,3,8,0
+2021_09_CHI_PIT,2021,9,NFC North,PIT,CHI,3996,Home,PIT,Encroachment,Other,5,no_play,NA,0,0
+2021_09_CHI_PIT,2021,9,NFC North,PIT,CHI,4113,Away,CHI,Defensive Offside,Other,5,no_play,1,10,0
+2021_09_CHI_PIT,2021,9,NFC North,PIT,CHI,4183,Home,PIT,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2021_09_CHI_PIT,2021,9,NFC North,PIT,CHI,4350,Home,PIT,Illegal Contact,Discretionary (judgment),5,no_play,2,10,0
+2021_09_GB_KC,2021,9,NFC North,KC,GB,3136,Home,KC,Defensive Pass Interference,Discretionary (judgment),3,no_play,1,10,0
+2021_09_GB_KC,2021,9,NFC North,KC,GB,4021,Home,KC,False Start,Procedural (pre-snap),5,no_play,3,5,0
+2021_09_MIN_BAL,2021,9,NFC North,BAL,MIN,4020,Away,MIN,Defensive Holding,Discretionary (judgment),5,no_play,1,10,0
+2021_09_MIN_BAL,2021,9,NFC North,BAL,MIN,4178,Home,BAL,Offensive Holding,Discretionary (judgment),10,no_play,3,3,0
+2021_10_DET_PIT,2021,10,NFC North,PIT,DET,3087,Home,PIT,Offensive Pass Interference,Discretionary (judgment),10,no_play,3,5,0
+2021_10_DET_PIT,2021,10,NFC North,PIT,DET,3252,Home,PIT,Running Into the Kicker,Other,4,no_play,4,5,0
+2021_10_MIN_LAC,2021,10,NFC North,LAC,MIN,3951,Away,MIN,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2021_10_MIN_LAC,2021,10,NFC North,LAC,MIN,4102,Away,MIN,Face Mask,Discretionary (judgment),15,no_play,1,10,0
+2021_10_SEA_GB,2021,10,NFC North,GB,SEA,2860,Away,SEA,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,1,10,0
+2021_10_SEA_GB,2021,10,NFC North,GB,SEA,2913,Away,SEA,Unsportsmanlike Conduct,Discretionary (judgment),15,run,2,5,0
+2021_10_SEA_GB,2021,10,NFC North,GB,SEA,3415,Away,SEA,Defensive Offside,Other,4,no_play,2,5,0
+2021_11_BAL_CHI,2021,11,NFC North,CHI,BAL,3304,Away,BAL,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,3,6,0
+2021_11_BAL_CHI,2021,11,NFC North,CHI,BAL,4131,Home,CHI,False Start,Procedural (pre-snap),5,no_play,4,6,0
+2021_11_BAL_CHI,2021,11,NFC North,CHI,BAL,4154,Away,BAL,Roughing the Passer,Discretionary (judgment),1,pass,4,11,0
+2021_11_BAL_CHI,2021,11,NFC North,CHI,BAL,4247,Home,CHI,Defensive Pass Interference,Discretionary (judgment),21,no_play,1,10,0
+2021_11_BAL_CHI,2021,11,NFC North,CHI,BAL,4354,Away,BAL,Offensive Holding,Discretionary (judgment),10,no_play,3,2,0
+2021_11_DET_CLE,2021,11,NFC North,CLE,DET,3044,Home,CLE,Offensive Holding,Discretionary (judgment),7,no_play,1,10,0
+2021_11_DET_CLE,2021,11,NFC North,CLE,DET,3102,Home,CLE,Illegal Block Above the Waist,Discretionary (judgment),10,run,2,10,0
+2021_11_GB_MIN,2021,11,NFC North,MIN,GB,3231,Home,MIN,Roughing the Passer,Discretionary (judgment),15,pass,3,6,0
+2021_11_GB_MIN,2021,11,NFC North,MIN,GB,3684,Away,GB,Defensive Too Many Men on Field,Other,5,no_play,1,10,0
+2021_12_CHI_DET,2021,12,NFC North,DET,CHI,3300,Home,DET,False Start,Procedural (pre-snap),5,no_play,2,7,0
+2021_12_CHI_DET,2021,12,NFC North,DET,CHI,3323,Home,DET,Offensive Holding,Discretionary (judgment),10,no_play,2,12,0
+2021_12_CHI_DET,2021,12,NFC North,DET,CHI,3355,Home,DET,Offensive Holding,Discretionary (judgment),10,no_play,2,22,0
+2021_12_CHI_DET,2021,12,NFC North,DET,CHI,3796,Home,DET,Defensive Delay of Game,Procedural (pre-snap),5,no_play,3,9,0
+2021_12_LA_GB,2021,12,NFC North,GB,LA,3413,Away,LA,Delay of Game,Procedural (pre-snap),5,no_play,NA,0,0
+2021_12_LA_GB,2021,12,NFC North,GB,LA,3469,Away,LA,Roughing the Passer,Discretionary (judgment),15,no_play,1,10,0
+2021_12_LA_GB,2021,12,NFC North,GB,LA,3502,Home,GB,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2021_12_LA_GB,2021,12,NFC North,GB,LA,4485,Away,LA,False Start,Procedural (pre-snap),5,no_play,2,10,0
+2021_12_MIN_SF,2021,12,NFC North,SF,MIN,3125,Away,MIN,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2021_12_MIN_SF,2021,12,NFC North,SF,MIN,3227,Home,SF,Defensive Pass Interference,Discretionary (judgment),22,no_play,3,8,0
+2021_12_MIN_SF,2021,12,NFC North,SF,MIN,3687,Away,MIN,Encroachment,Other,5,no_play,2,1,0
+2021_13_ARI_CHI,2021,13,NFC North,CHI,ARI,3141,Away,ARI,False Start,Procedural (pre-snap),5,no_play,3,3,0
+2021_13_ARI_CHI,2021,13,NFC North,CHI,ARI,3363,Away,ARI,Roughing the Kicker,Discretionary (judgment),15,no_play,4,16,0
+2021_13_ARI_CHI,2021,13,NFC North,CHI,ARI,3681,Home,CHI,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2021_13_MIN_DET,2021,13,NFC North,DET,MIN,3400,Home,DET,Roughing the Passer,Discretionary (judgment),1,pass,3,5,0
+2021_13_MIN_DET,2021,13,NFC North,DET,MIN,3670,Away,MIN,Offensive Holding,Discretionary (judgment),10,no_play,2,5,0
+2021_13_MIN_DET,2021,13,NFC North,DET,MIN,3702,Away,MIN,False Start,Procedural (pre-snap),5,no_play,2,15,0
+2021_13_MIN_DET,2021,13,NFC North,DET,MIN,4360,Home,DET,Delay of Game,Procedural (pre-snap),5,no_play,3,1,0
+2021_14_CHI_GB,2021,14,NFC North,GB,CHI,3241,Away,CHI,Player Out of Bounds on Kick,Other,4,no_play,4,1,0
+2021_14_CHI_GB,2021,14,NFC North,GB,CHI,3742,Away,CHI,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2021_14_CHI_GB,2021,14,NFC North,GB,CHI,3856,Away,CHI,Illegal Shift,Procedural (pre-snap),5,no_play,1,10,0
+2021_14_DET_DEN,2021,14,NFC North,DEN,DET,2859,Home,DEN,Unnecessary Roughness,Discretionary (judgment),8,pass,4,4,0
+2021_14_DET_DEN,2021,14,NFC North,DEN,DET,3622,Away,DET,Unsportsmanlike Conduct,Discretionary (judgment),15,extra_point,NA,0,0
+2021_14_PIT_MIN,2021,14,NFC North,MIN,PIT,3354,Home,MIN,Defensive Pass Interference,Discretionary (judgment),7,no_play,3,8,0
+2021_14_PIT_MIN,2021,14,NFC North,MIN,PIT,3823,Away,PIT,Delay of Game,Procedural (pre-snap),5,no_play,4,3,0
+2021_14_PIT_MIN,2021,14,NFC North,MIN,PIT,4094,Home,MIN,Offensive Holding,Discretionary (judgment),10,no_play,2,11,0
+2021_14_PIT_MIN,2021,14,NFC North,MIN,PIT,4375,Away,PIT,Illegal Block Above the Waist,Discretionary (judgment),10,pass,1,10,0
+2021_15_ARI_DET,2021,15,NFC North,DET,ARI,2997,Home,DET,Offensive Holding,Discretionary (judgment),10,no_play,2,9,0
+2021_15_ARI_DET,2021,15,NFC North,DET,ARI,3164,Home,DET,Defensive Pass Interference,Discretionary (judgment),19,no_play,3,10,0
+2021_15_ARI_DET,2021,15,NFC North,DET,ARI,3843,Away,ARI,Defensive Pass Interference,Discretionary (judgment),13,no_play,3,7,0
+2021_15_GB_BAL,2021,15,NFC North,BAL,GB,2873,Away,GB,False Start,Procedural (pre-snap),5,no_play,3,4,0
+2021_15_GB_BAL,2021,15,NFC North,BAL,GB,3043,Away,GB,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,1,10,0
+2021_15_GB_BAL,2021,15,NFC North,BAL,GB,3315,Away,GB,Defensive Pass Interference,Discretionary (judgment),16,no_play,1,10,0
+2021_15_GB_BAL,2021,15,NFC North,BAL,GB,3541,Home,BAL,Illegal Shift,Procedural (pre-snap),4,no_play,2,5,0
+2021_15_GB_BAL,2021,15,NFC North,BAL,GB,3779,Away,GB,Delay of Game,Procedural (pre-snap),5,no_play,4,14,0
+2021_15_GB_BAL,2021,15,NFC North,BAL,GB,4054,Home,BAL,Illegal Formation,Procedural (pre-snap),5,kickoff,NA,0,0
+2021_15_MIN_CHI,2021,15,NFC North,CHI,MIN,3217,Away,MIN,False Start,Procedural (pre-snap),5,no_play,2,7,0
+2021_15_MIN_CHI,2021,15,NFC North,CHI,MIN,3240,Home,CHI,Defensive Offside,Other,5,no_play,2,12,0
+2021_15_MIN_CHI,2021,15,NFC North,CHI,MIN,3332,Away,MIN,False Start,Procedural (pre-snap),5,no_play,4,9,0
+2021_15_MIN_CHI,2021,15,NFC North,CHI,MIN,3395,Away,MIN,Unnecessary Roughness,Discretionary (judgment),15,run,1,10,0
+2021_15_MIN_CHI,2021,15,NFC North,CHI,MIN,3559,Away,MIN,Disqualification,Other,7,run,2,4,0
+2021_15_MIN_CHI,2021,15,NFC North,CHI,MIN,3755,Away,MIN,Offensive Holding,Discretionary (judgment),7,no_play,2,5,0
+2021_15_MIN_CHI,2021,15,NFC North,CHI,MIN,4341,Home,CHI,Illegal Shift,Procedural (pre-snap),5,no_play,1,10,0
+2021_16_CHI_SEA,2021,16,NFC North,SEA,CHI,3040,Away,CHI,False Start,Procedural (pre-snap),5,no_play,3,12,0
+2021_16_CHI_SEA,2021,16,NFC North,SEA,CHI,3138,Away,CHI,Taunting,Discretionary (judgment),15,run,1,10,0
+2021_16_CHI_SEA,2021,16,NFC North,SEA,CHI,3483,Home,SEA,Offensive Holding,Discretionary (judgment),10,no_play,2,8,0
+2021_16_CHI_SEA,2021,16,NFC North,SEA,CHI,3618,Home,SEA,Roughing the Passer,Discretionary (judgment),15,pass,1,10,0
+2021_16_CHI_SEA,2021,16,NFC North,SEA,CHI,3868,Home,SEA,Offensive Holding,Discretionary (judgment),10,no_play,2,6,0
+2021_16_CHI_SEA,2021,16,NFC North,SEA,CHI,3980,Home,SEA,False Start,Procedural (pre-snap),4,no_play,4,1,0
+2021_16_CHI_SEA,2021,16,NFC North,SEA,CHI,4051,Away,CHI,Unsportsmanlike Conduct,Discretionary (judgment),14,pass,4,5,0
+2021_16_CLE_GB,2021,16,NFC North,GB,CLE,2938,Away,CLE,False Start,Procedural (pre-snap),5,no_play,2,7,0
+2021_16_CLE_GB,2021,16,NFC North,GB,CLE,2999,Away,CLE,False Start,Procedural (pre-snap),5,no_play,4,22,0
+2021_16_CLE_GB,2021,16,NFC North,GB,CLE,3754,Away,CLE,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,3,1,0
+2021_16_DET_ATL,2021,16,NFC North,ATL,DET,2895,Away,DET,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2021_17_DET_SEA,2021,17,NFC North,SEA,DET,3452,Home,SEA,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2021_17_DET_SEA,2021,17,NFC North,SEA,DET,3573,Home,SEA,Defensive Holding,Discretionary (judgment),5,no_play,1,10,0
+2021_17_MIN_GB,2021,17,NFC North,GB,MIN,3706,Home,GB,Defensive Holding,Discretionary (judgment),5,no_play,1,10,0
+2021_17_NYG_CHI,2021,17,NFC North,CHI,NYG,3239,Home,CHI,False Start,Procedural (pre-snap),5,no_play,4,18,0
+2021_17_NYG_CHI,2021,17,NFC North,CHI,NYG,3325,Home,CHI,Illegal Contact,Discretionary (judgment),5,run,1,10,0
+2021_17_NYG_CHI,2021,17,NFC North,CHI,NYG,3441,Home,CHI,Defensive Holding,Discretionary (judgment),5,no_play,4,9,0
+2021_18_CHI_MIN,2021,18,NFC North,MIN,CHI,3167,Away,CHI,Defensive Offside,Other,5,extra_point,NA,0,0
+2021_18_CHI_MIN,2021,18,NFC North,MIN,CHI,3392,Away,CHI,Defensive Offside,Other,5,extra_point,NA,0,0
+2021_18_CHI_MIN,2021,18,NFC North,MIN,CHI,3445,Home,MIN,Roughing the Passer,Discretionary (judgment),15,pass,1,10,0
+2021_18_GB_DET,2021,18,NFC North,DET,GB,3546,Home,DET,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2022_01_GB_MIN,2022,1,NFC North,MIN,GB,2798,Away,GB,False Start,Procedural (pre-snap),5,no_play,4,12,0
+2022_01_PHI_DET,2022,1,NFC North,DET,PHI,3617,Away,PHI,Delay of Game,Procedural (pre-snap),5,no_play,2,7,0
+2022_01_PHI_DET,2022,1,NFC North,DET,PHI,3920,Home,DET,Offensive Holding,Discretionary (judgment),10,punt,4,8,0
+2022_01_PHI_DET,2022,1,NFC North,DET,PHI,4143,Away,PHI,Defensive Pass Interference,Discretionary (judgment),11,no_play,3,10,0
+2022_01_PHI_DET,2022,1,NFC North,DET,PHI,4490,Away,PHI,Offensive Too Many Men on Field,Other,5,no_play,1,10,0
+2022_01_SF_CHI,2022,1,NFC North,CHI,SF,3064,Away,SF,Unnecessary Roughness,Discretionary (judgment),15,run,3,1,0
+2022_01_SF_CHI,2022,1,NFC North,CHI,SF,3281,Away,SF,False Start,Procedural (pre-snap),5,no_play,2,10,0
+2022_01_SF_CHI,2022,1,NFC North,CHI,SF,3470,Away,SF,Defensive Holding,Discretionary (judgment),4,run,2,11,0
+2022_01_SF_CHI,2022,1,NFC North,CHI,SF,3561,Away,SF,Offensive Holding,Discretionary (judgment),10,kickoff,NA,0,0
+2022_01_SF_CHI,2022,1,NFC North,CHI,SF,3760,Away,SF,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2022_02_CHI_GB,2022,2,NFC North,GB,CHI,2662,Away,CHI,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2022_02_CHI_GB,2022,2,NFC North,GB,CHI,3186,Away,CHI,Offensive Holding,Discretionary (judgment),10,kickoff,NA,0,0
+2022_02_MIN_PHI,2022,2,NFC North,PHI,MIN,2912,Home,PHI,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2022_02_MIN_PHI,2022,2,NFC North,PHI,MIN,3051,Away,MIN,Ineligible Downfield Pass,Other,5,no_play,1,10,0
+2022_03_DET_MIN,2022,3,NFC North,MIN,DET,3057,Away,DET,Delay of Game,Procedural (pre-snap),5,no_play,4,7,0
+2022_03_DET_MIN,2022,3,NFC North,MIN,DET,3213,Home,MIN,Defensive Holding,Discretionary (judgment),5,no_play,2,6,0
+2022_03_DET_MIN,2022,3,NFC North,MIN,DET,3386,Away,DET,Defensive Holding,Discretionary (judgment),5,no_play,1,10,0
+2022_03_DET_MIN,2022,3,NFC North,MIN,DET,3419,Away,DET,Illegal Contact,Discretionary (judgment),5,no_play,1,10,0
+2022_03_DET_MIN,2022,3,NFC North,MIN,DET,3628,Home,MIN,Illegal Use of Hands,Discretionary (judgment),5,run,1,10,0
+2022_03_DET_MIN,2022,3,NFC North,MIN,DET,3975,Home,MIN,Defensive Holding,Discretionary (judgment),5,no_play,2,10,0
+2022_03_GB_TB,2022,3,NFC North,TB,GB,2845,Away,GB,Delay of Game,Procedural (pre-snap),5,no_play,4,4,0
+2022_03_GB_TB,2022,3,NFC North,TB,GB,2990,Away,GB,Offensive Holding,Discretionary (judgment),10,run,1,10,0
+2022_03_GB_TB,2022,3,NFC North,TB,GB,3043,Home,TB,Defensive Too Many Men on Field,Other,5,no_play,2,17,0
+2022_03_GB_TB,2022,3,NFC North,TB,GB,3778,Away,GB,Defensive Pass Interference,Discretionary (judgment),7,no_play,2,10,0
+2022_03_GB_TB,2022,3,NFC North,TB,GB,3893,Home,TB,Delay of Game,Procedural (pre-snap),5,no_play,NA,0,0
+2022_03_HOU_CHI,2022,3,NFC North,CHI,HOU,3227,Home,CHI,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2022_03_HOU_CHI,2022,3,NFC North,CHI,HOU,3342,Away,HOU,Illegal Substitution,Other,5,no_play,3,13,0
+2022_03_HOU_CHI,2022,3,NFC North,CHI,HOU,3391,Home,CHI,False Start,Procedural (pre-snap),5,no_play,4,8,0
+2022_03_HOU_CHI,2022,3,NFC North,CHI,HOU,3538,Away,HOU,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2022_03_HOU_CHI,2022,3,NFC North,CHI,HOU,3766,Away,HOU,Offensive Holding,Discretionary (judgment),10,punt,4,9,0
+2022_04_CHI_NYG,2022,4,NFC North,NYG,CHI,3106,Home,NYG,Offensive Holding,Discretionary (judgment),10,punt,4,3,0
+2022_04_NE_GB,2022,4,NFC North,GB,NE,3208,Away,NE,Defensive Pass Interference,Discretionary (judgment),11,no_play,3,6,0
+2022_04_NE_GB,2022,4,NFC North,GB,NE,3365,Home,GB,Delay of Game,Procedural (pre-snap),5,no_play,4,8,0
+2022_04_NE_GB,2022,4,NFC North,GB,NE,3502,Home,GB,Illegal Block Above the Waist,Discretionary (judgment),10,punt,4,1,0
+2022_04_SEA_DET,2022,4,NFC North,DET,SEA,3292,Away,SEA,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2022_04_SEA_DET,2022,4,NFC North,DET,SEA,3784,Away,SEA,Illegal Use of Hands,Discretionary (judgment),5,no_play,1,10,0
+2022_05_CHI_MIN,2022,5,NFC North,MIN,CHI,2968,Away,CHI,Defensive Holding,Discretionary (judgment),5,no_play,4,4,0
+2022_05_CHI_MIN,2022,5,NFC North,MIN,CHI,3048,Away,CHI,Illegal Block Above the Waist,Discretionary (judgment),10,run,2,10,0
+2022_05_CHI_MIN,2022,5,NFC North,MIN,CHI,3205,Home,MIN,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2022_05_DET_NE,2022,5,NFC North,NE,DET,2589,Away,DET,Offensive Pass Interference,Discretionary (judgment),10,no_play,1,10,0
+2022_05_DET_NE,2022,5,NFC North,NE,DET,2679,Home,NE,Roughing the Passer,Discretionary (judgment),9,no_play,3,14,0
+2022_05_DET_NE,2022,5,NFC North,NE,DET,2815,Home,NE,False Start,Procedural (pre-snap),3,no_play,1,10,0
+2022_05_DET_NE,2022,5,NFC North,NE,DET,2842,Away,DET,Illegal Use of Hands,Discretionary (judgment),5,run,1,13,0
+2022_06_MIN_MIA,2022,6,NFC North,MIA,MIN,3533,Home,MIA,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2022_06_MIN_MIA,2022,6,NFC North,MIA,MIN,3945,Home,MIA,Ineligible Downfield Pass,Other,5,no_play,1,6,0
+2022_06_NYJ_GB,2022,6,NFC North,GB,NYJ,3313,Home,GB,Offensive Holding,Discretionary (judgment),10,no_play,2,7,0
+2022_06_NYJ_GB,2022,6,NFC North,GB,NYJ,3353,Home,GB,Delay of Game,Procedural (pre-snap),5,no_play,2,17,0
+2022_06_NYJ_GB,2022,6,NFC North,GB,NYJ,3623,Home,GB,Unnecessary Roughness,Discretionary (judgment),2,run,2,1,0
+2022_06_NYJ_GB,2022,6,NFC North,GB,NYJ,3713,Home,GB,Defensive Offside,Other,0,no_play,3,1,0
+2022_06_NYJ_GB,2022,6,NFC North,GB,NYJ,3766,Away,NYJ,Delay of Game,Procedural (pre-snap),4,no_play,4,1,0
+2022_06_WAS_CHI,2022,6,NFC North,CHI,WAS,2770,Away,WAS,False Start,Procedural (pre-snap),5,no_play,3,5,0
+2022_06_WAS_CHI,2022,6,NFC North,CHI,WAS,3091,Away,WAS,Delay of Game,Procedural (pre-snap),5,no_play,4,1,0
+2022_06_WAS_CHI,2022,6,NFC North,CHI,WAS,3278,Away,WAS,Illegal Use of Hands,Discretionary (judgment),5,no_play,3,5,0
+2022_06_WAS_CHI,2022,6,NFC North,CHI,WAS,3469,Home,CHI,Delay of Game,Procedural (pre-snap),5,no_play,4,11,0
+2022_07_CHI_NE,2022,7,NFC North,NE,CHI,3255,Home,NE,Offensive Holding,Discretionary (judgment),10,no_play,2,10,0
+2022_07_CHI_NE,2022,7,NFC North,NE,CHI,3292,Away,CHI,Disqualification,Other,15,pass,2,20,0
+2022_07_CHI_NE,2022,7,NFC North,NE,CHI,3418,Away,CHI,Delay of Game,Procedural (pre-snap),5,no_play,4,1,0
+2022_07_DET_DAL,2022,7,NFC North,DAL,DET,2964,Away,DET,Defensive Holding,Discretionary (judgment),5,no_play,3,4,0
+2022_07_DET_DAL,2022,7,NFC North,DAL,DET,3079,Home,DAL,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2022_07_DET_DAL,2022,7,NFC North,DAL,DET,3544,Away,DET,False Start,Procedural (pre-snap),5,no_play,3,7,0
+2022_07_GB_WAS,2022,7,NFC North,WAS,GB,3133,Away,GB,Illegal Formation,Procedural (pre-snap),5,no_play,1,10,0
+2022_07_GB_WAS,2022,7,NFC North,WAS,GB,3352,Away,GB,Unsportsmanlike Conduct,Discretionary (judgment),15,pass,3,8,0
+2022_07_GB_WAS,2022,7,NFC North,WAS,GB,3604,Home,WAS,Illegal Use of Hands,Discretionary (judgment),4,no_play,3,3,0
+2022_07_GB_WAS,2022,7,NFC North,WAS,GB,3730,Home,WAS,Illegal Use of Hands,Discretionary (judgment),5,no_play,3,6,0
+2022_07_GB_WAS,2022,7,NFC North,WAS,GB,3787,Home,WAS,Defensive Pass Interference,Discretionary (judgment),18,no_play,2,5,0
+2022_07_GB_WAS,2022,7,NFC North,WAS,GB,4093,Home,WAS,Delay of Game,Procedural (pre-snap),5,no_play,4,3,0
+2022_08_ARI_MIN,2022,8,NFC North,MIN,ARI,3538,Home,MIN,Offensive Holding,Discretionary (judgment),9,no_play,3,1,0
+2022_08_ARI_MIN,2022,8,NFC North,MIN,ARI,4068,Home,MIN,Defensive Pass Interference,Discretionary (judgment),12,no_play,3,6,0
+2022_08_ARI_MIN,2022,8,NFC North,MIN,ARI,4386,Home,MIN,Defensive Pass Interference,Discretionary (judgment),11,no_play,1,10,0
+2022_08_ARI_MIN,2022,8,NFC North,MIN,ARI,4443,Away,ARI,Illegal Blindside Block,Other,15,run,1,10,0
+2022_08_CHI_DAL,2022,8,NFC North,DAL,CHI,3635,Home,DAL,Defensive Pass Interference,Discretionary (judgment),6,no_play,3,5,0
+2022_08_CHI_DAL,2022,8,NFC North,DAL,CHI,3966,Home,DAL,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2022_08_GB_BUF,2022,8,NFC North,BUF,GB,2753,Away,GB,Illegal Use of Hands,Discretionary (judgment),5,no_play,3,10,0
+2022_08_GB_BUF,2022,8,NFC North,BUF,GB,2807,Away,GB,Defensive Offside,Other,5,no_play,2,14,0
+2022_08_GB_BUF,2022,8,NFC North,BUF,GB,3435,Home,BUF,Unnecessary Roughness,Discretionary (judgment),15,run,2,1,0
+2022_08_MIA_DET,2022,8,NFC North,DET,MIA,3149,Home,DET,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2022_08_MIA_DET,2022,8,NFC North,DET,MIA,3193,Away,MIA,Defensive Offside,Other,5,no_play,2,12,0
+2022_08_MIA_DET,2022,8,NFC North,DET,MIA,3267,Away,MIA,Illegal Block Above the Waist,Discretionary (judgment),10,punt,4,19,0
+2022_08_MIA_DET,2022,8,NFC North,DET,MIA,3595,Away,MIA,Defensive Offside,Other,5,no_play,2,8,0
+2022_09_GB_DET,2022,9,NFC North,DET,GB,3002,Away,GB,Offensive Pass Interference,Discretionary (judgment),10,no_play,2,7,0
+2022_09_GB_DET,2022,9,NFC North,DET,GB,3180,Away,GB,Offensive Pass Interference,Discretionary (judgment),10,no_play,1,10,0
+2022_09_GB_DET,2022,9,NFC North,DET,GB,3241,Home,DET,Defensive Pass Interference,Discretionary (judgment),17,no_play,2,20,0
+2022_09_GB_DET,2022,9,NFC North,DET,GB,3385,Home,DET,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2022_09_GB_DET,2022,9,NFC North,DET,GB,3439,Away,GB,Unnecessary Roughness,Discretionary (judgment),15,pass,2,20,0
+2022_09_MIA_CHI,2022,9,NFC North,CHI,MIA,3040,Home,CHI,Defensive Pass Interference,Discretionary (judgment),47,no_play,2,10,0
+2022_09_MIN_WAS,2022,9,NFC North,WAS,MIN,2926,Home,WAS,Defensive Pass Interference,Discretionary (judgment),14,no_play,3,11,0
+2022_09_MIN_WAS,2022,9,NFC North,WAS,MIN,3202,Away,MIN,Illegal Contact,Discretionary (judgment),5,no_play,3,9,0
+2022_09_MIN_WAS,2022,9,NFC North,WAS,MIN,3721,Home,WAS,Unnecessary Roughness,Discretionary (judgment),2,no_play,4,4,0
+2022_10_DET_CHI,2022,10,NFC North,CHI,DET,2664,Home,CHI,Offensive Holding,Discretionary (judgment),10,punt,4,5,0
+2022_10_DET_CHI,2022,10,NFC North,CHI,DET,2694,Home,CHI,Unnecessary Roughness,Discretionary (judgment),15,run,1,10,0
+2022_10_DET_CHI,2022,10,NFC North,CHI,DET,2767,Home,CHI,Illegal Use of Hands,Discretionary (judgment),5,run,2,2,0
+2022_10_DET_CHI,2022,10,NFC North,CHI,DET,2799,Home,CHI,Illegal Use of Hands,Discretionary (judgment),5,no_play,1,10,0
+2022_10_DET_CHI,2022,10,NFC North,CHI,DET,2932,Home,CHI,Offensive Holding,Discretionary (judgment),10,no_play,2,8,0
+2022_10_DET_CHI,2022,10,NFC North,CHI,DET,3636,Away,DET,Defensive Holding,Discretionary (judgment),5,no_play,3,5,0
+2022_10_MIN_BUF,2022,10,NFC North,BUF,MIN,3745,Home,BUF,False Start,Procedural (pre-snap),5,no_play,2,10,0
+2022_10_MIN_BUF,2022,10,NFC North,BUF,MIN,3975,Home,BUF,Unnecessary Roughness,Discretionary (judgment),15,pass,1,10,0
+2022_10_MIN_BUF,2022,10,NFC North,BUF,MIN,4154,Home,BUF,Defensive Offside,Other,0,no_play,4,1,0
+2022_10_MIN_BUF,2022,10,NFC North,BUF,MIN,4483,Away,MIN,Defensive Pass Interference,Discretionary (judgment),14,no_play,1,10,0
+2022_11_CHI_ATL,2022,11,NFC North,ATL,CHI,3055,Away,CHI,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2022_11_CHI_ATL,2022,11,NFC North,ATL,CHI,3195,Home,ATL,Defensive Holding,Discretionary (judgment),3,no_play,3,5,0
+2022_11_DAL_MIN,2022,11,NFC North,MIN,DAL,3838,Away,DAL,Neutral Zone Infraction,Procedural (pre-snap),5,no_play,1,10,0
+2022_11_DET_NYG,2022,11,NFC North,NYG,DET,3555,Away,DET,Delay of Game,Procedural (pre-snap),5,no_play,4,11,0
+2022_11_DET_NYG,2022,11,NFC North,NYG,DET,3639,Home,NYG,False Start,Procedural (pre-snap),5,no_play,3,10,0
+2022_11_DET_NYG,2022,11,NFC North,NYG,DET,3888,Away,DET,Defensive Holding,Discretionary (judgment),5,no_play,2,7,0
+2022_11_TEN_GB,2022,11,NFC North,GB,TEN,2997,Home,GB,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2022_12_BUF_DET,2022,12,NFC North,DET,BUF,3836,Home,DET,Roughing the Passer,Discretionary (judgment),8,no_play,2,10,0
+2022_12_BUF_DET,2022,12,NFC North,DET,BUF,4117,Home,DET,False Start,Procedural (pre-snap),5,no_play,2,10,0
+2022_12_NE_MIN,2022,12,NFC North,MIN,NE,3063,Home,MIN,False Start,Procedural (pre-snap),5,no_play,3,9,0
+2022_12_NE_MIN,2022,12,NFC North,MIN,NE,3128,Away,NE,Running Into the Kicker,Other,5,no_play,4,3,0
+2022_13_GB_CHI,2022,13,NFC North,CHI,GB,2638,Home,CHI,Defensive Pass Interference,Discretionary (judgment),38,no_play,1,10,0
+2022_13_GB_CHI,2022,13,NFC North,CHI,GB,2671,Home,CHI,Defensive Holding,Discretionary (judgment),5,no_play,1,10,0
+2022_13_GB_CHI,2022,13,NFC North,CHI,GB,3527,Home,CHI,Illegal Shift,Procedural (pre-snap),5,no_play,1,10,0
+2022_13_JAX_DET,2022,13,NFC North,DET,JAX,3187,Home,DET,Offensive Holding,Discretionary (judgment),10,no_play,2,6,0
+2022_13_JAX_DET,2022,13,NFC North,DET,JAX,3768,Away,JAX,Delay of Game,Procedural (pre-snap),4,no_play,3,1,0
+2022_13_NYJ_MIN,2022,13,NFC North,MIN,NYJ,3582,Home,MIN,Defensive Pass Interference,Discretionary (judgment),24,no_play,1,10,0
+2022_15_IND_MIN,2022,15,NFC North,MIN,IND,3136,Away,IND,Unnecessary Roughness,Discretionary (judgment),15,pass,2,17,0
+2022_15_IND_MIN,2022,15,NFC North,MIN,IND,3391,Home,MIN,Face Mask,Discretionary (judgment),12,punt,4,6,0
+2022_15_IND_MIN,2022,15,NFC North,MIN,IND,3584,Away,IND,Unnecessary Roughness,Discretionary (judgment),15,pass,2,7,0
+2022_15_IND_MIN,2022,15,NFC North,MIN,IND,3782,Away,IND,Defensive Pass Interference,Discretionary (judgment),13,no_play,1,10,0
+2022_15_IND_MIN,2022,15,NFC North,MIN,IND,3980,Home,MIN,Unsportsmanlike Conduct,Discretionary (judgment),15,run,1,10,0
+2022_15_IND_MIN,2022,15,NFC North,MIN,IND,4257,Home,MIN,False Start,Procedural (pre-snap),5,no_play,4,10,0
+2022_15_IND_MIN,2022,15,NFC North,MIN,IND,4607,Away,IND,False Start,Procedural (pre-snap),5,no_play,4,1,0
+2022_15_LA_GB,2022,15,NFC North,GB,LA,2707,Away,LA,Defensive Pass Interference,Discretionary (judgment),16,no_play,2,14,0
+2022_15_LA_GB,2022,15,NFC North,GB,LA,2962,Away,LA,Unnecessary Roughness,Discretionary (judgment),15,run,2,7,0
+2022_15_LA_GB,2022,15,NFC North,GB,LA,3051,Home,GB,Defensive Pass Interference,Discretionary (judgment),40,no_play,2,6,0
+2022_15_PHI_CHI,2022,15,NFC North,CHI,PHI,3588,Home,CHI,Offensive Holding,Discretionary (judgment),10,no_play,3,4,0
+2022_15_PHI_CHI,2022,15,NFC North,CHI,PHI,3855,Home,CHI,Encroachment,Other,1,no_play,NA,0,0
+2022_15_PHI_CHI,2022,15,NFC North,CHI,PHI,3893,Away,PHI,Unsportsmanlike Conduct,Discretionary (judgment),15,kickoff,NA,0,0
+2022_16_BUF_CHI,2022,16,NFC North,CHI,BUF,3176,Home,CHI,Offensive Too Many Men on Field,Other,5,no_play,3,8,0
+2022_16_BUF_CHI,2022,16,NFC North,CHI,BUF,3227,Away,BUF,Illegal Block Above the Waist,Discretionary (judgment),10,punt,4,12,0
+2022_16_DET_CAR,2022,16,NFC North,CAR,DET,3209,Home,CAR,Delay of Game,Procedural (pre-snap),5,no_play,4,4,0
+2022_16_DET_CAR,2022,16,NFC North,CAR,DET,3418,Home,CAR,Defensive Pass Interference,Discretionary (judgment),4,no_play,1,5,0
+2022_16_DET_CAR,2022,16,NFC North,CAR,DET,3649,Home,CAR,False Start,Procedural (pre-snap),5,no_play,4,2,0
+2022_16_DET_CAR,2022,16,NFC North,CAR,DET,3818,Home,CAR,Roughing the Passer,Discretionary (judgment),15,no_play,2,10,0
+2022_16_DET_CAR,2022,16,NFC North,CAR,DET,3856,Home,CAR,Roughing the Passer,Discretionary (judgment),15,no_play,1,10,0
+2022_16_DET_CAR,2022,16,NFC North,CAR,DET,3974,Away,DET,Illegal Formation,Procedural (pre-snap),5,kickoff,NA,0,0
+2022_16_GB_MIA,2022,16,NFC North,MIA,GB,2828,Away,GB,False Start,Procedural (pre-snap),5,no_play,2,10,0
+2022_16_GB_MIA,2022,16,NFC North,MIA,GB,2851,Home,MIA,Roughing the Passer,Discretionary (judgment),7,pass,2,15,0
+2022_16_GB_MIA,2022,16,NFC North,MIA,GB,3200,Home,MIA,Illegal Formation,Procedural (pre-snap),5,no_play,2,8,0
+2022_16_GB_MIA,2022,16,NFC North,MIA,GB,3381,Away,GB,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2022_16_GB_MIA,2022,16,NFC North,MIA,GB,3446,Home,MIA,Encroachment,Other,5,no_play,2,2,0
+2022_17_CHI_DET,2022,17,NFC North,DET,CHI,2859,Home,DET,Offensive Holding,Discretionary (judgment),10,pass,3,11,0
+2022_17_CHI_DET,2022,17,NFC North,DET,CHI,3198,Home,DET,Defensive Holding,Discretionary (judgment),5,no_play,2,20,0
+2022_17_CHI_DET,2022,17,NFC North,DET,CHI,3439,Home,DET,False Start,Procedural (pre-snap),5,no_play,3,9,0
+2022_17_CHI_DET,2022,17,NFC North,DET,CHI,3522,Away,CHI,Offensive Holding,Discretionary (judgment),10,no_play,1,10,0
+2022_17_CHI_DET,2022,17,NFC North,DET,CHI,3581,Away,CHI,False Start,Procedural (pre-snap),5,no_play,2,14,0
+2022_18_DET_GB,2022,18,NFC North,GB,DET,3236,Home,GB,Disqualification,Other,5,pass,1,10,0
+2022_18_DET_GB,2022,18,NFC North,GB,DET,3670,Away,DET,Offensive Holding,Discretionary (judgment),10,no_play,2,7,0
+2022_18_MIN_CHI,2022,18,NFC North,CHI,MIN,3023,Home,CHI,False Start,Procedural (pre-snap),5,no_play,3,9,0
+2022_18_MIN_CHI,2022,18,NFC North,CHI,MIN,3104,Away,MIN,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2022_18_MIN_CHI,2022,18,NFC North,CHI,MIN,3486,Away,MIN,False Start,Procedural (pre-snap),5,no_play,1,10,0
+2022_18_MIN_CHI,2022,18,NFC North,CHI,MIN,3841,Away,MIN,Delay of Game,Procedural (pre-snap),5,no_play,4,2,0

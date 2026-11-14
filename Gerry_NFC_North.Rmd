@@ -1,0 +1,1164 @@
+---
+title: "NFC North: Fourth-Quarter Penalties in Close Games, 2018-2022"
+subtitle: "Applied Statistics 1 group project - Gerry's divisional analysis"
+author: "Gerry"
+date: "`r format(Sys.Date(), '%B %d, %Y')`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE, message = FALSE, warning = FALSE,
+  fig.width = 7.5, fig.height = 4.2, dpi = 150
+)
+
+## Packages (run once; nflreadr is installed with the nflverse meta-package)
+# install.packages(c("nflverse", "tidyverse", "knitr", "broom", "sandwich"))
+
+library(nflreadr)
+library(tidyverse)
+library(knitr)
+library(broom)
+
+set.seed(2026)
+
+# HC3 heteroskedasticity-robust standard errors are used when 'sandwich'
+# is installed; otherwise classical OLS standard errors are reported.
+hc3_available <- requireNamespace("sandwich", quietly = TRUE)
+
+robust_tidy <- function(model) {
+  b <- coef(model)
+  V <- if (hc3_available) sandwich::vcovHC(model, type = "HC3") else vcov(model)
+  se <- sqrt(diag(V))
+  df_res <- model$df.residual
+  tcrit <- qt(0.975, df_res)
+  tibble(
+    term = names(b),
+    estimate = unname(b),
+    std.error = unname(se),
+    statistic = unname(b / se),
+    p.value = unname(2 * pt(abs(b / se), df_res, lower.tail = FALSE)),
+    conf.low = unname(b - tcrit * se),
+    conf.high = unname(b + tcrit * se)
+  )
+}
+```
+
+## 1. Question and scope
+
+I use 2018-2022 regular-season games involving at least one NFC North team
+(CHI, DET, GB, MIN) to ask whether the **home-away difference in fourth-quarter
+penalties** changed in the COVID-affected 2020 season relative to 2018-2019 and
+2021-2022. My angle is **close games**, defined below, because crowd effects on
+officiating (if any) should matter most when the game is still undecided.
+
+The unit of analysis is the **game**, not the play. Penalty counts are compared
+as per-game totals and as rates per 100 fourth-quarter plays; inference is on
+game-level home-minus-away differentials. This avoids treating penalties within
+a game (or plays within a drive) as independent observations.
+
+## 2. Data loading and filtering
+
+```{r config}
+nfc_north <- c("CHI", "DET", "GB", "MIN")
+seasons <- 2018:2022
+close_threshold <- 8   # |home - away| at the start of Q4
+```
+
+```{r schedules}
+schedule_all <- load_schedules(seasons)
+
+nfc_north_schedule <- schedule_all %>%
+  filter(
+    game_type == "REG",                 # regular season only
+    location == "Home",                 # drops neutral-site games (London, Munich, ...)
+    home_team %in% nfc_north | away_team %in% nfc_north
+  ) %>%
+  select(game_id, season, week, gameday, home_team, away_team,
+         home_score, away_score, result, location, roof, surface,
+         overtime, div_game) %>%
+  mutate(division = "NFC North") %>%
+  arrange(season, week, game_id)
+
+# Neutral-site games that meet the team filter but are excluded by location
+excluded_neutral <- schedule_all %>%
+  filter(game_type == "REG", location != "Home",
+         home_team %in% nfc_north | away_team %in% nfc_north) %>%
+  select(game_id, season, week, home_team, away_team, location,
+         home_score, away_score) %>%
+  arrange(season, week)
+
+tibble(
+  games = nrow(nfc_north_schedule),
+  unique_game_ids = n_distinct(nfc_north_schedule$game_id),
+  neutral_site_games_excluded = nrow(excluded_neutral),
+  seasons = paste(range(nfc_north_schedule$season), collapse = "-")
+) %>%
+  kable(caption = "NFC North regular-season games retained (2018-2022).")
+```
+
+```{r pbp}
+# All plays for the retained games: needed to recover pre-play scores.
+nfc_north_pbp_all <- load_pbp(seasons) %>%
+  filter(game_id %in% nfc_north_schedule$game_id)
+
+# Analysis copy that follows the repository convention of dropping plays
+# without a play_type (timeouts, quarter-end markers, notes).
+nfc_north_pbp <- nfc_north_pbp_all %>%
+  filter(!is.na(play_type)) %>%
+  select(game_id, season, week, play_id, posteam, posteam_type, home_team, away_team,
+         qtr, game_seconds_remaining, total_home_score, total_away_score,
+         posteam_score, defteam_score, play_type, down, ydstogo, epa,
+         penalty, penalty_type, penalty_team, penalty_yards)
+```
+
+## 3. Defining a close game from the score at the start of Q4
+
+The close-game flag uses the score **when the fourth quarter begins**, not the
+final score. Two independent derivations are computed and cross-checked:
+
+1. **Pre-play scores (primary).** For each game, take the first Q4 play with a
+   known possession and read the pre-play score of the offense (`posteam_score`)
+   and defense (`defteam_score`), then map those to home/away.
+2. **End-of-Q3 scores (check).** `total_home_score`/`total_away_score` are the
+   score *after* each play; taking the maximum over all plays in Q1-Q3 gives the
+   score at the end of Q3, i.e. at the start of Q4.
+
+```{r q4-start}
+q4_start_preplay <- nfc_north_pbp_all %>%
+  filter(qtr == 4, posteam %in% c(home_team, away_team), !is.na(posteam_score)) %>%
+  arrange(game_id, play_id) %>%
+  group_by(game_id) %>%
+  slice(1) %>%
+  ungroup() %>%
+  transmute(
+    game_id,
+    q4_start_home_score = as.integer(if_else(posteam == home_team, posteam_score, defteam_score)),
+    q4_start_away_score = as.integer(if_else(posteam == away_team, posteam_score, defteam_score))
+  )
+
+q4_start_postplay_check <- nfc_north_pbp_all %>%
+  filter(qtr < 4) %>%
+  group_by(game_id) %>%
+  summarise(
+    q3_end_home_score = suppressWarnings(max(total_home_score, na.rm = TRUE)),
+    q3_end_away_score = suppressWarnings(max(total_away_score, na.rm = TRUE)),
+    .groups = "drop"
+  ) %>%
+  mutate(across(c(q3_end_home_score, q3_end_away_score),
+                ~ if_else(is.infinite(.x), NA_real_, .x)))
+
+q4_score_check <- q4_start_preplay %>%
+  inner_join(q4_start_postplay_check, by = "game_id") %>%
+  mutate(
+    home_mismatch = q4_start_home_score != q3_end_home_score,
+    away_mismatch = q4_start_away_score != q3_end_away_score
+  )
+
+q4_score_check %>%
+  summarise(
+    games_checked = n(),
+    home_score_mismatches = sum(home_mismatch, na.rm = TRUE),
+    away_score_mismatches = sum(away_mismatch, na.rm = TRUE)
+  ) %>%
+  kable(caption = "Cross-check: pre-play Q4 scores vs. end-of-Q3 cumulative scores.")
+```
+
+Boundary check of the rule, including a missing value:
+
+```{r boundary-check}
+close_game_rule <- function(diff, threshold = close_threshold) abs(diff) <= threshold
+
+boundary_check <- tibble(q4_start_diff = c(-10, -9, -8, -7, 0, 7, 8, 9, 10, NA)) %>%
+  mutate(is_close_game = close_game_rule(q4_start_diff))
+
+stopifnot(identical(boundary_check$is_close_game,
+                    c(FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, NA)))
+
+boundary_check %>%
+  kable(caption = "Boundary check: exactly 8 points is a close game; 9 points is not.")
+```
+
+## 4. Building the game-level dataset
+
+Penalties are counted per **flagged play**: in this data each penalty flag is a
+single row and no play carries more than one flag (verified in Section 5), so
+`sum(penalty == 1)` equals the number of penalty plays. Penalty yards are summed
+separately. Plays are assigned to the penalized side using `penalty_team`.
+Declined and offsetting penalties still appear as flags with 0 or few yards; they
+are kept so that "penalty called" is measured consistently across seasons.
+
+```{r penalties}
+q4_penalty_plays <- nfc_north_pbp %>%
+  filter(qtr == 4, penalty == 1, penalty_team %in% c(home_team, away_team)) %>%
+  mutate(
+    division = "NFC North",
+    covid_2020 = as.integer(season == 2020),
+    penalized_side = case_when(
+      penalty_team == home_team ~ "Home",
+      penalty_team == away_team ~ "Away",
+      TRUE ~ NA_character_
+    ),
+    penalty_category = case_when(
+      is.na(penalty_type) ~ NA_character_,
+      str_detect(penalty_type,
+                 "False Start|Delay of Game|Illegal Formation|Illegal Shift|Neutral Zone Infraction") ~
+        "Procedural (pre-snap)",
+      str_detect(penalty_type,
+                 "Holding|Pass Interference|Roughing|Unnecessary Roughness|Face Mask|Horse Collar|Unsportsmanlike|Illegal Block|Illegal Use of Hands|Illegal Contact|Personal Foul|Taunting|Lowering the Head") ~
+        "Discretionary (judgment)",
+      TRUE ~ "Other"
+    )
+  ) %>%
+  select(game_id, season, week, division, home_team, away_team, play_id,
+         penalized_side, penalty_team, penalty_type, penalty_category,
+         penalty_yards, play_type, down, ydstogo, covid_2020) %>%
+  mutate(
+    season = as.integer(season),
+    week = as.integer(week),
+    play_id = as.integer(play_id),
+    down = as.integer(down),
+    ydstogo = as.integer(ydstogo),
+    penalty_yards = as.numeric(penalty_yards)
+  )
+
+q4_penalty_summary <- q4_penalty_plays %>%
+  group_by(game_id) %>%
+  summarise(
+    q4_penalties_home = sum(penalized_side == "Home"),
+    q4_penalties_away = sum(penalized_side == "Away"),
+    q4_penalty_yards_home = sum(penalty_yards[penalized_side == "Home"]),
+    q4_penalty_yards_away = sum(penalty_yards[penalized_side == "Away"]),
+    q4_pen_procedural_home = sum(penalized_side == "Home" & penalty_category == "Procedural (pre-snap)"),
+    q4_pen_procedural_away = sum(penalized_side == "Away" & penalty_category == "Procedural (pre-snap)"),
+    q4_pen_discretionary_home = sum(penalized_side == "Home" & penalty_category == "Discretionary (judgment)"),
+    q4_pen_discretionary_away = sum(penalized_side == "Away" & penalty_category == "Discretionary (judgment)"),
+    .groups = "drop"
+  )
+
+q4_play_counts <- nfc_north_pbp %>%
+  filter(qtr == 4) %>%
+  count(game_id, name = "q4_plays")
+
+# Q4 offensive EPA per play, by side (pass and run plays with a non-missing EPA)
+q4_epa_summary <- nfc_north_pbp %>%
+  filter(qtr == 4, play_type %in% c("pass", "run"), !is.na(epa)) %>%
+  mutate(offense_side = if_else(posteam == home_team, "Home", "Away")) %>%
+  group_by(game_id, offense_side) %>%
+  summarise(epa_per_play = mean(epa), off_plays = n(), .groups = "drop") %>%
+  pivot_wider(names_from = offense_side, values_from = c(epa_per_play, off_plays),
+              names_sep = "_")
+```
+
+```{r game-level}
+nfc_north_games <- nfc_north_schedule %>%
+  left_join(q4_start_preplay, by = "game_id") %>%
+  left_join(q4_play_counts, by = "game_id") %>%
+  left_join(q4_penalty_summary, by = "game_id") %>%
+  left_join(q4_epa_summary, by = "game_id") %>%
+  mutate(
+    covid_2020 = as.integer(season == 2020),
+    division_team = if_else(home_team %in% nfc_north, home_team, away_team),
+    is_division_matchup = home_team %in% nfc_north & away_team %in% nfc_north,
+    q4_start_diff = q4_start_home_score - q4_start_away_score,
+    final_diff = home_score - away_score,
+    is_close_game = close_game_rule(q4_start_diff),
+    # No penalty rows for a game/team means zero flags were called: the pbp
+    # penalty fields have no missing values (checked in Section 5).
+    across(c(q4_penalties_home, q4_penalties_away,
+             q4_penalty_yards_home, q4_penalty_yards_away,
+             q4_pen_procedural_home, q4_pen_procedural_away,
+             q4_pen_discretionary_home, q4_pen_discretionary_away),
+           ~ coalesce(.x, 0L)),
+    q4_penalty_diff = q4_penalties_home - q4_penalties_away,
+    q4_penalty_rate_home = 100 * q4_penalties_home / q4_plays,
+    q4_penalty_rate_away = 100 * q4_penalties_away / q4_plays,
+    q4_procedural_diff = q4_pen_procedural_home - q4_pen_procedural_away,
+    q4_discretionary_diff = q4_pen_discretionary_home - q4_pen_discretionary_away,
+    q4_epa_diff = epa_per_play_Home - epa_per_play_Away
+  ) %>%
+  select(
+    game_id, season, week, division, home_team, away_team, division_team,
+    is_division_matchup, home_score, away_score, final_diff, overtime, roof, surface,
+    q4_start_home_score, q4_start_away_score, q4_start_diff, is_close_game, q4_plays,
+    q4_penalties_home, q4_penalties_away, q4_penalty_diff,
+    q4_penalty_rate_home, q4_penalty_rate_away,
+    q4_penalty_yards_home, q4_penalty_yards_away,
+    q4_pen_procedural_home, q4_pen_procedural_away, q4_procedural_diff,
+    q4_pen_discretionary_home, q4_pen_discretionary_away, q4_discretionary_diff,
+    q4_epa_per_play_home = epa_per_play_Home, q4_epa_per_play_away = epa_per_play_Away,
+    q4_epa_diff, q4_off_plays_home = off_plays_Home, q4_off_plays_away = off_plays_Away,
+    covid_2020
+  ) %>%
+  arrange(season, week, game_id)
+
+glimpse(nfc_north_games)
+```
+
+Home minus away is the sign convention everywhere: a positive
+`q4_penalty_diff` means the **home team was penalized more** often in Q4 that
+game; a positive `q4_start_diff` means the home team led at the start of Q4.
+
+## 5. Data quality checks
+
+The checks below cover missing scores, score consistency, neutral-site exclusions,
+penalty-record completeness, and the zero-penalty assumption used when filling
+game-level counts.
+
+```{r quality-checks}
+q4_flags_all <- nfc_north_pbp_all %>% filter(qtr == 4, penalty == 1)
+q4_flags_kept <- nfc_north_pbp %>% filter(qtr == 4, penalty == 1)
+
+flags_per_play <- q4_flags_kept %>%
+  count(game_id, play_id) %>%
+  pull(n)
+
+checks <- tibble(
+  check = c(
+    "Games retained (unique game_id)",
+    "Duplicate game_id rows in schedule",
+    "Games with a missing final score",
+    "Games where result != home_score - away_score",
+    "Neutral-site games excluded",
+    "Games with a usable Q4-start score",
+    "Games with no Q4 plays",
+    "Games with Q4-start score above final score (home or away)",
+    "Q4-start cross-check mismatches (pre-play vs end-of-Q3)",
+    "Q4 penalty flags (all plays)",
+    "Q4 penalty flags kept after dropping plays with missing play_type",
+    "Q4 penalty flags with missing penalty_team",
+    "Q4 penalty flags with missing penalty_type",
+    "Maximum penalty flags recorded on one play (Q4)",
+    "Game-sides (2 per game) with zero Q4 penalties",
+    "Games with |Q4-start margin| exactly 8, flagged close",
+    "Games with |Q4-start margin| exactly 9, flagged close (expected 0)",
+    "Ties (kept)",
+    "Games that went to overtime (kept)",
+    "Missing Q4 EPA per side (game level)"
+  ),
+  value = c(
+    nrow(nfc_north_games),
+    sum(duplicated(nfc_north_schedule$game_id)),
+    sum(is.na(nfc_north_games$home_score) | is.na(nfc_north_games$away_score)),
+    sum(nfc_north_games$result != nfc_north_games$home_score - nfc_north_games$away_score, na.rm = TRUE),
+    nrow(excluded_neutral),
+    sum(!is.na(nfc_north_games$q4_start_diff)),
+    sum(is.na(nfc_north_games$q4_plays)),
+    sum(nfc_north_games$q4_start_home_score > nfc_north_games$home_score |
+          nfc_north_games$q4_start_away_score > nfc_north_games$away_score, na.rm = TRUE),
+    sum(q4_score_check$home_mismatch | q4_score_check$away_mismatch, na.rm = TRUE),
+    nrow(q4_flags_all),
+    nrow(q4_flags_kept),
+    sum(is.na(q4_flags_kept$penalty_team)),
+    sum(is.na(q4_flags_kept$penalty_type)),
+    max(flags_per_play),
+    2 * nrow(nfc_north_games) -
+      sum(nfc_north_games$q4_penalties_home > 0) -
+      sum(nfc_north_games$q4_penalties_away > 0),
+    sum(abs(nfc_north_games$q4_start_diff) == 8 & nfc_north_games$is_close_game),
+    sum(abs(nfc_north_games$q4_start_diff) == 9 & nfc_north_games$is_close_game),
+    sum(nfc_north_games$home_score == nfc_north_games$away_score, na.rm = TRUE),
+    sum(nfc_north_games$overtime == 1, na.rm = TRUE),
+    sum(is.na(nfc_north_games$q4_epa_per_play_home) |
+        is.na(nfc_north_games$q4_epa_per_play_away))
+  )
+)
+
+checks %>% kable(caption = "Data quality and consistency checks.")
+```
+
+```{r excluded-neutral-table}
+excluded_neutral %>%
+  kable(caption = "Regular-season games excluded because they were played at a neutral site.")
+```
+
+All score and penalty fields used below are complete. Two consequences matter for
+interpretation:
+
+* A game with no Q4 penalty rows is a **true zero**, not missing data: the play
+  data cover every game and every Q4 play, and `penalty_team`/`penalty_type` are
+  never missing on a flagged play.
+* Ties (3), overtime games (17), and games with very lopsided Q4-start scores are
+  valid records and are kept. Games are not dropped for being blowouts; instead
+  `is_close_game` defines the analysis subset.
+
+The boundary rows in the table above confirm the rule on real data: all
+`r sum(abs(nfc_north_games$q4_start_diff) == 8 & nfc_north_games$is_close_game)`
+of the `r sum(abs(nfc_north_games$q4_start_diff) == 8)` games with exactly an
+8-point Q4-start margin are close games, and none of the
+`r sum(abs(nfc_north_games$q4_start_diff) == 9)` games with a 9-point margin is
+flagged. In the penalty-level file, `down` and `ydstogo` are missing for a few
+flags (for example penalties on kickoffs or extra points); they are kept for
+context and are not used in any calculation.
+
+## 6. Descriptive statistics
+
+```{r descriptives}
+season_summary <- nfc_north_games %>%
+  group_by(season) %>%
+  summarise(
+    games = n(),
+    close_games = sum(is_close_game),
+    q4_plays_per_game = mean(q4_plays),
+    home_pen_per_game = mean(q4_penalties_home),
+    away_pen_per_game = mean(q4_penalties_away),
+    home_minus_away = mean(q4_penalty_diff),
+    sd_home_minus_away = sd(q4_penalty_diff),
+    home_share = sum(q4_penalties_home) / sum(q4_penalties_home + q4_penalties_away),
+    home_per_100_plays = 100 * sum(q4_penalties_home) / sum(q4_plays),
+    away_per_100_plays = 100 * sum(q4_penalties_away) / sum(q4_plays),
+    .groups = "drop"
+  )
+
+season_summary %>%
+  kable(digits = 3,
+        col.names = c("Season", "Games", "Close games", "Q4 plays/game",
+                      "Home pen/game", "Away pen/game", "Home - away",
+                      "SD of diff", "Home share", "Home per 100", "Away per 100"),
+        caption = "All NFC North games: Q4 penalty counts and rates by season.")
+```
+
+```{r descriptives-close}
+close_season_summary <- nfc_north_games %>%
+  filter(is_close_game) %>%
+  group_by(season) %>%
+  summarise(
+    games = n(),
+    q4_plays_per_game = mean(q4_plays),
+    home_pen_per_game = mean(q4_penalties_home),
+    away_pen_per_game = mean(q4_penalties_away),
+    home_minus_away = mean(q4_penalty_diff),
+    sd_home_minus_away = sd(q4_penalty_diff),
+    home_share = sum(q4_penalties_home) / sum(q4_penalties_home + q4_penalties_away),
+    home_per_100_plays = 100 * sum(q4_penalties_home) / sum(q4_plays),
+    away_per_100_plays = 100 * sum(q4_penalties_away) / sum(q4_plays),
+    .groups = "drop"
+  )
+
+close_season_summary %>%
+  kable(digits = 3,
+        col.names = c("Season", "Games", "Q4 plays/game", "Home pen/game",
+                      "Away pen/game", "Home - away", "SD of diff", "Home share",
+                      "Home per 100", "Away per 100"),
+        caption = "Close games only (|Q4-start margin| <= 8).")
+```
+
+```{r period-summary}
+period_summary <- nfc_north_games %>%
+  filter(is_close_game) %>%
+  mutate(period = if_else(covid_2020 == 1, "2020 (COVID-19)", "2018-19, 2021-22")) %>%
+  group_by(period) %>%
+  summarise(
+    games = n(),
+    home_pen = sum(q4_penalties_home),
+    away_pen = sum(q4_penalties_away),
+    home_pen_per_game = mean(q4_penalties_home),
+    away_pen_per_game = mean(q4_penalties_away),
+    diff_per_game = mean(q4_penalty_diff),
+    home_share = home_pen / (home_pen + away_pen),
+    .groups = "drop"
+  )
+
+period_summary %>%
+  kable(digits = 3,
+        caption = "Close games: Q4 penalties by period (game-level totals).")
+```
+
+### Penalty types
+
+```{r penalty-types}
+q4_penalty_plays %>%
+  inner_join(select(nfc_north_games, game_id, is_close_game), by = "game_id") %>%
+  filter(is_close_game) %>%
+  count(penalty_type, penalized_side) %>%
+  pivot_wider(names_from = penalized_side, values_from = n, values_fill = 0) %>%
+  mutate(total = Home + Away) %>%
+  arrange(desc(total)) %>%
+  slice_head(n = 12) %>%
+  kable(caption = "Most common Q4 penalty types in close games, by penalized side (2018-2022).")
+
+q4_penalty_plays %>%
+  inner_join(select(nfc_north_games, game_id, is_close_game), by = "game_id") %>%
+  filter(is_close_game) %>%
+  count(penalty_category, penalized_side) %>%
+  pivot_wider(names_from = penalized_side, values_from = n, values_fill = 0) %>%
+  kable(caption = "Q4 penalties in close games: pre-snap vs. judgment categories.")
+```
+
+## 7. Figures
+
+```{r figures}
+side_colors <- c(Home = "#1f77b4", Away = "#d62728")
+theme_set(theme_minimal(base_size = 11))
+
+# 1. Distribution of the Q4-start margin and where the close-game cut-off falls
+margin_counts <- nfc_north_games %>%
+  count(q4_start_diff) %>%
+  complete(q4_start_diff = seq(min(nfc_north_games$q4_start_diff),
+                               max(nfc_north_games$q4_start_diff)),
+           fill = list(n = 0)) %>%
+  mutate(close_game = abs(q4_start_diff) <= close_threshold)
+
+ggplot(margin_counts, aes(q4_start_diff, n, fill = close_game)) +
+  geom_col(width = 0.85) +
+  geom_vline(xintercept = c(-close_threshold - 0.5, close_threshold + 0.5),
+             linetype = "dashed", color = "grey30") +
+  scale_fill_manual(values = c(`TRUE` = "#2a9d8f", `FALSE` = "grey75"),
+                    labels = c(`TRUE` = "Close game", `FALSE` = "Not close"),
+                    name = NULL) +
+  labs(x = "Home minus away score at the start of Q4",
+       y = "Games",
+       title = "Close games are defined by the Q4-start margin",
+       subtitle = paste0("Dashed lines mark the +/-", close_threshold,
+                         "-point cut-off (one possession)")) +
+  theme(legend.position = "bottom")
+
+# 2. Q4 penalty rate per 100 Q4 plays, by season and penalized side
+rate_plot_data <- nfc_north_games %>%
+  mutate(subset = if_else(is_close_game, "Close games", "All games")) %>%
+  group_by(season, subset) %>%
+  summarise(home = 100 * sum(q4_penalties_home) / sum(q4_plays),
+            away = 100 * sum(q4_penalties_away) / sum(q4_plays),
+            .groups = "drop") %>%
+  pivot_longer(c(home, away), names_to = "side", values_to = "per_100_plays") %>%
+  mutate(side = str_to_title(side))
+
+ggplot(rate_plot_data, aes(factor(season), per_100_plays, color = side, group = side)) +
+  geom_line(linewidth = 0.8) +
+  geom_point(size = 2) +
+  facet_wrap(~subset, nrow = 1) +
+  scale_color_manual(values = side_colors, name = "Penalized side") +
+  labs(x = "Season", y = "Q4 penalties per 100 Q4 plays",
+       title = "Fourth-quarter penalty rates by season",
+       subtitle = "2020 is the COVID-affected season") +
+  theme(legend.position = "bottom")
+
+# 3. Game-level home-minus-away differential with 95% confidence intervals
+diff_plot_data <- nfc_north_games %>%
+  mutate(subset = if_else(is_close_game, "Close games", "All games")) %>%
+  group_by(season, subset) %>%
+  summarise(n = n(),
+            mean_diff = mean(q4_penalty_diff),
+            se = sd(q4_penalty_diff) / sqrt(n()),
+            .groups = "drop") %>%
+  mutate(ci = qt(0.975, n - 1) * se)
+
+ggplot(diff_plot_data, aes(factor(season), mean_diff, color = subset, group = subset)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "grey40") +
+  geom_errorbar(aes(ymin = mean_diff - ci, ymax = mean_diff + ci),
+                width = 0.15, position = position_dodge(width = 0.35)) +
+  geom_point(size = 2.4, position = position_dodge(width = 0.35)) +
+  scale_color_manual(values = c(`Close games` = "#e76f51", `All games` = "grey35"),
+                     name = NULL) +
+  labs(x = "Season",
+       y = "Home minus away Q4 penalties per game",
+       title = "Home-away Q4 penalty differential with 95% confidence intervals",
+       subtitle = "Positive values mean the home team was penalized more often") +
+  theme(legend.position = "bottom")
+
+# 4. Most common Q4 penalty types in close games, by penalized side
+type_counts <- q4_penalty_plays %>%
+  inner_join(select(nfc_north_games, game_id, is_close_game), by = "game_id") %>%
+  filter(is_close_game) %>%
+  count(penalty_type, penalized_side)
+
+top_types <- type_counts %>%
+  group_by(penalty_type) %>%
+  summarise(total = sum(n), .groups = "drop") %>%
+  slice_max(total, n = 10) %>%
+  pull(penalty_type)
+
+type_counts %>%
+  filter(penalty_type %in% top_types) %>%
+  mutate(penalty_type = fct_reorder(penalty_type, n, sum)) %>%
+  ggplot(aes(n, penalty_type, fill = penalized_side)) +
+  geom_col(position = position_dodge(width = 0.75), width = 0.7) +
+  scale_fill_manual(values = side_colors, name = "Penalized side") +
+  labs(x = "Q4 penalty flags (close games, 2018-2022)", y = NULL,
+       title = "Penalty types in close games",
+       subtitle = "Top 10 penalty types by total flags") +
+  theme(legend.position = "bottom")
+```
+
+## 8. Statistical inference
+
+The estimand is the change in the **home-minus-away Q4 penalty differential** in
+2020 relative to the other four seasons, estimated at the game level. A positive
+coefficient means the home team was penalized relatively more in 2020.
+
+```{r models}
+close_games <- nfc_north_games %>% filter(is_close_game)
+
+models <- list(
+  "All games, unadjusted" =
+    lm(q4_penalty_diff ~ covid_2020, data = nfc_north_games),
+  "All games, + close-game indicator + Q4 plays" =
+    lm(q4_penalty_diff ~ covid_2020 + is_close_game + q4_plays, data = nfc_north_games),
+  "Close games only, + Q4 plays (primary)" =
+    lm(q4_penalty_diff ~ covid_2020 + q4_plays, data = close_games),
+  "All games, 2020 x close-game interaction" =
+    lm(q4_penalty_diff ~ covid_2020 * is_close_game + q4_plays, data = nfc_north_games),
+  "Close games, + division-team fixed effects" =
+    lm(q4_penalty_diff ~ covid_2020 + q4_plays + division_team, data = close_games)
+)
+
+model_table <- imap_dfr(models, function(model, label) {
+  n_obs <- nobs(model)
+  robust_tidy(model) %>%
+    filter(term == "covid_2020") %>%
+    transmute(model = label, n = n_obs, estimate, std.error,
+              conf.low, conf.high, p.value)
+})
+
+model_table %>%
+  mutate(model = fct_inorder(model)) %>%
+  kable(digits = 3,
+        col.names = c("Model", "N", "2020 estimate",
+                      if (hc3_available) "Robust SE (HC3)" else "OLS SE",
+                      "95% CI low", "95% CI high", "p-value"),
+        caption = paste0("Estimated 2020 change in the home-minus-away Q4 penalty ",
+                         "differential (penalties per game, home minus away)."))
+```
+
+Standard errors are HC3 heteroskedasticity-robust when the `sandwich` package is
+installed; otherwise the same columns contain conventional OLS standard errors.
+The estimate and 95% interval are computed from that standard error.
+
+```{r primary-model}
+primary_model <- models[["Close games only, + Q4 plays (primary)"]]
+
+robust_tidy(primary_model) %>%
+  kable(digits = 3,
+        col.names = c("Term", "Estimate",
+                      if (hc3_available) "Robust SE (HC3)" else "OLS SE",
+                      "t", "p-value", "95% CI low", "95% CI high"),
+        caption = "Primary model: close games only, game-level Q4 penalty differential.")
+```
+
+The interaction model in the table above is the adjusted difference-in-differences
+estimate: how much the 2020 home-away gap in close games shifted relative to the
+gap in close games in the other seasons, holding Q4 play volume roughly constant.
+
+```{r key-estimates}
+primary_coef <- robust_tidy(primary_model) %>% filter(term == "covid_2020")
+interaction_model <- models[["All games, 2020 x close-game interaction"]]
+interaction_coef <- robust_tidy(interaction_model) %>%
+  filter(term == "covid_2020:is_close_gameTRUE")
+
+covid_close_est <- primary_coef$estimate
+covid_close_lo <- primary_coef$conf.low
+covid_close_hi <- primary_coef$conf.high
+covid_close_p <- primary_coef$p.value
+did_est <- interaction_coef$estimate
+did_lo <- interaction_coef$conf.low
+did_hi <- interaction_coef$conf.high
+did_p <- interaction_coef$p.value
+```
+
+In close games, the 2020 change in the home-minus-away differential is
+`r round(covid_close_est, 2)` penalties per game (95% CI
+`r round(covid_close_lo, 2)` to `r round(covid_close_hi, 2)`,
+p = `r round(covid_close_p, 3)`). The adjusted difference-in-differences estimate
+from the interaction model is `r round(did_est, 2)` (95% CI
+`r round(did_lo, 2)` to `r round(did_hi, 2)`, p = `r round(did_p, 3)`). Both
+intervals include zero. At the 95% level, shifts larger than about
+`r round(-did_lo, 2)` penalties per game toward the away team being penalized
+relatively more, or larger than about `r round(did_hi, 2)` penalties per game
+toward the home team being penalized relatively more, are ruled out - but within
+that range the estimate is too imprecise to distinguish a real change from noise.
+
+### Hypothesis tests and interval estimates
+
+```{r hypothesis-tests}
+diff_2020 <- close_games$q4_penalty_diff[close_games$covid_2020 == 1]
+diff_other <- close_games$q4_penalty_diff[close_games$covid_2020 == 0]
+
+welch_close <- t.test(diff_2020, diff_other)
+wilcox_close <- wilcox.test(diff_2020, diff_other, exact = FALSE, conf.int = TRUE)
+
+perm_test_diff <- function(data, B = 10000) {
+  observed <- mean(data$q4_penalty_diff[data$covid_2020 == 1]) -
+    mean(data$q4_penalty_diff[data$covid_2020 == 0])
+  n_2020 <- sum(data$covid_2020 == 1)
+  perm_stats <- replicate(B, {
+    idx <- sample(nrow(data), n_2020)
+    mean(data$q4_penalty_diff[idx]) - mean(data$q4_penalty_diff[-idx])
+  })
+  tibble(observed = observed,
+         p_value = (sum(abs(perm_stats) >= abs(observed)) + 1) / (B + 1))
+}
+
+set.seed(2026)
+perm_close <- perm_test_diff(close_games)
+
+bootstrap_diff_ci <- function(data, B = 5000) {
+  a <- data$q4_penalty_diff[data$covid_2020 == 1]
+  b <- data$q4_penalty_diff[data$covid_2020 == 0]
+  reps <- replicate(B, mean(sample(a, length(a), replace = TRUE)) -
+                      mean(sample(b, length(b), replace = TRUE)))
+  quantile(reps, c(0.025, 0.975))
+}
+
+set.seed(2026)
+boot_close <- bootstrap_diff_ci(close_games)
+
+tibble(
+  method = c("Welch t-test (game level)", "Wilcoxon rank-sum (location shift)",
+             "Permutation test (10,000 draws)", "Bootstrap percentile CI (5,000 draws)"),
+  estimate = c(unname(welch_close$estimate[1] - welch_close$estimate[2]),
+               unname(wilcox_close$estimate),
+               perm_close$observed,
+               perm_close$observed),
+  conf.low = c(welch_close$conf.int[1], wilcox_close$conf.int[1], boot_close[1], boot_close[1]),
+  conf.high = c(welch_close$conf.int[2], wilcox_close$conf.int[2], boot_close[2], boot_close[2]),
+  p.value = c(welch_close$p.value, wilcox_close$p.value, perm_close$p_value, NA)
+) %>%
+  kable(digits = 3,
+        caption = paste0("Close games: 2020 minus other seasons in the game-level ",
+                         "home-minus-away Q4 penalty differential."))
+```
+
+The permutation test uses 10,000 random reassignments of the 2020 label across
+games; the bootstrap resamples games within each period. Both respect the
+game-level unit and make no normal-theory assumption. The Wilcoxon row reports a
+shift in location (a robust analogue of the 2020-versus-other difference), not a
+difference in means, so its estimate is not directly comparable to the Welch
+estimate.
+
+```{r paired-tests}
+paired_period_table <- close_games %>%
+  group_by(period = if_else(covid_2020 == 1, "2020 (COVID-19)", "2018-19, 2021-22")) %>%
+  group_modify(~ {
+    tt <- t.test(.x$q4_penalties_home, .x$q4_penalties_away, paired = TRUE)
+    tibble(
+      games = nrow(.x),
+      home_per_game = mean(.x$q4_penalties_home),
+      away_per_game = mean(.x$q4_penalties_away),
+      mean_diff = mean(.x$q4_penalties_home - .x$q4_penalties_away),
+      conf.low = tt$conf.int[1],
+      conf.high = tt$conf.int[2],
+      p.value = tt$p.value
+    )
+  }) %>%
+  ungroup()
+
+paired_period_table %>%
+  kable(digits = 3,
+        caption = "Paired within-game comparison of home vs. away Q4 penalties, close games.")
+```
+
+Within close games, the home-away gap is
+`r round(paired_period_table$mean_diff[paired_period_table$period == "2020 (COVID-19)"], 2)`
+penalties per game in 2020 (95% CI
+`r round(paired_period_table$conf.low[paired_period_table$period == "2020 (COVID-19)"], 2)`
+to `r round(paired_period_table$conf.high[paired_period_table$period == "2020 (COVID-19)"], 2)`,
+p = `r round(paired_period_table$p.value[paired_period_table$period == "2020 (COVID-19)"], 3)`)
+versus
+`r round(paired_period_table$mean_diff[paired_period_table$period != "2020 (COVID-19)"], 2)`
+in the other seasons (95% CI
+`r round(paired_period_table$conf.low[paired_period_table$period != "2020 (COVID-19)"], 2)`
+to `r round(paired_period_table$conf.high[paired_period_table$period != "2020 (COVID-19)"], 2)`,
+p = `r round(paired_period_table$p.value[paired_period_table$period != "2020 (COVID-19)"], 3)`).
+
+```{r share-model}
+share_models <- list(
+  "All games" = glm(cbind(q4_penalties_home, q4_penalties_away) ~ covid_2020,
+                    data = nfc_north_games, family = quasibinomial),
+  "Close games" = glm(cbind(q4_penalties_home, q4_penalties_away) ~ covid_2020,
+                      data = close_games, family = quasibinomial)
+)
+
+share_model_table <- imap_dfr(share_models, function(model, label) {
+  tidy(model, conf.int = TRUE, exponentiate = TRUE) %>%
+    filter(term == "covid_2020") %>%
+    transmute(model = label, odds_ratio = estimate, conf.low, conf.high, p.value)
+})
+
+share_model_table %>%
+  kable(digits = 3,
+        caption = paste0("Quasi-binomial model for the home share of Q4 penalties: ",
+                         "odds ratio for 2020 vs. other seasons (home = penalized side)."))
+```
+
+This model treats each game as one binomial observation (home vs. away penalties)
+and uses quasi-binomial variance to allow for overdispersion, so it weights games
+with more penalty calls more heavily without treating plays as independent. An
+odds ratio below 1 means home teams were relatively less likely to be the
+penalized side in 2020.
+
+### Secondary: pre-snap vs. judgment penalties
+
+```{r category-models}
+category_models <- list(
+  "Procedural, close games" = lm(q4_procedural_diff ~ covid_2020 + q4_plays, data = close_games),
+  "Judgment, close games" = lm(q4_discretionary_diff ~ covid_2020 + q4_plays, data = close_games),
+  "Procedural, all games" = lm(q4_procedural_diff ~ covid_2020 + q4_plays, data = nfc_north_games),
+  "Judgment, all games" = lm(q4_discretionary_diff ~ covid_2020 + q4_plays, data = nfc_north_games)
+)
+
+imap_dfr(category_models, function(model, label) {
+  n_obs <- nobs(model)
+  robust_tidy(model) %>%
+    filter(term == "covid_2020") %>%
+    transmute(model = label, n = n_obs, estimate, conf.low, conf.high, p.value)
+}) %>%
+  kable(digits = 3,
+        caption = paste0("Exploratory: 2020 change in home-minus-away penalty ",
+                         "differential by penalty category (game level)."))
+```
+
+These category models are secondary and exploratory. The pre-snap group
+(false start, delay of game, illegal formation/shift, neutral zone infraction) is
+the closest available proxy for crowd-noise-sensitive calls; the judgment group
+(holding, pass interference, roughing, unnecessary roughness, etc.) is the closest
+proxy for discretionary officiating. Neither shows a statistically distinguishable
+2020 shift, and neither can separate officiating behavior from changes in how
+teams played.
+
+## 9. Optional check: fourth-quarter offensive EPA
+
+If home-field advantage (crowd effects on players, travel, or officiating) changed
+in 2020, Q4 efficiency differences between home and away offenses are another
+place to look. EPA is available for every pass and run play, so the game-level
+paired difference is well defined.
+
+```{r epa}
+epa_games <- nfc_north_games %>%
+  filter(!is.na(q4_epa_per_play_home), !is.na(q4_epa_per_play_away))
+
+epa_season_table <- epa_games %>%
+  group_by(season) %>%
+  summarise(
+    games = n(),
+    home_epa_per_play = mean(q4_epa_per_play_home),
+    away_epa_per_play = mean(q4_epa_per_play_away),
+    mean_diff = mean(q4_epa_diff),
+    sd_diff = sd(q4_epa_diff),
+    se_diff = sd(q4_epa_diff) / sqrt(n()),
+    .groups = "drop"
+  ) %>%
+  mutate(ci = qt(0.975, games - 1) * se_diff)
+
+epa_season_table %>%
+  select(-se_diff) %>%
+  kable(digits = 4,
+        caption = "Q4 offensive EPA per play, all games with usable EPA.")
+
+epa_close <- epa_games %>% filter(is_close_game)
+epa_test <- t.test(epa_close$q4_epa_diff[epa_close$covid_2020 == 1],
+                   epa_close$q4_epa_diff[epa_close$covid_2020 == 0])
+
+tibble(
+  comparison = c("Close games: 2020 vs. other seasons",
+                 "Close games: 2020 home-away difference vs. 0",
+                 "Close games: other seasons home-away difference vs. 0"),
+  estimate = c(unname(epa_test$estimate[1] - epa_test$estimate[2]),
+               mean(epa_close$q4_epa_diff[epa_close$covid_2020 == 1]),
+               mean(epa_close$q4_epa_diff[epa_close$covid_2020 == 0])),
+  conf.low = c(epa_test$conf.int[1], NA, NA),
+  conf.high = c(epa_test$conf.int[2], NA, NA),
+  p.value = c(epa_test$p.value,
+              t.test(epa_close$q4_epa_diff[epa_close$covid_2020 == 1])$p.value,
+              t.test(epa_close$q4_epa_diff[epa_close$covid_2020 == 0])$p.value)
+) %>%
+  kable(digits = 4,
+        caption = "Home-minus-away Q4 offensive EPA per play in close games.")
+```
+
+```{r epa-plot}
+ggplot(epa_season_table, aes(factor(season), mean_diff)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "grey40") +
+  geom_errorbar(aes(ymin = mean_diff - ci, ymax = mean_diff + ci), width = 0.15) +
+  geom_point(size = 2.4, color = "#e76f51") +
+  labs(x = "Season", y = "Home minus away Q4 EPA per play",
+       title = "Q4 offensive EPA difference (home minus away)",
+       subtitle = "All games; 95% confidence intervals") +
+  theme_minimal(base_size = 11)
+```
+
+EPA differences are small and imprecise, and they mix changes in team quality,
+game script, and officiating. They are reported as a descriptive complement, not as
+evidence for or against a crowd effect.
+
+## 10. Summary of results
+
+* The NFC North sample contains `r nrow(nfc_north_games)` regular-season games,
+  `r nrow(close_games)` of them close at the start of Q4 and
+  `r sum(close_games$covid_2020)` of those close games in 2020.
+* The game-level home-minus-away Q4 penalty differential is close to zero in most
+  seasons. Its 2020 value is slightly negative (home teams were penalized slightly
+  less often than away teams), but the confidence interval includes zero in every
+  model, and the adjusted difference-in-differences estimate is also compatible
+  with no change.
+* The home share of Q4 penalties in close games was lower in 2020, but the
+  quasi-binomial odds ratio is not statistically distinguishable from 1.
+* Neither the pre-snap (crowd-noise proxy) nor the judgment penalty category shows
+  a clear 2020 shift; the same is true for individual penalty types descriptively.
+* Q4 offensive EPA differences are small and imprecise.
+
+Taken together, this NFC North analysis finds **no statistically detectable
+change** in fourth-quarter home-away penalty patterns during 2020, in close games
+or overall. That is a statement about the precision of this sample, not proof that
+crowds do not matter, and the design cannot separate crowd absence from the other
+ways the 2020 season differed.
+
+## 11. Limitations and assumptions
+
+* **Observational, not causal.** 2020 differed from other seasons in many ways
+  beyond crowds: scheduling, no preseason, opt-outs, roster and rule changes,
+  travel, and reduced attendance that varied by team and state. The `covid_2020`
+  coefficient is a descriptive season contrast, not an estimate of a crowd effect,
+  and these results cannot establish referee bias in either direction.
+* **Sample size and precision.** The NFC North sample has
+  `r nrow(nfc_north_games)` games, `r nrow(close_games)` of them close, and only
+  `r sum(close_games$covid_2020)` close games in 2020. Confidence intervals are
+  therefore wide; a null result means "no detectable change with this sample",
+  not "no change".
+* **Home is the designated home team, not measured attendance.** The data contain
+  no attendance variable. Some 2020 games had limited spectators, so the contrast
+  is "2020 season" versus "other seasons", not "empty stadium" versus "full
+  stadium".
+* **Penalty records have limits.** A flagged play records one penalized team and
+  one penalty type; offsetting or multiple fouls on a play, and some declined
+  penalties, may be represented incompletely. Penalty yards are kept as a
+  secondary measure but the analysis focuses on counts.
+* **Q4-start scores are derived, not supplied.** The primary derivation uses the
+  pre-play score of the first Q4 play with known possession. It was validated
+  against end-of-Q3 cumulative scores for all games (0 mismatches), and no Q4-start
+  score exceeds a team's final score.
+* **Play-filtering.** Plays without a `play_type` (timeouts, quarter-end markers)
+  are dropped following the repository convention; none of the dropped plays is a
+  penalty flag, which was verified above. Q4 "plays" therefore counts offensive,
+  special-teams, and no-play penalty rows, which is why penalty rates are reported
+  per 100 Q4 plays rather than per offensive snap.
+* **Model choice.** OLS on game-level differentials is used because each game is
+  one independent observation and the coefficient is directly interpretable as
+  penalties per game. The quasi-binomial model is a robustness check for the home
+  share of penalties. Several secondary tests are reported without multiplicity
+  adjustment and should be read as exploratory.
+* **EPA** is per-play and opponent-adjusted but not garbage-time filtered; the EPA
+  comparison is descriptive and mixes team quality with game situation.
+* **Overtime is outside the Q4 analysis.** Q4 penalty counts and Q4 EPA stop at the
+  end of regulation; overtime plays are not included, so games that went to
+  overtime contribute only their fourth-quarter plays.
+
+## 12. Merge preparation for the four-division dataset
+
+### Output files
+
+```{r write-outputs}
+dir.create("data", showWarnings = FALSE)
+
+write_csv(nfc_north_games, "data/gerry_nfc_north_game_level.csv")
+write_csv(q4_penalty_plays, "data/gerry_nfc_north_q4_penalties.csv")
+
+tibble(
+  file = c("data/gerry_nfc_north_game_level.csv",
+           "data/gerry_nfc_north_q4_penalties.csv"),
+  rows = c(nrow(nfc_north_games), nrow(q4_penalty_plays)),
+  columns = c(ncol(nfc_north_games), ncol(q4_penalty_plays)),
+  grain = c("one row per game", "one row per Q4 penalty flag")
+) %>%
+  kable(caption = "Files written for the later divisional merge.")
+```
+
+CSV files store no types, so the round trip below re-reads the game-level file
+with an explicit column specification and verifies that the documented key types
+survive:
+
+```{r roundtrip-check}
+roundtrip <- read_csv(
+  "data/gerry_nfc_north_game_level.csv",
+  show_col_types = FALSE,
+  col_types = cols(
+    .default = col_guess(),
+    season = col_integer(),
+    week = col_integer(),
+    q4_plays = col_integer(),
+    q4_penalties_home = col_integer(),
+    q4_penalties_away = col_integer(),
+    q4_penalty_diff = col_integer(),
+    is_close_game = col_logical()
+  )
+)
+
+stopifnot(
+  identical(names(roundtrip), names(nfc_north_games)),
+  nrow(roundtrip) == nrow(nfc_north_games),
+  !anyDuplicated(roundtrip$game_id),
+  is.character(roundtrip$game_id),
+  is.integer(roundtrip$season),
+  is.integer(roundtrip$week),
+  is.logical(roundtrip$is_close_game),
+  is.integer(roundtrip$q4_penalties_home),
+  is.integer(roundtrip$q4_penalties_away),
+  is.integer(roundtrip$q4_penalty_diff)
+)
+
+tibble(
+  column = c("game_id", "season", "is_close_game", "q4_penalties_home"),
+  class_after_read = map_chr(roundtrip[c("game_id", "season", "is_close_game",
+                                         "q4_penalties_home")], ~ class(.x)[1])
+) %>%
+  kable(caption = "Type check after the CSV round trip (game-level file).")
+```
+
+### Shared schema (required for the combined dataset)
+
+These fields must exist, with the same names and types, in every member's
+game-level file. `division` is the member's division label; `division_team` is
+member-specific and is not carried into the combined file. CSV files do not store
+types, so the combine helper below re-applies the documented types after reading.
+
+```{r schema}
+schema_required <- tribble(
+  ~field, ~type, ~description,
+  "game_id", "character", "nflverse game identifier; unique key for the merge",
+  "season", "integer", "2018-2022 season",
+  "week", "integer", "Regular-season week",
+  "division", "character", "Member division label, e.g. 'NFC North'",
+  "home_team", "character", "Home team abbreviation",
+  "away_team", "character", "Away team abbreviation",
+  "home_score", "integer", "Final home score (schedule)",
+  "away_score", "integer", "Final away score (schedule)",
+  "final_diff", "integer", "home_score - away_score",
+  "q4_start_home_score", "integer", "Home score at the start of Q4 (pre-play derivation)",
+  "q4_start_away_score", "integer", "Away score at the start of Q4 (pre-play derivation)",
+  "q4_start_diff", "integer", "q4_start_home_score - q4_start_away_score",
+  "is_close_game", "logical", "abs(q4_start_diff) <= 8",
+  "q4_plays", "integer", "Q4 plays with a non-missing play_type",
+  "q4_penalties_home", "integer", "Q4 penalty flags against the home team",
+  "q4_penalties_away", "integer", "Q4 penalty flags against the away team",
+  "q4_penalty_diff", "integer", "q4_penalties_home - q4_penalties_away",
+  "covid_2020", "integer", "1 for the 2020 season, 0 otherwise"
+)
+
+extra_fields <- setdiff(names(nfc_north_games), schema_required$field)
+
+bind_rows(
+  schema_required %>% mutate(present_in_this_file = field %in% names(nfc_north_games)),
+  tibble(
+    field = extra_fields,
+    type = map_chr(nfc_north_games[extra_fields], ~ class(.x)[1]),
+    description = "Additional derived field (optional in the combined file)",
+    present_in_this_file = TRUE
+  )
+) %>%
+  kable(caption = "Game-level schema and field inventory for the divisional merge.")
+```
+
+```{r schema-assertions}
+stopifnot(
+  is.character(nfc_north_games$game_id),
+  !anyNA(nfc_north_games$game_id),
+  !anyDuplicated(nfc_north_games$game_id),
+  is.integer(nfc_north_games$season),
+  is.integer(nfc_north_games$week),
+  is.character(nfc_north_games$division),
+  is.character(nfc_north_games$home_team),
+  is.character(nfc_north_games$away_team),
+  is.integer(nfc_north_games$home_score),
+  is.integer(nfc_north_games$away_score),
+  is.integer(nfc_north_games$final_diff),
+  is.integer(nfc_north_games$q4_start_home_score),
+  is.integer(nfc_north_games$q4_start_away_score),
+  is.integer(nfc_north_games$q4_start_diff),
+  is.logical(nfc_north_games$is_close_game),
+  is.integer(nfc_north_games$q4_plays),
+  is.integer(nfc_north_games$q4_penalties_home),
+  is.integer(nfc_north_games$q4_penalties_away),
+  is.integer(nfc_north_games$q4_penalty_diff),
+  is.integer(nfc_north_games$covid_2020)
+)
+```
+
+### Deduplicating overlapping interdivision games
+
+Filtering on "at least one team from my division" means a game between two
+members' divisions (for example GB vs. BAL, or CHI vs. CLE) appears in both
+members' files. Games inside one division (for example CHI vs. GB) appear only in
+that division's file. The planned combination rule is therefore:
+
+1. Stack the four members' game-level files (`bind_rows`).
+2. **Verify** that every shared game-level field is identical across duplicate
+   `game_id`s. Scores, Q4-start scores, close-game flags, and penalty counts are
+   properties of the game, so any disagreement indicates a coding bug to fix, not
+   something to overwrite silently.
+3. Keep **one row per `game_id`**, and record which divisions contributed the game
+   in `division` (`"AFC North; NFC North"`) plus `n_divisions`.
+4. Drop the member-specific `division_team` field; team identity remains available
+   through `home_team`/`away_team`, and team-to-division maps can be joined if
+   needed.
+5. Assert that no game is counted twice and that the combined row count equals the
+   number of distinct `game_id`s.
+
+```{r combine-plan, eval=FALSE}
+combine_division_files <- function(paths) {
+  shared_fields <- c(
+    "game_id", "season", "week", "home_team", "away_team",
+    "home_score", "away_score", "final_diff",
+    "q4_start_home_score", "q4_start_away_score", "q4_start_diff",
+    "is_close_game", "q4_plays",
+    "q4_penalties_home", "q4_penalties_away", "q4_penalty_diff", "covid_2020"
+  )
+
+  raw <- purrr::map_dfr(paths, readr::read_csv, show_col_types = FALSE) %>%
+    # CSV round trips guess whole numbers as doubles; enforce the documented types
+    mutate(
+      season = as.integer(season),
+      week = as.integer(week),
+      home_score = as.integer(home_score),
+      away_score = as.integer(away_score),
+      final_diff = as.integer(final_diff),
+      q4_start_home_score = as.integer(q4_start_home_score),
+      q4_start_away_score = as.integer(q4_start_away_score),
+      q4_start_diff = as.integer(q4_start_diff),
+      is_close_game = as.logical(is_close_game),
+      q4_plays = as.integer(q4_plays),
+      q4_penalties_home = as.integer(q4_penalties_home),
+      q4_penalties_away = as.integer(q4_penalties_away),
+      q4_penalty_diff = as.integer(q4_penalty_diff),
+      covid_2020 = as.integer(covid_2020)
+    )
+
+  # Fail loudly if duplicate games disagree on any game-level field
+  conflicts <- raw %>%
+    group_by(game_id) %>%
+    summarise(across(all_of(setdiff(shared_fields, "game_id")), n_distinct),
+              .groups = "drop") %>%
+    filter(if_any(-game_id, ~ .x > 1))
+  stopifnot(nrow(conflicts) == 0)
+
+  raw %>%
+    group_by(game_id) %>%
+    summarise(
+      n_divisions = n_distinct(division),
+      across(all_of(setdiff(shared_fields, "game_id")), first),
+      division = paste(sort(unique(division)), collapse = "; "),
+      .groups = "drop"
+    )
+}
+
+# Placeholder file names: replace with the other members' actual output files.
+combined <- combine_division_files(c(
+  "data/gerry_nfc_north_game_level.csv",
+  "data/reuel_afc_north_game_level.csv",
+  "data/member3_division_game_level.csv",
+  "data/member4_division_game_level.csv"
+))
+
+stopifnot(!anyDuplicated(combined$game_id))
+```
+
+The penalty-level file is similarly stackable: `game_id` plus `play_id` identifies
+a penalty flag, and duplicates arise only for interdivision games. Its dedupe key
+should be `c("game_id", "play_id")`, with the same verification step before
+removing duplicates. As with the game-level file, re-apply `as.integer()` to
+`season`, `week`, and `play_id` after reading the CSVs so that types match across
+members.
+
