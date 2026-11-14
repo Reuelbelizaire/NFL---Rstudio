@@ -49,7 +49,7 @@ my_pbp <-load_pbp(2018:2022) %>%
   select(game_id, posteam_type, epa, penalty, penalty_type, penalty_team, 
     penalty_yards, pass_attempt, rush_attempt, yards_gained, 
     play_type, down, ydstogo, qtr, score_differential) 
-#i added more variables to give more options incase you want to check dif variable correlation
+#i added more variables to give more options in case you want to check differnt variable correlation
 
 division_df<- clean_pbp %>% left_join(clean_schedule, by="game_id")
 
@@ -105,18 +105,50 @@ division_df <- division_df %>%
     )
   )
 
-#the first penalty type affects the home team more than the ref
-#the second penalty type affects the refs calls
+division_df <- division_df %>%
+  mutate(
+    is_indoor = case_when(
+      roof %in% c("dome", "closed") ~ 1,
+      roof %in% c("outdoors","open") ~ 0
+    )
+  )
+
+#the first penalty type affects the home team more than the ref #Procedural (Crowd Noise)
+#the second penalty type affects the refs calls #Discretionary (Ref Judgment)
 division_df <- division_df %>%
   mutate(
     penalty_category = case_when(
       is.na(penalty_type) ~ NA_character_,
-      str_detect(penalty_type, "False Start|Delay of Game|Illegal Formation|Illegal Shift") ~ "Procedural (Crowd Noise)",
-      str_detect(penalty_type, "Holding|Pass Interference|Roughing|Unnecessary Roughness|Face Mask|Horse Collar|Unsportsmanlike") ~ "Discretionary (Ref Judgment)",
+      str_detect(penalty_type, "False Start|Delay of Game|Illegal Formation|Illegal Shift") ~ "Procedural",
+      str_detect(penalty_type, "Holding|Pass Interference|Roughing|Unnecessary Roughness|Face Mask|Horse Collar|Unsportsmanlike") ~ "Discretionary",
       TRUE ~ "Other"
     )
   )
+#if discretionary fouls drop for away teams during the 2020 season or spike in 'indoor' stadiums then we have some evidence that the crowd influences the refs calls
 
 #check to see if data is sorted properly
 table(division_df$is_covid_year, useNA = "ifany")
+```
+
+#Analyzing AFC North data
+
+```{r}
+game_df <- division_df %>%
+  group_by(game_id, season, is_covid_year, is_indoor) %>%
+  summarise(
+    #makes it easier to see which teams get penalized more by giving us a number
+    home_penalties = sum(penalized_side == "Home", na.rm = TRUE),
+    away_penalties = sum(penalized_side == "Away", na.rm = TRUE),
+    
+    home_discretionary = sum(penalized_side == "Home" & penalty_category == "Discretionary", na.rm = TRUE),
+    away_discretionary = sum(penalized_side == "Away" & penalty_category == "Discretionary", na.rm = TRUE),
+    
+    home_procedural = sum(penalized_side == "Home" & penalty_category == "Procedural", na.rm = TRUE),
+    away_procedural = sum(penalized_side == "Away" & penalty_category == "Procedural", na.rm = TRUE),
+    
+    .groups = "drop"
+  ) %>% #We calculate (Away - Home) so that POS numbers mean the Away team got more penalties.
+  mutate(total_diff_pen = away_penalties - home_penalties,
+         total_diff_disc = away_discretionary -home_discretionary,
+         total_diff_proc = away_procedural -home_procedural )
 ```
