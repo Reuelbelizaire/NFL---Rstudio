@@ -220,7 +220,7 @@ ggplot(covid_game_df, aes(x = stadium_env, y = total_diff_disc, fill = stadium_e
 ```
 #linear regression
 ```{r}
-
+d
 # Tests if away-minus-home judgment calls dropped significantly in 2020
 model_disc <- lm(total_diff_disc ~ is_covid_year, data = game_df)
 summary(model_disc)
