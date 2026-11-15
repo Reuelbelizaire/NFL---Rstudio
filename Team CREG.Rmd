@@ -1,0 +1,129 @@
+---
+title: "NFL stats"
+author: "CERG"
+date: "2026-10-26"
+output: html_document
+---
+
+Data Dict: https://nflreadr.nflverse.com/articles/dictionary_schedules.html?utm_source=chatgpt.com
+
+references the package https://nflreadr.nflverse.com/reference/
+
+Articles(s): https://pmc.ncbi.nlm.nih.gov/articles/PMC7763131/?utm_source=chatgpt.com
+
+
+```{r}
+#install necessary packages
+
+install.packages("nflverse")
+library("nflverse")
+library(tidyverse)
+library(dplyr)
+library(knitr)
+library(naniar)
+library(ggplot2)
+```
+
+#this block is just code to copy so we have the same type of process when combining data & look at my creating columns block in case you want to use those columns aswell  
+
+```{r}
+
+#this is how u grab your division & change to fit your division
+my_division <- c("BAL", "CLE", "CIN", "PIT")
+
+#put the code below in your block & modify it to work for your division
+clean_schedule <- load_schedules(2018:2022) %>%
+  filter(
+    location == "Home",
+    game_type == "REG", #excludes neutral sites
+    home_team %in% my_division | away_team %in% my_division
+  ) %>%
+  select(game_id, season, home_team, away_team, home_score, away_score, result, location, roof)
+
+#this function will take a while to load 
+my_pbp <-load_pbp(2018:2022) %>%
+  filter(
+    game_id %in% clean_schedule$game_id, #matches the function so we can join them
+    !is.na(play_type)
+  )%>%
+  select(game_id, posteam_type, epa, penalty, penalty_type, penalty_team, 
+    penalty_yards, pass_attempt, rush_attempt, yards_gained, 
+    play_type, down, ydstogo, qtr, score_differential) 
+#i added more variables to give more options incase you want to check dif variable correlation
+
+division_df<- clean_pbp %>% left_join(clean_schedule, by="game_id")
+
+```
+
+
+Reuel's block
+```{r}
+
+reuel_division <- c("BAL", "CLE", "CIN", "PIT")
+
+clean_schedule <- load_schedules(2018:2022) %>%
+  filter(
+    location == "Home",
+    game_type == "REG", #excludes neutral sites
+    home_team %in% reuel_division | away_team %in% reuel_division
+  ) %>%
+  select(game_id, season, home_team, away_team, home_score, away_score, result, location, roof)
+
+my_pbp <-load_pbp(2018:2022) %>%
+  filter(
+    game_id %in% clean_schedule$game_id, #matches the function so we can join them
+    !is.na(play_type)
+  )%>%
+  select(game_id, posteam_type, epa, penalty, penalty_type, penalty_team, 
+    penalty_yards, pass_attempt, rush_attempt, yards_gained, 
+    play_type, down, ydstogo, qtr, score_differential) 
+
+division_df<- my_pbp %>% left_join(clean_schedule, by="game_id")
+head(division_df)
+
+#handling missing data
+gg_miss_var(division_df)
+division_df$penalty_yards <- replace_na(division_df$penalty_yards, 0)
+```
+
+#Creating new columns
+```{r}
+division_df <- division_df %>% 
+  mutate(
+    penalized_side = case_when(
+      penalty_team == home_team ~ "Home",
+      penalty_team == away_team ~ "Away",
+      TRUE ~ NA_character_ #keeps na values as NA values
+    )
+  )
+
+division_df <- division_df %>%
+  mutate(
+    is_covid_year = case_when(
+      season == 2020 ~ 1, #covid year
+      TRUE ~ 0 #every other year
+    )
+  )
+
+#the first penalty type affects the home team more than the ref
+#the second penalty type affects the refs calls
+division_df <- division_df %>%
+  mutate(
+    penalty_category = case_when(
+      is.na(penalty_type) ~ NA_character_,
+      str_detect(penalty_type, "False Start|Delay of Game|Illegal Formation|Illegal Shift") ~ "Procedural (Crowd Noise)",
+      str_detect(penalty_type, "Holding|Pass Interference|Roughing|Unnecessary Roughness|Face Mask|Horse Collar|Unsportsmanlike") ~ "Discretionary (Ref Judgment)",
+      TRUE ~ "Other"
+    )
+  )
+
+#check to see if data is sorted properly
+table(division_df$is_covid_year, useNA = "ifany")
+table(division_df$penalized_side, useNA = "ifany")
+table(division_df$penalty_category, useNA = "ifany")
+
+```
+
+```{r}
+
+```
