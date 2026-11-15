@@ -99,6 +99,14 @@ division_df <- division_df %>%
 
 division_df <- division_df %>%
   mutate(
+    is_indoor = case_when(
+      roof %in% c("dome", "closed") ~ 1,
+      roof %in% c("outdoors","open") ~ 0
+    )
+  )
+
+division_df <- division_df %>%
+  mutate(
     is_covid_year = case_when(
       season == 2020 ~ 1, #covid year
       TRUE ~ 0 #every other year
@@ -124,6 +132,110 @@ table(division_df$penalty_category, useNA = "ifany")
 
 ```
 
+#Analyzing AFC North data
+
 ```{r}
+game_df <- division_df %>%
+  group_by(game_id, season, is_covid_year) %>%
+  summarise(
+    home_penalties = sum(penalized_side == "Home", na.rm = TRUE),
+    away_penalties = sum(penalized_side == "Away", na.rm = TRUE),
+    
+    home_discretionary = sum(penalized_side == "Home" & str_detect(penalty_category, "Discretionary"), na.rm = TRUE),
+    away_discretionary = sum(penalized_side == "Away" & str_detect(penalty_category, "Discretionary"), na.rm = TRUE),
+    
+    home_procedural = sum(penalized_side == "Home" & str_detect(penalty_category, "Procedural"), na.rm = TRUE),
+    away_procedural = sum(penalized_side == "Away" & str_detect(penalty_category, "Procedural"), na.rm = TRUE),
+    
+    .groups = "drop"
+  ) %>% #We calculate (Away - Home) so that POS numbers mean the Away team got more penalties.
+  mutate(
+    total_diff_pen = away_penalties - home_penalties,
+    total_diff_disc = away_discretionary - home_discretionary,
+    total_diff_proc = away_procedural - home_procedural
+  )
+
+penalty_df <- game_df %>%
+  group_by(season) %>%
+  summarise(
+    avg_disc_diff = mean(total_diff_disc, na.rm = TRUE),
+    avg_proc_diff = mean(total_diff_proc, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+penalty_long <- penalty_df %>%
+  pivot_longer(
+    cols = starts_with("avg_"),
+    names_to = "penalty_type",
+    values_to = "net_diff"
+  ) %>%
+  mutate(
+    penalty_type = ifelse(
+      penalty_type == "avg_disc_diff",
+      "Discretionary (Ref Judgment)",
+      "Procedural (Crowd Noise)"
+    )
+  )
+
+ggplot(penalty_long, aes(x = season, y = net_diff, color = penalty_type, group = penalty_type)) +
+  # Dashed zero line (above 0 = Away team penalized more; below 0 = Home team penalized more)
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") +
+  # Vertical marker highlighting the 2020 empty-stadium season
+  geom_vline(xintercept = 2020, linetype = "dotted", color = "firebrick", linewidth = 0.9) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 3.5) +
+  labs(
+    title = "Away-Minus-Home Penalty Margin Across NFL Seasons (2018–2022)",
+    subtitle = "Values above 0 mean Visiting Teams were penalized more (Red dotted line = 2020 Empty Stadiums)",
+    x = "Season",
+    y = "Average Net Penalty Margin (Away - Home)",
+    color = "Penalty Category"
+  ) +
+  theme_minimal(base_size = 13)
+
+covid_game_df <- game_df %>%
+  mutate(
+    stadium_env = factor(
+      ifelse(is_covid_year == 1, "2020\n(Empty Stadiums)", "Normal Years\n(Packed Stadiums)"),
+      levels = c("Normal Years\n(Packed Stadiums)", "2020\n(Empty Stadiums)")
+    )
+  )
+
+ggplot(covid_game_df, aes(x = stadium_env, y = total_diff_disc, fill = stadium_env)) +
+  # Dashed zero line (0 = completely even penalties between Home and Away)
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray40", linewidth = 0.9) +
+  # Boxplot showing median and middle 50% of games
+  geom_boxplot(alpha = 0.6, width = 0.4, outlier.shape = NA) +
+  # Individual game dots so you can see the actual sample size and spread
+  geom_jitter(width = 0.12, size = 2.5, alpha = 0.75, color = "#1e293b") +
+  labs(
+    title = "Game-by-Game Discretionary Penalty Margin: Packed vs. Empty Stadiums",
+    subtitle = "Each dot represents one game (Values > 0 mean the Away team had more judgment calls)",
+    x = NULL,
+    y = "Net Discretionary Penalty Margin (Away - Home)"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "none")
+
+```
+#linear regression
+```{r}
+
+# Tests if away-minus-home judgment calls dropped significantly in 2020
+model_disc <- lm(total_diff_disc ~ is_covid_year, data = game_df)
+summary(model_disc)
+
+
+# Tests if false starts / delay-of-game margins dropped when stadiums were silent
+model_proc <- lm(total_diff_proc ~ is_covid_year, data = game_df)
+summary(model_proc)
+
+#(All Fouls Combined vs. COVID Empty Stadiums)
+model_total <- lm(total_diff_pen ~ is_covid_year, data = game_df)
+summary(model_total)
+
+#Controlling for Stadium Roof Type + Total Game Penalty Volume
+model_combo <- lm(total_diff_disc ~ is_covid_year + total_diff_proc, data = game_df)
+summary(model_combo)
 
 ```
