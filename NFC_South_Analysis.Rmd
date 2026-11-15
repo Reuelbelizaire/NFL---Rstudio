@@ -1,0 +1,232 @@
+
+---
+title: "NFC South Analysis"
+author: "Cyncier Harrison"
+date: "2026-11-14"
+output: html_document
+---
+
+# NFC South NFL Statistics Project
+
+This analysis examines the Carolina Panthers, Tampa Bay Buccaneers, New Orleans Saints, and Atlanta Falcons from 2018 through 2022. The goal is to investigate how home-field advantage and officiating changed during the 2020 COVID season.
+
+## Step 1: Load Packages
+
+```{r setup, message=FALSE, warning=FALSE}
+library(nflreadr)
+library(tidyverse)
+library(knitr)
+library(naniar)
+```
+
+## Step 2: Load NFC South Game Data
+
+```{r nfc_south_schedule}
+# NFC South teams
+my_division <- c("CAR", "TB", "NO", "ATL")
+
+# Load regular-season games from 2018-2022
+clean_schedule <- load_schedules(2018:2022) %>%
+  filter(
+    location == "Home",
+    game_type == "REG",
+    home_team %in% my_division | away_team %in% my_division
+  ) %>%
+  select(
+    game_id, season, home_team, away_team,
+    home_score, away_score, result, location, roof
+  )
+
+# Display the first six games
+head(clean_schedule)
+```
+```{r}
+
+# Load play-by-play data for 2018-2022
+my_pbp <- load_pbp(2018:2022) %>%
+  filter(
+    game_id %in% clean_schedule$game_id,
+    !is.na(play_type)
+  ) %>%
+  select(
+    game_id, posteam_type, epa, penalty,
+    penalty_type, penalty_team, penalty_yards,
+    pass_attempt, rush_attempt, yards_gained,
+    play_type, down, ydstogo, qtr,
+    score_differential
+  )
+
+# Preview the play-by-play data
+head(my_pbp)
+
+```
+```{r}
+
+# Combine play-by-play data with game schedules
+nfc_south_df <- my_pbp %>%
+  left_join(clean_schedule, by = "game_id")
+
+# Display the first six rows
+head(nfc_south_df)
+
+# Check the size of our dataset
+dim(nfc_south_df)
+
+```
+```{r}
+
+# Identify which side committed each penalty
+nfc_south_df <- nfc_south_df %>%
+  mutate(
+    penalized_side = case_when(
+      penalty_team == home_team ~ "Home",
+      penalty_team == away_team ~ "Away",
+      TRUE ~ NA_character_
+    )
+  )
+
+# Count penalties by home and away teams
+table(nfc_south_df$penalized_side, useNA = "ifany")
+
+```
+```{r}
+
+# Identify games played during the COVID season
+nfc_south_df <- nfc_south_df %>%
+  mutate(
+    is_covid_year = if_else(season == 2020, 1, 0)
+  )
+
+# Compare home and away penalty counts by season
+penalties_by_season <- nfc_south_df %>%
+  filter(!is.na(penalized_side)) %>%
+  count(season, penalized_side) %>%
+  pivot_wider(
+    names_from = penalized_side,
+    values_from = n,
+    values_fill = 0
+  ) %>%
+  mutate(
+    difference = Away - Home
+  ) %>%
+  arrange(season)
+
+# Display results
+print(penalties_by_season)
+
+```
+```{r}
+
+# Calculate the percentage of penalties against away teams
+penalty_percentages <- penalties_by_season %>%
+  mutate(
+    total_penalties = Away + Home,
+    away_penalty_pct = round(Away / total_penalties * 100, 2),
+    home_penalty_pct = round(Home / total_penalties * 100, 2)
+  )
+
+# Display the results
+print(penalty_percentages)
+
+```
+```{r}
+
+# Graph: Home vs Away Penalty Percentages
+ggplot(
+  penalty_percentages,
+  aes(x = factor(season))
+) +
+  geom_line(
+    aes(y = away_penalty_pct, color = "Away"),
+    group = 1,
+    linewidth = 1.2
+  ) +
+  geom_point(
+    aes(y = away_penalty_pct, color = "Away"),
+    size = 3
+  ) +
+  geom_line(
+    aes(y = home_penalty_pct, color = "Home"),
+    group = 1,
+    linewidth = 1.2
+  ) +
+  geom_point(
+    aes(y = home_penalty_pct, color = "Home"),
+    size = 3
+  ) +
+  labs(
+    title = "NFC South: Home vs Away Penalties (2018-2022)",
+    subtitle = "Comparing penalty percentages before, during, and after COVID",
+    x = "NFL Season",
+    y = "Percentage of Penalties",
+    color = "Team Location"
+  ) +
+  theme_minimal()
+
+```
+```{r}
+
+# Calculate NFC South home winning percentages by season
+home_win_stats <- clean_schedule %>%
+  filter(home_team %in% my_division) %>%
+  mutate(
+    home_win = if_else(home_score > away_score, 1, 0)
+  ) %>%
+  group_by(season) %>%
+  summarise(
+    home_games = n(),
+    home_wins = sum(home_win),
+    home_win_pct = round(mean(home_win) * 100, 2),
+    avg_home_margin = round(mean(result, na.rm = TRUE), 2),
+    .groups = "drop"
+  )
+
+# Display results
+print(home_win_stats)
+
+```
+```{r}
+
+# Graph: NFC South Home Winning Percentage
+ggplot(home_win_stats, aes(x = factor(season),
+                           y = home_win_pct)) +
+  geom_col(fill = "steelblue") +
+  geom_text(
+    aes(label = paste0(home_win_pct, "%")),
+    vjust = -0.5,
+    size = 4
+  ) +
+  labs(
+    title = "NFC South Home Winning Percentage (2018-2022)",
+    subtitle = "Home-field advantage before, during, and after COVID",
+    x = "NFL Season",
+    y = "Home Winning Percentage"
+  ) +
+  ylim(0, 70) +
+  theme_minimal()
+
+```
+```{r}
+
+# Compare 2020 home wins with all other seasons
+home_win_test_data <- clean_schedule %>%
+  filter(home_team %in% my_division) %>%
+  mutate(
+    period = if_else(season == 2020, "COVID 2020", "Other Seasons"),
+    outcome = if_else(home_score > away_score, "Win", "Loss")
+  )
+
+# Create a table of wins and losses
+win_table <- table(
+  home_win_test_data$period,
+  home_win_test_data$outcome
+)
+
+print(win_table)
+
+# Perform Fisher's exact test
+fisher.test(win_table)
+
+```
+When I compared NFC South home winning percentages during the 2020 season against the other four seasons, I got a p-value of 0.8446. Since that's greater than 0.05, the difference wasn't statistically significant. Based on our data, we couldn't conclude that home teams performed differently during the COVID season.
+
