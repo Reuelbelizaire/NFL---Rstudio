@@ -40,6 +40,7 @@ clean_schedule <- load_schedules(2018:2022) %>%
   ) %>%
   select(game_id, season, home_team, away_team, home_score, away_score, result, location, roof)
 
+
 #this function will take a while to load 
 my_pbp <-load_pbp(2018:2022) %>%
   filter(
@@ -119,4 +120,143 @@ division_df <- division_df %>%
 
 #check to see if data is sorted properly
 table(division_df$is_covid_year, useNA = "ifany")
+```
+
+Emily's block
+```{r}
+
+install.packages(c("nflreadr", "tidyverse", "stringr"))
+library(nflreadr)
+library(dplyr)
+library(tidyr)
+library(stringr)
+
+emily_division <- c("DEN", "KC", "LV", "LAC") 
+
+clean_schedule <- load_schedules(2018:2022) %>%
+  filter(
+    location == "Home", 
+    game_type == "REG", 
+    home_team %in% emily_division | away_team %in% emily_division
+  ) %>%
+  select(game_id, season, home_team, away_team, home_score, 
+         away_score, result, location, roof)
+
+my_pbp <- load_pbp(2018:2022) %>%
+  filter(game_id %in% clean_schedule$game_id)
+
+division_df <- my_pbp %>% 
+  left_join(clean_schedule, by = "game_id", suffix = c("", ".sched")) %>%
+  mutate(penalty_yards = replace_na(penalty_yards, 0)) %>%
+  mutate(
+    penalized_side = case_when(
+      penalty_team == home_team ~ "Home",
+      penalty_team == away_team ~ "Away",
+      TRUE ~ NA_character_ 
+    )
+  ) %>%
+  mutate(
+    is_covid_year = case_when(
+      season == 2020 ~ 1,
+      TRUE ~ 0
+    )
+  ) %>%
+  mutate(
+    is_indoor = case_when(
+      roof %in% c("dome", "closed") ~ 1,
+      roof %in% c("outdoors", "open") ~ 0
+    )
+  ) %>%
+  mutate(
+    penalty_category = case_when(
+      is.na(penalty_type) ~ NA_character_,
+      str_detect(penalty_type, "False Start|Delay of Game|Illegal Formation|Illegal Shift") ~ "Procedural",
+      str_detect(penalty_type, "Holding|Pass Interference|Roughing|Unnecessary Roughness|Face Mask|Horse Collar|Unsportsmanlike") ~ "Discretionary",
+      TRUE ~ "Other"
+    )
+  )
+
+penalty_breakdown <- division_df %>%
+  filter(penalty == 1) %>% 
+  group_by(penalty_type, is_covid_year, penalized_side) %>%
+  summarise(total_calls = n(), .groups = "drop") %>%
+  tidyr::pivot_wider(
+    names_from = penalized_side, 
+    values_from = total_calls, 
+    values_fill = 0 
+  ) %>%
+  mutate(
+    diff_away_minus_home = Away - Home
+  ) %>%
+  arrange(is_covid_year, desc(diff_away_minus_home))
+
+print(penalty_breakdown, n = 30)
+
+# plots for presentation
+library(ggplot2)
+
+# 1. Get the Top 10 penalties that drive the bias (where Away team was penalized most)
+top_penalties <- penalty_breakdown %>%
+  filter(is_covid_year == 0) %>%
+  arrange(desc(diff_away_minus_home)) %>%
+  head(10) %>%
+  pull(penalty_type)
+
+# 2. Filter the data for just those top 10 and plot
+plot_data_top <- penalty_breakdown %>%
+  filter(penalty_type %in% top_penalties) %>%
+  # Change is_covid_year to a label for the legend
+  mutate(Season_Type = ifelse(is_covid_year == 1, "2020 (No Fans)", "Normal (With Fans)"))
+
+# 3. Create the plot
+ggplot(plot_data_top, aes(x = reorder(penalty_type, diff_away_minus_home), 
+                          y = diff_away_minus_home, 
+                          fill = Season_Type)) +
+  geom_col(position = "dodge") +
+  coord_flip() + # Flips the chart so penalty names are readable
+  scale_fill_manual(values = c("2020 (No Fans)" = "pink", "Normal (With Fans)" = "navy")) +
+  labs(
+    title = "Which Penalties Drive Away-Team Bias in the AFC West?",
+    subtitle = "Difference in calls (Away Penalties minus Home Penalties)",
+    x = "Penalty Type",
+    y = "Bias Differential (Positive = More calls against Away team)",
+    fill = "Game Environment"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",
+    plot.title = element_text(face = "bold", size = 14),
+    axis.text.y = element_text(size = 10)
+  )
+  
+# 1. Summarize the data by category
+category_bias <- division_df %>%
+  filter(penalty == 1) %>%
+  group_by(penalty_category, is_covid_year, penalized_side) %>%
+  summarise(total_calls = n(), .groups = "drop") %>%
+  tidyr::pivot_wider(names_from = penalized_side, values_from = total_calls, values_fill = 0) %>%
+  mutate(diff_away_minus_home = Away - Home) %>%
+  # Calculate the average differential per category
+  group_by(penalty_category, is_covid_year) %>%
+  summarise(avg_diff = mean(diff_away_minus_home, na.rm = TRUE), .groups = "drop") %>%
+  # Remove NA categories and "Other"
+  filter(!is.na(penalty_category), penalty_category != "Other") %>%
+  mutate(Season_Type = ifelse(is_covid_year == 1, "2020 (No Fans)", "Normal (With Fans)"))
+
+# 2. Create the plot
+ggplot(category_bias, aes(x = penalty_category, y = avg_diff, fill = Season_Type)) +
+  geom_col(position = "dodge", width = 0.6) +
+  scale_fill_manual(values = c("2020 (No Fans)" = "pink", "Normal (With Fans)" = "navy")) +
+  labs(
+    title = "Referee Bias by Penalty Category",
+    subtitle = "Did the absence of fans in 2020 reduce the bias?",
+    x = "Penalty Category",
+    y = "Avg Differential (Away - Home)",
+    fill = "Game Environment"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "bottom",
+    plot.title = element_text(face = "bold", size = 14)
+  )
 ```
